@@ -1,0 +1,154 @@
+import React, { useState } from "react";
+import { Card } from "antd";
+import { Modal } from "antd";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { InfoCircleOutlined } from "@ant-design/icons";
+import { avatar, imageNotFound, logo } from "../../../assets/img/js/img";
+import ModalContent from "./ModalContent/ModalContent";
+import { registerCourseThunk } from "../../../redux/courseReducer/courseThunk";
+import { ResponsiveLargeScreen } from "../../../HOC/responsive";
+
+const CardVertical = ({ course, number }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { infoUser } = useSelector((state) => state.userReducer);
+
+  let name =
+    course.nguoiTao?.hoTen?.length < 12 ? course.nguoiTao?.hoTen : "Harry";
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const renderModal = () => {
+    return (
+      <Modal
+        styles={{ body: { padding: "35px" }, content: { padding: 0 } }}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={null}
+        width={1000}
+        className="duration-700 overflow-hidden Modal"
+      >
+        <div className="flex flex-nowrap items-center overflow-hidden h-[30rem]">
+          <ModalContent
+            course={course}
+            imageNotFound={imageNotFound}
+            navigate={navigate}
+            avatar={avatar}
+            name={name}
+            logo={logo}
+          />
+        </div>
+      </Modal>
+    );
+  };
+
+  return (
+    <div className="relative CardVertical">
+      <Card
+        hoverable
+        className="CardGlobal"
+        onClick={() => {
+          navigate(`/chitiet/${course.maKhoaHoc}`);
+        }}
+      >
+        <div className="WrapperCourse">
+          <div className="Img">
+            <img
+              src={course.hinhAnh ? course.hinhAnh : imageNotFound}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = imageNotFound;
+              }}
+              alt=""
+            />
+          </div>
+          <div className="Avatar">
+            <div className="AvatarItem">
+              <div className="flex flex-col items-center text-white">
+                <img src={avatar[2]} alt="" />
+                <span>{name}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="CardBodyGlobal">
+          <h1>
+            {course?.tenKhoaHoc.length > 12 && course?.tenKhoaHoc.length < 27
+              ? course.tenKhoaHoc
+              : "Lập trình web"}
+          </h1>
+          <h6 className="">
+            {course?.moTa?.length > 100
+              ? course.moTa.substr(0, 50) + "..."
+              : "Lập trình hiện đang là xu hướng trên toàn thế giới..."}
+          </h6>
+          <div className="flex items-center justify-between CardIconGlobal">
+            <span>
+              <i className="far fa-clock"></i>8 giờ
+            </span>
+            <span>
+              <i className="far fa-calendar-alt"></i>4 tuần
+            </span>
+            <span>
+              <i className="fas fa-signal "></i>Tất cả
+            </span>
+          </div>
+        </div>
+
+        <div className="CardFooterGlobal">
+          <div className="flex items-center ImgCardAvatar">
+            <img src={avatar[1]} alt="" />
+            <span className="ml-1">{name}</span>
+          </div>
+          <div>
+            <p>
+              {number[0]}00.000<sup>đ</sup>
+            </p>
+            <p>
+              {number[1]}00.000<sup>đ</sup>
+              <i className="fas fa-tag IconTag"></i>
+            </p>
+          </div>
+        </div>
+
+        <div className="CardSale">
+          <span>Yêu thích</span>
+        </div>
+      </Card>
+      <button
+        onClick={() => {
+          dispatch(
+            registerCourseThunk({
+              maKhoaHoc: course.maKhoaHoc,
+              taiKhoan: infoUser.taiKhoan,
+            })
+          );
+        }}
+        className="ButtonRegister BtnGlobal"
+      >
+        Đăng ký
+      </button>
+      <ResponsiveLargeScreen>
+        <button onClick={showModal} className="IconInfo">
+          <InfoCircleOutlined />
+        </button>
+      </ResponsiveLargeScreen>
+
+      {renderModal()}
+    </div>
+  );
+};
+
+export default CardVertical;

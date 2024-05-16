@@ -1,0 +1,57 @@
+.Type {
+  .Active {
+    color: $colorGlobal;
+  }
+}
+
+.CourseList {
+  clear: both;
+  padding: 0 !important;
+  min-height: 300px;
+  list-style: none;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  .Error {
+    position: relative;
+    margin: 24px 0;
+    padding: 10px 0;
+    border-top: 5px solid $colorGlobal;
+    border-radius: 0 0 5px 5px;
+    background: $colorBgPrimary;
+    width: 100%;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+    }
+
+    &:before {
+      top: 0;
+      right: 20px;
+      width: 20px;
+      height: 30px;
+      background: $colorGlobal;
+    }
+
+    &:after {
+      top: 10px;
+      right: 20px;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-bottom-color: $colorWhite;
+    }
+  }
+}
+
+.Comment {
+  .CommentImage {
+    width: 80%;
+    height: 220px;
+    background: url(https://cdn.dribbble.com/users/1235460/screenshots/3748537/media/c9c1f316535f015b9770c71efb91be46.gif) no-repeat center top/ cover;
+    margin: auto;
+  }
+}

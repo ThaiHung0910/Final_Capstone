@@ -1,0 +1,72 @@
+.User {
+  .ContentLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 500px;
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    span {
+      padding: 10px;
+      border-radius: 20px;
+      color: $colorWhite;
+      background-color: $colorGlobal;
+      border: none;
+    }
+  }
+
+  .ContentRight {
+    .Tab {
+      button {
+        color: $colorWhite;
+        border: none;
+        border-top: 2px solid transparent;
+        background-color: $colorGlobal;
+        outline: none;
+        padding: 14px 16px;
+        transition: all 0.3s;
+      }
+
+      button.Active {
+        background-color: $colorWhite;
+        color: $colorGlobal;
+        border-top: 2px solid $colorGlobal;
+      }
+    }
+
+    .Info {
+      p {
+        padding: 10px 16px;
+        margin: 14px 20px 14px 0;
+        font-weight: 500;
+        border: 2px solid $colorBorder;
+        transition: 0.5s linear;
+        border-radius: 25px;
+        span {
+          font-size: 15px;
+          font-weight: 400;
+          margin-left: 8px;
+        }
+
+        &:hover {
+          border: 2px solid $colorGlobal;
+          filter: brightness(110%);
+          transform: scale(0.98);
+        }
+      }
+    }
+
+    .TabContent {
+      display: none;
+    }
+    .TabContent.Active {
+      display: block;
+    }
+  }
+}
+
+

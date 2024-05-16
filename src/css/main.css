@@ -1,0 +1,976 @@
+@charset "UTF-8";
+.Modal.ant-modal {
+  font-family: "Roboto", sans-serif;
+}
+
+.CardGlobal.ant-card .ant-card-body {
+  padding: 0;
+}
+
+.CardVertical .CardGlobal.ant-card {
+  font-family: "Roboto", sans-serif;
+}
+
+.Background .ant-breadcrumb {
+  font-family: "Roboto", sans-serif;
+}
+.Background .ant-breadcrumb ol {
+  font-size: 20px;
+}
+.Background .ant-breadcrumb a {
+  height: 100%;
+}
+
+.UpdateModal.ant-modal .ant-modal-content .ant-modal-body {
+  background: url(https://cdn.dribbble.com/users/1044993/screenshots/3109403/media/bad56b541a367f711456b0a52bc1aa57.gif) no-repeat 50%/cover;
+}
+.UpdateModal.ant-modal .ant-modal-content .ant-modal-body .FormUpdate > div {
+  width: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.BtnGlobal {
+  padding: 16px 24px;
+  border-radius: 30px;
+  background-image: linear-gradient(to right, #ed85ab 0, #3b82f6 51%, #ed85ab 100%);
+  background-size: 200%;
+  border: transparent;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.2;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.BtnGlobal:hover {
+  background-position: right center;
+}
+.BtnGlobal a {
+  color: #fff;
+}
+
+.TopToBm {
+  position: relative;
+}
+
+.IconCustom {
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  z-index: 20;
+  background-color: #3b82f6;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  animation: MoveBtn 3s ease-in-out infinite;
+  transition: all 0.5s ease-in-out;
+}
+.IconCustom:hover {
+  animation: none;
+  background-color: #fff;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+}
+
+@keyframes MoveBtn {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.Pagination li {
+  margin-right: 7px;
+}
+.Pagination li button {
+  width: 40px;
+  height: 40px;
+  color: #acafb4;
+  border: 1px solid rgb(243, 244, 246);
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+}
+.Pagination li button.Active {
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+}
+
+@media (max-width: 1024px) {
+  .BtnGlobal {
+    padding: 14px 20px;
+    font-size: 10px;
+  }
+}
+.CardGlobal {
+  min-width: 280px;
+  min-height: 450px;
+}
+.CardGlobal:hover .WrapperCourse .Img:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.CardGlobal:hover .Avatar .AvatarItem,
+.CardHorizontal:hover .Avatar .AvatarItem {
+  transform: scale(1);
+}
+
+.CardVertical .WrapperCourse {
+  position: relative;
+  min-height: 150px;
+}
+.CardVertical .WrapperCourse .Img {
+  position: relative;
+}
+.CardVertical .WrapperCourse .Img img {
+  width: 100%;
+  min-height: 150px;
+  height: 185px;
+}
+.CardVertical .WrapperCourse .Img:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(45, 45, 45, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.CardVertical .CardBodyGlobal {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 30px 20px;
+}
+.CardVertical .CardBodyGlobal h1 {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 0 10px;
+}
+.CardVertical .CardBodyGlobal h6 {
+  padding: 0 0 10px;
+  font-weight: 500;
+}
+.CardVertical .CardBodyGlobal span {
+  color: #acafb4;
+}
+.CardVertical .CardIconGlobal > span:nth-child(1) > i {
+  color: #fadb14;
+}
+.CardVertical .CardIconGlobal > span:nth-child(2) > i {
+  color: #ed85ab;
+}
+.CardVertical .CardIconGlobal > span:nth-child(3) > i {
+  color: #3b82f6;
+}
+.CardVertical .CardIconGlobal i {
+  margin-right: 4px;
+}
+.CardVertical .CardSale {
+  position: absolute;
+  top: 5px;
+  left: -5px;
+  width: 85px;
+  height: 30px;
+  padding: 5px 8px 4px;
+  color: #fff;
+  background-color: rgb(224, 37, 37);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.CardVertical .CardSale:after, .CardVertical .CardSale:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.CardVertical .CardSale:before {
+  left: 1px;
+  bottom: -10px;
+  border-bottom: 10px solid transparent;
+  border-right: 5px solid rgb(224, 37, 37);
+  -webkit-filter: brightness(0.8);
+  filter: brightness(0.8);
+}
+.CardVertical .ButtonRegister {
+  display: inline-block;
+  position: absolute;
+  top: 170px;
+  padding: 6px 12px;
+  color: #fff;
+  background-color: #3b82f6;
+}
+.CardVertical .IconInfo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 26px;
+}
+.CardVertical .IconInfo:hover {
+  transition: all 0.5s;
+}
+.CardVertical .IconInfo:hover::before, .CardVertical .IconInfo:hover::after {
+  display: block;
+}
+.CardVertical .IconInfo::before {
+  content: "Xem chi tiết";
+  position: absolute;
+  top: 27px;
+  right: -7px;
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  border-radius: 30px;
+  background-color: #f6f9fa;
+  text-align: center;
+  display: none;
+}
+.CardVertical .IconInfo::after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+  width: 10px;
+  height: 10px;
+  top: 12px;
+  right: 2px;
+  border-bottom-color: #f6f9fa;
+  display: none;
+}
+
+.CardHorizontal {
+  width: 100%;
+  border: 2px solid rgb(243, 244, 246);
+  min-height: 200px;
+  position: relative;
+}
+.CardHorizontal .Wrapper {
+  width: 300px;
+  object-fit: fill;
+  min-height: 200px;
+  height: 200px;
+}
+.CardHorizontal .Wrapper .Img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  transform: scale(1);
+  max-width: unset !important;
+}
+.CardHorizontal:hover {
+  border-color: #3b82f6;
+}
+
+.Avatar {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  padding: 0;
+  width: fit-content;
+  text-align: center;
+}
+.Avatar .AvatarItem {
+  display: inline-block;
+  margin: 0 5px;
+  transform: scale(0);
+  transition: all 0.2s ease-in-out 0s;
+}
+.Avatar .AvatarItem img {
+  padding: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+}
+
+.CardVertical .CardFooterGlobal {
+  padding: 20px;
+}
+
+.CardFooterGlobal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0 0;
+  border-top: 1px solid rgb(243, 244, 246);
+}
+.CardFooterGlobal p:first-of-type {
+  text-decoration-line: line-through;
+}
+.CardFooterGlobal p:first-of-type,
+.CardFooterGlobal span:nth-of-type(2) {
+  font-size: 12px;
+  color: #acafb4;
+}
+.CardFooterGlobal p:nth-of-type(2) {
+  font-weight: 500;
+  color: #3b82f6;
+}
+.CardFooterGlobal sup {
+  top: -0.5em;
+}
+.CardFooterGlobal i,
+.CardFooterGlobal span {
+  color: #fadb14;
+}
+.CardFooterGlobal .IconTag {
+  margin-left: 4px;
+  color: rgb(224, 37, 37);
+}
+.CardFooterGlobal .ImgCardAvatar img {
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  border-color: #fadb14 transparent;
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid #fadb14;
+  border-right: 1px solid transparent;
+  border-top: 1px solid #fadb14;
+  border-radius: 50%;
+}
+
+.Background {
+  padding: 150px 0;
+  text-align: center;
+  position: relative;
+  background: url(../assets/img/background/page-title.jpg) no-repeat center bottom 50%/cover;
+}
+.Background .Overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(45, 45, 45, 0.5);
+}
+.Background .Content {
+  position: relative;
+  z-index: 2;
+}
+.Background h1,
+.Background p {
+  text-align: left;
+}
+.Background p {
+  color: #acafb4;
+}
+
+.Header {
+  transition: all 0.5s;
+  background: #2c3238;
+}
+.Header .HeaderSearch button {
+  border-radius: 0 30px 30px 0;
+  padding: 10px 30px;
+}
+.Header .Content .ContentRight button {
+  padding: 10px 30px;
+}
+
+.MenuHeader {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  justify-content: space-between;
+}
+.MenuHeader li {
+  padding: 0 10px;
+}
+.MenuHeader li a {
+  transition: all 0.5s;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.25s ease-in-out;
+}
+.MenuHeader li a:hover {
+  color: #3b82f6;
+}
+.MenuHeader .CourseCategory {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.MenuHeader .CourseCategory:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 1;
+}
+.MenuHeader .CourseCategory .CourseCategoryList {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  z-index: 999;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #f6f9fa;
+  transition: all 0.5s linear;
+  min-width: 200px;
+  transition: all 0.5s;
+}
+.MenuHeader .CourseCategory .CourseCategoryList li a {
+  color: #000;
+}
+.MenuHeader .CourseCategory .CourseCategoryList li:hover a {
+  color: #c6c7cc;
+}
+.MenuHeader .CourseCategory i {
+  padding-right: 3px;
+  transition: all 0.5s;
+  position: relative;
+  bottom: 1px;
+}
+.MenuHeader .CourseCategory .CourseCategoryList li {
+  padding: 10px;
+}
+.MenuHeader .CourseCategory:hover .CourseCategoryList {
+  max-height: 400px;
+}
+
+@media (max-width: 1024px) {
+  .Header .Content {
+    padding: 0 15px;
+  }
+  .Header .HeaderSearch {
+    padding: 0 15px;
+  }
+}
+.Footer {
+  position: relative;
+  margin-top: 150px;
+  background-color: #2c3238;
+}
+.Footer .Logo {
+  height: 50px;
+}
+.Footer > div {
+  padding-bottom: 90px;
+  padding-top: 30px;
+}
+.Footer .Subscribe {
+  padding: 50px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #f6f9fa;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -90px;
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+.Footer .Subscribe h4 {
+  font-size: 28px;
+  line-height: 40px;
+  color: #3b82f6;
+  font-weight: 600;
+}
+.Footer .Subscribe form input {
+  padding: 15px 20px;
+  background: transparent;
+  font-size: 16px;
+  color: #000;
+  width: 100%;
+  border-radius: 8px 0px 0px 8px;
+  height: 55px;
+  border: 1px solid #c6c7cc;
+}
+.Footer .Subscribe form button {
+  padding: 16px 30px;
+  border-radius: 0 8px 8px 0;
+}
+.Footer .Subscribe p {
+  height: 30px;
+  color: rgb(224, 37, 37);
+}
+.Footer h3 {
+  font-weight: bold;
+  color: #3b82f6;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.Footer ul li {
+  padding: 8px 0;
+}
+.Footer ul li span {
+  transition: all 0.5s;
+}
+.Footer ul li span:hover {
+  transform: translateY(-1px);
+  color: #3b82f6;
+}
+.Footer .Brands i {
+  font-size: 24px;
+  margin-right: 30px;
+  transition: all 0.5s;
+}
+.Footer .Brands i:hover {
+  color: #3b82f6;
+}
+.Footer .Contact ul li:nth-of-type(1) i {
+  color: #fadb14;
+}
+.Footer .Contact ul li:nth-of-type(2) i {
+  color: #4caf50;
+}
+.Footer .Contact ul li:nth-of-type(3) i {
+  color: #ed85ab;
+}
+.Footer .Contact ul li i {
+  margin-right: 8px;
+}
+.Footer .Copyright {
+  border-top: 1px solid rgb(243, 244, 246);
+}
+.Footer .Copyright p span {
+  color: #3b82f6;
+}
+
+.Map {
+  position: sticky;
+  z-index: -99;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 450px;
+}
+
+@media (max-width: 1024px) {
+  .Footer h3 {
+    font-size: 20px;
+  }
+}
+.AnimationText {
+  animation: aniText 5s steps(10) infinite;
+  overflow: hidden;
+}
+
+@keyframes aniText {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 230px;
+  }
+}
+.Introduction div {
+  padding: 20px;
+}
+.Introduction div h3 {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 30px;
+}
+.Introduction div li {
+  padding: 5px;
+}
+.Introduction div li i {
+  padding-right: 10px;
+}
+.Introduction .ItemLarge {
+  background: #3b82f6 url(../assets/img/background/astronaut.png) no-repeat 100% 100%/50%;
+}
+.Introduction .ItemLarge p {
+  font-weight: 300;
+}
+.Introduction .ItemLarge p span {
+  font-weight: 700;
+}
+.Introduction > div:not(.ItemLarge) {
+  padding: 20px;
+}
+.Introduction > div:nth-of-type(2),
+.Introduction > div:nth-of-type(4) {
+  background-color: #ed85ab;
+}
+.Introduction > div:nth-of-type(3) {
+  background-color: #4caf50;
+  opacity: 0.9;
+}
+.Introduction > div:nth-of-type(5) {
+  background-color: #fadb14;
+  opacity: 0.9;
+}
+.Introduction > div {
+  position: relative;
+  overflow: hidden;
+}
+.Introduction > div:before {
+  content: "";
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  display: block;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+  transform: skewX(-25deg);
+  transition: all 0.75s;
+}
+.Introduction > div:hover:before {
+  left: 125%;
+}
+
+.TitleCourse a {
+  color: #fadb14;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.Number {
+  background: url(../assets/img/number/bg.jpg) fixed center/cover;
+  padding: 50px 0;
+  margin-top: 48px;
+  position: relative;
+}
+.Number .Content {
+  position: relative;
+  padding: 50px 0;
+}
+.Number .Content .TextNumber span {
+  font-size: 50px;
+  font-weight: 600;
+}
+.Number .Content > div {
+  z-index: 1;
+}
+.Number::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(45, 45, 45, 0.5);
+}
+
+.Teacher {
+  background-color: #f6f9fa;
+}
+.Teacher .AvatarTeacher {
+  overflow: hidden;
+}
+.Teacher .AvatarTeacher:hover span {
+  bottom: 0;
+  opacity: 1;
+}
+.Teacher .AvatarTeacher span {
+  text-align: left;
+  position: absolute;
+  color: #fff;
+  padding: 15px;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  transition: all 0.2s ease-in-out 0s;
+  opacity: 0;
+  background-color: #3b82f6;
+}
+.Teacher h5:hover {
+  color: #3b82f6;
+  transition: all 0.5s;
+}
+
+.About .Post h6 {
+  font-weight: bold;
+  transition: all 0.5s;
+}
+.About .Post h6:hover {
+  color: #3b82f6;
+}
+.About .Post .Info i {
+  margin-right: 4px;
+}
+.About .Post .Info span {
+  padding-right: 16px;
+}
+.About .Post .Info span:nth-of-type(1) i {
+  color: #3b82f6;
+}
+.About .Post .Info span:nth-of-type(2) i {
+  color: #fadb14;
+}
+.About .Post .Info span:nth-of-type(3) i {
+  color: #4caf50;
+}
+.About .Review p {
+  font-style: italic;
+  color: #acafb4;
+  font-size: 18px;
+  padding: 20px 0 30px;
+  min-height: 200px;
+}
+.About .Review p i {
+  color: #ed85ab;
+  margin-right: 8px;
+  position: relative;
+  bottom: 10px;
+}
+.About .Review .AvatarStudent {
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+.About .Review .AvatarStudent img {
+  display: block;
+  width: 100%;
+}
+.About .Review h6 {
+  transition: all 0.5s;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.About .Review h6:hover {
+  color: #3b82f6;
+}
+.About .Review .GroupButton {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+}
+.About .Review .GroupButton div {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #3b82f6;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  padding: 6px;
+  margin-left: 8px;
+  transition: all 0.5s;
+}
+.About .Review .GroupButton div:hover {
+  background-color: #3b82f6;
+}
+.About .Review .GroupButton div.Active {
+  background-color: #3b82f6;
+}
+
+@media (max-width: 1024px) {
+  .About .Review p {
+    min-height: 160px;
+  }
+}
+.Type .Active {
+  color: #3b82f6;
+}
+
+.CourseList {
+  clear: both;
+  padding: 0 !important;
+  min-height: 300px;
+  list-style: none;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+.CourseList .Error {
+  position: relative;
+  margin: 24px 0;
+  padding: 10px 0;
+  border-top: 5px solid #3b82f6;
+  border-radius: 0 0 5px 5px;
+  background: #f6f9fa;
+  width: 100%;
+}
+.CourseList .Error:before, .CourseList .Error:after {
+  content: "";
+  position: absolute;
+}
+.CourseList .Error:before {
+  top: 0;
+  right: 20px;
+  width: 20px;
+  height: 30px;
+  background: #3b82f6;
+}
+.CourseList .Error:after {
+  top: 10px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: #fff;
+}
+
+.Comment .CommentImage {
+  width: 80%;
+  height: 220px;
+  background: url(https://cdn.dribbble.com/users/1235460/screenshots/3748537/media/c9c1f316535f015b9770c71efb91be46.gif) no-repeat center top/cover;
+  margin: auto;
+}
+
+.DetailCourse .SectionCourse {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.DetailCourse .SectionCourse span {
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 400;
+  margin-right: 20px;
+}
+.DetailCourse .BtnGlobal {
+  background-color: transparent;
+  border: 1px solid #3b82f6;
+  font-weight: 500;
+  color: #3b82f6;
+}
+.DetailCourse .BtnGlobal:hover {
+  transform: scale(0.97);
+  color: #fff;
+  background-color: #3b82f6;
+}
+.DetailCourse .LessonContent {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 1px 1px 2px 1px 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+.DetailCourse .LessonContent i {
+  color: #3b82f6;
+  margin-right: 10px;
+}
+.DetailCourse .SideBarCourseDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: 10px 30px;
+  box-shadow: 1px 1px 10px 4px 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+.DetailCourse .SideBarCourseDetail .Content ul li {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(243, 244, 246);
+}
+.DetailCourse .SideBarCourseDetail .Content ul li p {
+  color: #acafb4;
+}
+.DetailCourse .SideBarCourseDetail .Content ul li p span {
+  color: #c6c7cc;
+  font-weight: 500;
+}
+.DetailCourse .SideBarCourseDetail .Content ul li i {
+  font-size: 20px;
+  color: #fadb14;
+}
+
+.ListCategory .Title {
+  display: inline-block;
+  border-radius: 25px;
+  padding: 12px 10px;
+  cursor: default;
+  border: 2px solid rgb(243, 244, 246);
+  outline: none;
+  transition: 0.5s linear;
+  font-weight: 500;
+}
+.ListCategory .Title:hover {
+  border: 2px solid #3b82f6;
+  filter: brightness(110%);
+  transform: scale(0.98);
+}
+
+.User .ContentLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 500px;
+}
+.User .ContentLeft img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.User .ContentLeft span {
+  padding: 10px;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #3b82f6;
+  border: none;
+}
+.User .ContentRight .Tab button {
+  color: #fff;
+  border: none;
+  border-top: 2px solid transparent;
+  background-color: #3b82f6;
+  outline: none;
+  padding: 14px 16px;
+  transition: all 0.3s;
+}
+.User .ContentRight .Tab button.Active {
+  background-color: #fff;
+  color: #3b82f6;
+  border-top: 2px solid #3b82f6;
+}
+.User .ContentRight .Info p {
+  padding: 10px 16px;
+  margin: 14px 20px 14px 0;
+  font-weight: 500;
+  border: 2px solid rgb(243, 244, 246);
+  transition: 0.5s linear;
+  border-radius: 25px;
+}
+.User .ContentRight .Info p span {
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+.User .ContentRight .Info p:hover {
+  border: 2px solid #3b82f6;
+  filter: brightness(110%);
+  transform: scale(0.98);
+}
+.User .ContentRight .TabContent {
+  display: none;
+}
+.User .ContentRight .TabContent.Active {
+  display: block;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,21 @@
+$colorGlobal: #3b82f6;
+$colorSPrimary: #ed85ab;
+$colorTPrimary: #fadb14;
+$colorFPrimary: #4caf50;
+$colorButton: linear-gradient(
+  to right,
+  $colorSPrimary 0,
+  $colorGlobal 51%,
+  $colorSPrimary 100%
+);
+$colorWhite: #fff;
+$colorBlack: #000;
+$colorRed: rgb(224, 37, 37);
+$colorTextPrimary: #c6c7cc;
+$colorTextSPrimary: #acafb4;
+$colorBgPrimary: #f6f9fa;
+$colorBgSPrimary: #2c3238;
+$colorBorder: rgb(243, 244, 246);
+$colorBgBefore: rgba(45, 45, 45, 0.5);
+$colorBoxShadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16),
+  0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);

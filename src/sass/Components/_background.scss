@@ -1,0 +1,27 @@
+.Background {
+  padding: 150px 0;
+  text-align: center;
+  position: relative;
+  background: url(../assets/img/background/page-title.jpg) no-repeat center
+    bottom 50% / cover;
+  .Overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: $colorBgBefore;
+  }
+  .Content {
+    position: relative;
+    z-index: 2;
+  }
+  h1,
+  p {
+    text-align: left;
+  }
+  p {
+    color: $colorTextSPrimary
+  }
+}

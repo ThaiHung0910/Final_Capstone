@@ -1,0 +1,90 @@
+.BtnGlobal {
+  padding: 16px 24px;
+  border-radius: 30px;
+  background-image: $colorButton;
+  background-size: 200%;
+  border: transparent;
+  font-weight: 500;
+  font-size: 16px;
+  color: $colorWhite;
+  text-transform: uppercase;
+  line-height: 1.2;
+  transition: all 0.5s;
+  cursor: pointer;
+  &:hover {
+    background-position: right center;
+  }
+
+  a {
+    color: $colorWhite;
+  }
+}
+
+.TopToBm {
+  position: relative;
+}
+.IconCustom {
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  z-index: 20;
+  background-color: $colorGlobal;
+  border: 2px solid $colorWhite;
+  color: $colorWhite;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  animation: MoveBtn 3s ease-in-out infinite;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    animation: none;
+    background-color: $colorWhite;
+    color: $colorGlobal;
+    border: 2px solid $colorGlobal;
+  }
+}
+
+@keyframes MoveBtn {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.Pagination {
+  li {
+    margin-right: 7px;
+    button {
+      width: 40px;
+      height: 40px;
+      color: $colorTextSPrimary;
+      border: 1px solid $colorBorder;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 50%;
+    }
+    button.Active {
+      border: 1px solid $colorGlobal;
+      color: $colorGlobal;
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .BtnGlobal {
+    padding: 14px 20px;
+    font-size: 10px;
+  }
+}

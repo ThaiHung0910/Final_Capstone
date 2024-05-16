@@ -1,0 +1,17 @@
+.ListCategory {
+  .Title {
+    display: inline-block;
+    border-radius: 25px;
+    padding: 12px 10px;
+    cursor: default;
+    border: 2px solid $colorBorder;
+    outline: none;
+    transition: 0.5s linear;
+    font-weight: 500;
+    &:hover {
+      border: 2px solid $colorGlobal;
+      filter: brightness(110%);
+      transform: scale(0.98);
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.Modal.ant-modal {
+  font-family: "Roboto", sans-serif;
+}
+
+
+.CardGlobal.ant-card {
+  .ant-card-body {
+    padding: 0;
+  }
+}
+
+.CardVertical {
+  .CardGlobal.ant-card {
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+.Background {
+  .ant-breadcrumb {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .ant-breadcrumb ol {
+    font-size: 20px;
+  }
+
+  .ant-breadcrumb a {
+    height: 100%;
+  }
+}
+
+.UpdateModal.ant-modal {
+  .ant-modal-content {
+    .ant-modal-body {
+      background: url(https://cdn.dribbble.com/users/1044993/screenshots/3109403/media/bad56b541a367f711456b0a52bc1aa57.gif)
+        no-repeat 50% / cover;
+
+      .FormUpdate {
+        > div {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+

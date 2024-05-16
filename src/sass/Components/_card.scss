@@ -1,0 +1,279 @@
+.CardGlobal {
+  min-width: 280px;
+  min-height: 450px;
+  &:hover {
+    .WrapperCourse {
+      .Img {
+        &:before {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+.CardGlobal,
+.CardHorizontal {
+  &:hover {
+    .Avatar {
+      .AvatarItem {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.CardVertical {
+  .WrapperCourse {
+    position: relative;
+    min-height: 150px;
+    .Img {
+      position: relative;
+      img {
+        width: 100%;
+        min-height: 150px;
+        height: 185px;
+      }
+
+      &:before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: $colorBgBefore;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s;
+      }
+    }
+  }
+
+  .CardBodyGlobal {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 30px 20px;
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      padding: 0 0 10px;
+    }
+
+    h6 {
+      padding: 0 0 10px;
+      font-weight: 500;
+    }
+
+    span {
+      color: $colorTextSPrimary;
+    }
+  }
+
+  .CardIconGlobal {
+    > span:nth-child(1) {
+      > i {
+        color: $colorTPrimary;
+      }
+    }
+    > span:nth-child(2) {
+      > i {
+        color: $colorSPrimary;
+      }
+    }
+    > span:nth-child(3) {
+      > i {
+        color: $colorGlobal;
+      }
+    }
+    i {
+      margin-right: 4px;
+    }
+  }
+
+  .CardSale {
+    position: absolute;
+    top: 5px;
+    left: -5px;
+    width: 85px;
+    height: 30px;
+    padding: 5px 8px 4px;
+    color: $colorWhite;
+    background-color: $colorRed;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+
+    &:before {
+      left: 1px;
+      bottom: -10px;
+      border-bottom: 10px solid transparent;
+      border-right: 5px solid $colorRed;
+      -webkit-filter: brightness(0.8);
+      filter: brightness(0.8);
+    }
+  }
+
+  .ButtonRegister {
+    display: inline-block;
+    position: absolute;
+    top: 170px;
+    padding: 6px 12px;
+    color: $colorWhite;
+    background-color: $colorGlobal;
+  }
+
+  .IconInfo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 26px;
+
+    &:hover {
+      transition: all 0.5s;
+      &::before,
+      &::after {
+        display: block;
+      }
+    }
+
+    &::before {
+      content: "Xem chi tiết";
+      position: absolute;
+      top: 27px;
+      right: -7px;
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 12px;
+      border-radius: 30px;
+      background-color: $colorBgPrimary;
+      text-align: center;
+      display: none;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      border: 10px solid transparent;
+      width: 10px;
+      height: 10px;
+      top: 12px;
+      right: 2px;
+      border-bottom-color: $colorBgPrimary;
+      display: none;
+    }
+  }
+}
+
+.CardHorizontal {
+  width: 100%;
+  border: 2px solid $colorBorder;
+  min-height: 200px;
+  position: relative;
+  .Wrapper {
+    width: 300px;
+    object-fit: fill;
+    min-height: 200px;
+    height: 200px;
+    .Img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      transform: scale(1);
+      max-width: unset !important;
+    }
+  }
+  &:hover {
+    border-color: $colorGlobal;
+  }
+}
+
+.Avatar {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  padding: 0;
+  width: fit-content;
+  text-align: center;
+  .AvatarItem {
+    display: inline-block;
+    margin: 0 5px;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out 0s;
+    img {
+      padding: 2px;
+      background-color: $colorWhite;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+.CardVertical {
+  .CardFooterGlobal {
+    padding: 20px;
+  }
+}
+
+.CardFooterGlobal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0 0;
+  border-top: 1px solid $colorBorder;
+
+  p:first-of-type {
+    text-decoration-line: line-through;
+  }
+
+  p:first-of-type,
+  span:nth-of-type(2) {
+    font-size: 12px;
+    color: $colorTextSPrimary;
+  }
+
+  p:nth-of-type(2) {
+    font-weight: 500;
+    color: $colorGlobal;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  i,
+  span {
+    color: $colorTPrimary;
+  }
+
+  .IconTag {
+    margin-left: 4px;
+    color: $colorRed;
+  }
+
+  .ImgCardAvatar {
+    img {
+      width: 40px;
+      height: 40px;
+      min-height: 40px;
+      border-color: $colorTPrimary transparent;
+      border-left: 1px solid transparent;
+      border-bottom: 1px solid $colorTPrimary;
+      border-right: 1px solid transparent;
+      border-top: 1px solid $colorTPrimary;
+      border-radius: 50%;
+    }
+  }
+}
