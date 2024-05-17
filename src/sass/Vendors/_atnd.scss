@@ -1,5 +1,5 @@
-.Modal.ant-modal {
-  font-family: "Roboto", sans-serif;
+.ant-modal, .ant-card, .ant-breadcrumb {
+  font-family: "Roboto", sans-serif !important; 
 }
 
 
@@ -9,16 +9,9 @@
   }
 }
 
-.CardVertical {
-  .CardGlobal.ant-card {
-    font-family: "Roboto", sans-serif;
-  }
-}
+
 
 .Background {
-  .ant-breadcrumb {
-    font-family: "Roboto", sans-serif;
-  }
 
   .ant-breadcrumb ol {
     font-size: 20px;
@@ -43,5 +36,3 @@
     }
   }
 }
-
-

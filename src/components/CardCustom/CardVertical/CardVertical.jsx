@@ -37,7 +37,7 @@ const CardVertical = ({ course, number }) => {
         onCancel={handleCancel}
         footer={null}
         width={1000}
-        className="duration-700 overflow-hidden Modal"
+        className="duration-700 overflow-hidden"
       >
         <div className="flex flex-nowrap items-center overflow-hidden h-[30rem]">
           <ModalContent

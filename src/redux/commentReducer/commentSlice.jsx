@@ -21,15 +21,26 @@ const initialState = {
       numberLike: 17,
     },
     {
-      id: 4,
+      id: 3,
       name: "Huỳnh",
-      content:
-        "Sau khi học xong khóa học ở đây, mình đã tự tin đi làm",
+      content: "Sau khi học xong khóa học ở đây, mình đã tự tin đi làm",
       hinhAnh: avatarComment[2],
       statusLike: false,
       numberLike: 7,
     },
   ],
+  commentEdit: {
+    id: 0,
+    action: false,
+    content: "",
+  },
+};
+
+
+const findCommentIndex = (state, id) => {
+  return state.dataComment.findIndex(
+    (dataComment) => Number(dataComment.id) === Number(id)
+  );
 };
 
 const commentSlice = createSlice({
@@ -37,29 +48,48 @@ const commentSlice = createSlice({
   initialState,
   reducers: {
     likeCommentAction: (state, action) => {
-      let cloneDataComment = [...state.dataComment];
-      let index = cloneDataComment.findIndex(
-        (dataComment) => dataComment.id == action.payload
-      );
-      if (index != -1) {
-        cloneDataComment[index].statusLike =
-          !cloneDataComment[index].statusLike;
+      let index = findCommentIndex(state, action.payload);
+      if (index !== -1) {
+        let comment = state.dataComment[index];
+        comment.statusLike = !comment.statusLike;
+        comment.statusLike ? comment.numberLike++ : comment.numberLike--;
       }
-      if (cloneDataComment[index].statusLike) {
-        cloneDataComment[index].numberLike++;
-      } else {
-        cloneDataComment[index].numberLike--;
-      }
-      state = { ...state, dataComment: cloneDataComment };
     },
 
     submitCommentAction: (state, action) => {
       state.dataComment.unshift(action.payload);
-      state = { ...state };
+    },
+    deleteCommentAction: (state, action) => {
+      state.dataComment = state.dataComment.filter(
+        (dataComment) => Number(dataComment.id) !== Number(action.payload)
+      );
+    },
+    editCommentAction: (state, action) => {
+      let index = findCommentIndex(state, action.payload);
+      if (index !== -1) {
+        state.commentEdit = {
+          ...state.dataComment[index],
+          action: true,
+        };
+      }
+    },
+    updateCommentAction: (state, action) => {
+      let { content, id } = action.payload;
+      let index = findCommentIndex(state, id);
+      if (index !== -1) {
+        state.dataComment[index].content = content;
+        state.commentEdit = { id: 0, action: false, content: "" };
+      }
     },
   },
 });
 
-export const { likeCommentAction, submitCommentAction } = commentSlice.actions;
+export const {
+  likeCommentAction,
+  submitCommentAction,
+  deleteCommentAction,
+  editCommentAction,
+  updateCommentAction,
+} = commentSlice.actions;
 
 export default commentSlice.reducer;

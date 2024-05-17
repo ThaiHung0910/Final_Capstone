@@ -91,7 +91,7 @@ const LoginPage = () => {
                 onClick={() => {
                   navigate("/auth/register");
                 }}
-                className="text-blue-400 hover:text-blue-600 font-medium cursor-pointer duration-150"
+                className="text-blue-400 hover:text-blue-300 font-medium cursor-pointer duration-150"
               >
                 Đăng ký ngay
               </span>

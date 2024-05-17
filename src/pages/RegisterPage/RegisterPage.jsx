@@ -154,7 +154,7 @@ const RegisterPage = () => {
                 onClick={() => {
                   navigate("/auth/login");
                 }}
-                className="text-blue-400 hover:text-blue-600 font-medium cursor-pointer duration-150"
+                className="text-blue-400 hover:text-blue-400 font-medium cursor-pointer duration-150"
               >
                 Đăng nhập
               </span>

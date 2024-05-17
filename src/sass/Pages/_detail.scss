@@ -11,14 +11,9 @@
     }
   }
   .BtnGlobal {
-    background-color: transparent;
-    border: 1px solid $colorGlobal;
-    font-weight: 500;
-    color: $colorGlobal;
+    cursor: default;
     &:hover {
       transform: scale(0.97);
-      color: $colorWhite;
-      background-color: $colorGlobal;
     }
   }
 
@@ -41,6 +36,9 @@
     margin-bottom: 15px;
     padding: 10px 30px;
     box-shadow: 1px 1px 10px 4px $colorBoxShadow;
+    .BtnGlobal {
+      cursor: pointer;
+    }
 
     .Content {
       ul {

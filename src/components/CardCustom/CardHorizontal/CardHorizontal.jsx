@@ -33,7 +33,7 @@ const CardHorizontal = ({ course, number, type }) => {
 
         <div className="Avatar">
           <div className="AvatarItem">
-            <div className="flex flex-col items-center text-blue-600">
+            <div className="flex flex-col items-center text-blue-400">
               <img src={avatar[2]} alt="" />
               <span>{name}</span>
             </div>

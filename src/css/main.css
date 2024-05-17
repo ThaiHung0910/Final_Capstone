@@ -1,19 +1,12 @@
 @charset "UTF-8";
-.Modal.ant-modal {
-  font-family: "Roboto", sans-serif;
+.ant-modal, .ant-card, .ant-breadcrumb {
+  font-family: "Roboto", sans-serif !important;
 }
 
 .CardGlobal.ant-card .ant-card-body {
   padding: 0;
 }
 
-.CardVertical .CardGlobal.ant-card {
-  font-family: "Roboto", sans-serif;
-}
-
-.Background .ant-breadcrumb {
-  font-family: "Roboto", sans-serif;
-}
 .Background .ant-breadcrumb ol {
   font-size: 20px;
 }
@@ -42,7 +35,7 @@ body {
 .BtnGlobal {
   padding: 16px 24px;
   border-radius: 30px;
-  background-image: linear-gradient(to right, #ed85ab 0, #3b82f6 51%, #ed85ab 100%);
+  background-image: linear-gradient(to right, #ed85ab 0, #60a5fa 51%, #ed85ab 100%);
   background-size: 200%;
   border: transparent;
   font-weight: 500;
@@ -69,7 +62,7 @@ body {
   bottom: 40px;
   right: 25px;
   z-index: 20;
-  background-color: #3b82f6;
+  background-color: #60a5fa;
   border: 2px solid #fff;
   color: #fff;
   border-radius: 50%;
@@ -81,8 +74,8 @@ body {
 .IconCustom:hover {
   animation: none;
   background-color: #fff;
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  color: #60a5fa;
+  border: 2px solid #60a5fa;
 }
 
 @keyframes MoveBtn {
@@ -109,14 +102,14 @@ body {
   width: 40px;
   height: 40px;
   color: #acafb4;
-  border: 1px solid rgb(243, 244, 246);
+  border: 1px solid #f3f4f6;
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
 }
 .Pagination li button.Active {
-  border: 1px solid #3b82f6;
-  color: #3b82f6;
+  border: 1px solid #60a5fa;
+  color: #60a5fa;
 }
 
 @media (max-width: 1024px) {
@@ -187,7 +180,7 @@ body {
   color: #ed85ab;
 }
 .CardVertical .CardIconGlobal > span:nth-child(3) > i {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 .CardVertical .CardIconGlobal i {
   margin-right: 4px;
@@ -225,7 +218,7 @@ body {
   top: 170px;
   padding: 6px 12px;
   color: #fff;
-  background-color: #3b82f6;
+  background-color: #60a5fa;
 }
 .CardVertical .IconInfo {
   position: absolute;
@@ -267,7 +260,7 @@ body {
 
 .CardHorizontal {
   width: 100%;
-  border: 2px solid rgb(243, 244, 246);
+  border: 2px solid #f3f4f6;
   min-height: 200px;
   position: relative;
 }
@@ -286,7 +279,7 @@ body {
   max-width: unset !important;
 }
 .CardHorizontal:hover {
-  border-color: #3b82f6;
+  border-color: #60a5fa;
 }
 
 .Avatar {
@@ -322,7 +315,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 0 0;
-  border-top: 1px solid rgb(243, 244, 246);
+  border-top: 1px solid #f3f4f6;
 }
 .CardFooterGlobal p:first-of-type {
   text-decoration-line: line-through;
@@ -334,7 +327,7 @@ body {
 }
 .CardFooterGlobal p:nth-of-type(2) {
   font-weight: 500;
-  color: #3b82f6;
+  color: #60a5fa;
 }
 .CardFooterGlobal sup {
   top: -0.5em;
@@ -415,7 +408,7 @@ body {
   transition: all 0.25s ease-in-out;
 }
 .MenuHeader li a:hover {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 .MenuHeader .CourseCategory {
   display: flex;
@@ -497,7 +490,7 @@ body {
 .Footer .Subscribe h4 {
   font-size: 28px;
   line-height: 40px;
-  color: #3b82f6;
+  color: #60a5fa;
   font-weight: 600;
 }
 .Footer .Subscribe form input {
@@ -520,7 +513,7 @@ body {
 }
 .Footer h3 {
   font-weight: bold;
-  color: #3b82f6;
+  color: #60a5fa;
   font-size: 22px;
   margin-bottom: 8px;
 }
@@ -532,7 +525,7 @@ body {
 }
 .Footer ul li span:hover {
   transform: translateY(-1px);
-  color: #3b82f6;
+  color: #60a5fa;
 }
 .Footer .Brands i {
   font-size: 24px;
@@ -540,7 +533,7 @@ body {
   transition: all 0.5s;
 }
 .Footer .Brands i:hover {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 .Footer .Contact ul li:nth-of-type(1) i {
   color: #fadb14;
@@ -555,10 +548,10 @@ body {
   margin-right: 8px;
 }
 .Footer .Copyright {
-  border-top: 1px solid rgb(243, 244, 246);
+  border-top: 1px solid #f3f4f6;
 }
 .Footer .Copyright p span {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 
 .Map {
@@ -603,7 +596,7 @@ body {
   padding-right: 10px;
 }
 .Introduction .ItemLarge {
-  background: #3b82f6 url(../assets/img/background/astronaut.png) no-repeat 100% 100%/50%;
+  background: #60a5fa url(../assets/img/background/astronaut.png) no-repeat 100% 100%/50%;
 }
 .Introduction .ItemLarge p {
   font-weight: 300;
@@ -699,10 +692,10 @@ body {
   right: 0;
   transition: all 0.2s ease-in-out 0s;
   opacity: 0;
-  background-color: #3b82f6;
+  background-color: #60a5fa;
 }
 .Teacher h5:hover {
-  color: #3b82f6;
+  color: #60a5fa;
   transition: all 0.5s;
 }
 
@@ -711,7 +704,7 @@ body {
   transition: all 0.5s;
 }
 .About .Post h6:hover {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 .About .Post .Info i {
   margin-right: 4px;
@@ -720,7 +713,7 @@ body {
   padding-right: 16px;
 }
 .About .Post .Info span:nth-of-type(1) i {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 .About .Post .Info span:nth-of-type(2) i {
   color: #fadb14;
@@ -761,7 +754,7 @@ body {
   margin-bottom: 4px;
 }
 .About .Review h6:hover {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 .About .Review .GroupButton {
   position: absolute;
@@ -772,7 +765,7 @@ body {
   cursor: pointer;
   display: inline-block;
   background-color: #fff;
-  border: 1px solid #3b82f6;
+  border: 1px solid #60a5fa;
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -781,10 +774,10 @@ body {
   transition: all 0.5s;
 }
 .About .Review .GroupButton div:hover {
-  background-color: #3b82f6;
+  background-color: #60a5fa;
 }
 .About .Review .GroupButton div.Active {
-  background-color: #3b82f6;
+  background-color: #60a5fa;
 }
 
 @media (max-width: 1024px) {
@@ -793,7 +786,7 @@ body {
   }
 }
 .Type .Active {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 
 .CourseList {
@@ -809,7 +802,7 @@ body {
   position: relative;
   margin: 24px 0;
   padding: 10px 0;
-  border-top: 5px solid #3b82f6;
+  border-top: 5px solid #60a5fa;
   border-radius: 0 0 5px 5px;
   background: #f6f9fa;
   width: 100%;
@@ -823,7 +816,7 @@ body {
   right: 20px;
   width: 20px;
   height: 30px;
-  background: #3b82f6;
+  background: #60a5fa;
 }
 .CourseList .Error:after {
   top: 10px;
@@ -853,15 +846,10 @@ body {
   margin-right: 20px;
 }
 .DetailCourse .BtnGlobal {
-  background-color: transparent;
-  border: 1px solid #3b82f6;
-  font-weight: 500;
-  color: #3b82f6;
+  cursor: default;
 }
 .DetailCourse .BtnGlobal:hover {
   transform: scale(0.97);
-  color: #fff;
-  background-color: #3b82f6;
 }
 .DetailCourse .LessonContent {
   display: flex;
@@ -871,7 +859,7 @@ body {
   box-shadow: 1px 1px 2px 1px 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
 }
 .DetailCourse .LessonContent i {
-  color: #3b82f6;
+  color: #60a5fa;
   margin-right: 10px;
 }
 .DetailCourse .SideBarCourseDetail {
@@ -882,12 +870,15 @@ body {
   padding: 10px 30px;
   box-shadow: 1px 1px 10px 4px 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
 }
+.DetailCourse .SideBarCourseDetail .BtnGlobal {
+  cursor: pointer;
+}
 .DetailCourse .SideBarCourseDetail .Content ul li {
   display: flex;
   align-items: center;
   padding: 20px 0;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(243, 244, 246);
+  border-bottom: 1px solid #f3f4f6;
 }
 .DetailCourse .SideBarCourseDetail .Content ul li p {
   color: #acafb4;
@@ -906,13 +897,13 @@ body {
   border-radius: 25px;
   padding: 12px 10px;
   cursor: default;
-  border: 2px solid rgb(243, 244, 246);
+  border: 2px solid #f3f4f6;
   outline: none;
   transition: 0.5s linear;
   font-weight: 500;
 }
 .ListCategory .Title:hover {
-  border: 2px solid #3b82f6;
+  border: 2px solid #60a5fa;
   filter: brightness(110%);
   transform: scale(0.98);
 }
@@ -933,28 +924,28 @@ body {
   padding: 10px;
   border-radius: 20px;
   color: #fff;
-  background-color: #3b82f6;
+  background-color: #60a5fa;
   border: none;
 }
 .User .ContentRight .Tab button {
   color: #fff;
   border: none;
   border-top: 2px solid transparent;
-  background-color: #3b82f6;
+  background-color: #60a5fa;
   outline: none;
   padding: 14px 16px;
   transition: all 0.3s;
 }
 .User .ContentRight .Tab button.Active {
   background-color: #fff;
-  color: #3b82f6;
-  border-top: 2px solid #3b82f6;
+  color: #60a5fa;
+  border-top: 2px solid #60a5fa;
 }
 .User .ContentRight .Info p {
   padding: 10px 16px;
   margin: 14px 20px 14px 0;
   font-weight: 500;
-  border: 2px solid rgb(243, 244, 246);
+  border: 2px solid #f3f4f6;
   transition: 0.5s linear;
   border-radius: 25px;
 }
@@ -964,7 +955,7 @@ body {
   margin-left: 8px;
 }
 .User .ContentRight .Info p:hover {
-  border: 2px solid #3b82f6;
+  border: 2px solid #60a5fa;
   filter: brightness(110%);
   transform: scale(0.98);
 }

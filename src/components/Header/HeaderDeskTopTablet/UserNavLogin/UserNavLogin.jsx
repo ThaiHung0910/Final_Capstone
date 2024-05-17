@@ -40,7 +40,7 @@ export default function UserNavLogin({ infoUser }) {
       </div>
 
       <button
-        className="text-2xl  pb-1 text-blue-600 hover:text-blue-300  font-bold relative top-1"
+        className="text-2xl  pb-1 text-blue-400 hover:text-blue-300  font-bold relative top-1"
         onClick={showDrawer}
       >
         <MenuOutlined />

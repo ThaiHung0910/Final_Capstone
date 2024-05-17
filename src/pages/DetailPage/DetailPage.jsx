@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Background from "../../components/Background/Background";
 import { courseService } from "../../services/courseService";
-import { getListCourseThunk } from "../../redux/courseReducer/courseThunk";
+import {
+  getListCourseThunk,
+  registerCourseThunk,
+} from "../../redux/courseReducer/courseThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseDetailAction } from "../../redux/courseReducer/courseSlice";
 import { avatar, imageNotFound } from "../../assets/img/js/img";
@@ -15,6 +18,7 @@ const DetailPage = () => {
   const { coursesList, courseDetail } = useSelector(
     (state) => state.courseReducer
   );
+  const { infoUser } = useSelector((state) => state.userReducer);
 
   const numberStudent = courseDetail.soLuongHocVien
     ? courseDetail.soLuongHocVien
@@ -367,7 +371,17 @@ const DetailPage = () => {
                   </p>
                 </div>
 
-                <button className="BtnGlobal" onClick={() => {}}>
+                <button
+                  className="BtnGlobal"
+                  onClick={() => {
+                    dispatch(
+                      registerCourseThunk({
+                        maKhoaHoc: courseDetail.maKhoaHoc,
+                        taiKhoan: infoUser.taiKhoan,
+                      })
+                    );
+                  }}
+                >
                   Đăng ký
                 </button>
 
