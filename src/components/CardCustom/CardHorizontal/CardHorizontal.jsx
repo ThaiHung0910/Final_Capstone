@@ -7,6 +7,7 @@ import {
 } from "../../../redux/courseReducer/courseThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { ResponsiveMiddleScreen } from "../../../HOC/responsive";
+import ConfirmAction from "../../ConfirmAction/ConfirmAction";
 
 const CardHorizontal = ({ course, number, type }) => {
   const navigate = useNavigate();
@@ -16,6 +17,38 @@ const CardHorizontal = ({ course, number, type }) => {
   const name =
     course.nguoiTao?.hoTen?.length < 25 ? course.nguoiTao?.hoTen : "Harry";
   const { infoUser } = useSelector((state) => state.userReducer);
+
+  let renderButton = () => {
+    let params = {
+      maKhoaHoc: course.maKhoaHoc,
+      taiKhoan: infoUser?.taiKhoan,
+    };
+
+    return type === "register" ? (
+      <ConfirmAction
+        title={"Đăng ký khóa học"}
+        description={"Bạn xác nhận đăng ký khóa học này?"}
+        action={() => {
+          dispatch(registerCourseThunk(params));
+        }}
+        button={<button className="BtnGlobal">Đăng ký</button>}
+        infoUser={infoUser}
+        confirmMessage={"Đăng ký thành công"}
+        requiredMessage={"Vui lòng đăng nhập để đăng ký khóa học"}
+      />
+    ) : (
+      <ConfirmAction
+        title={"Hủy khóa học"}
+        description={"Bạn xác nhận hủy khóa học này?"}
+        action={() => {
+          dispatch(cancelCourseThunk(params));
+        }}
+        button={<button className="BtnGlobal">Hủy đăng ký</button>}
+        infoUser={infoUser}
+        confirmMessage={"Hủy đăng ký thành công"}
+      />
+    );
+  };
 
   return (
     <li className="flex CardHorizontal mb-7">
@@ -66,22 +99,8 @@ const CardHorizontal = ({ course, number, type }) => {
             </div>
 
             <div>
-              <button
-                onClick={() => {
-                  let params = {
-                    maKhoaHoc: course.maKhoaHoc,
-                    taiKhoan: infoUser.taiKhoan,
-                  };
-                  type === "register"
-                    ? dispatch(registerCourseThunk(params))
-                    : dispatch(cancelCourseThunk(params));
-                }}
-                className="BtnGlobal"
-              >
-                {type === "register" ? "Đăng ký" : "Hủy đăng ký"}
-              </button>
+              {renderButton()}
               <ResponsiveMiddleScreen>
-                {" "}
                 <button
                   onClick={() => navigate(path)}
                   className="BtnGlobal ml-2"

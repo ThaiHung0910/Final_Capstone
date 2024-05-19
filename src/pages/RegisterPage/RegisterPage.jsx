@@ -75,23 +75,16 @@ const RegisterPage = () => {
   });
   return (
     <div
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: "100%",
-        backgroundPosition: "center",
-      }}
+      style={{ background: `url(${background[0]}) no-repeat center / 100%` }}
       className="relative w-screen h-screen"
     >
-      <div
-        onClick={() => {
+      
+        <div onClick={() => {
           navigate("/");
-        }}
-        className="absolute  top-5 left-5  xl:text-5xl md:text-2xl text-2xl text-blue-700 font-extrabold cursor-pointer opacity-70"
-      >
-        <div className="">
+        }} className="absolute  lg:top-5 lg:left-5 top-3 left-3 cursor-pointer lg:w-64 w-36">
           <img src={logo[0]} alt="" />
         </div>
-      </div>
+      
 
       <div className="flex items-center justify-center w-full h-full mt-5 md:mt-0">
         <form
@@ -134,27 +127,22 @@ const RegisterPage = () => {
               formikField={formRegister}
             />
 
-            <FormInputCustom
-              name="maNhom"
-              formikField={formRegister}
-            />
-
-            
+            <FormInputCustom name="maNhom" formikField={formRegister} />
 
             <button
               type="submit"
-              className=" xl:w-full md:w-full w-full  xl:text-lg md:text-lg text-lg   xl:px-4 md:px-4 px-3 xl:py-4 md:py-4 py-2 text-white hover:text-white  bg-blue-700  hover:bg-blue-800  transition rounded-xl"
+              className=" xl:w-full md:w-full w-full  xl:text-lg md:text-lg text-lg   xl:px-4 md:px-4 px-3 xl:py-4 md:py-4 py-2 BtnGlobal"
             >
               Đăng ký
             </button>
 
-            <div className=" text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-gray-400">
+            <div className=" text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-[#acafb4]">
               Bạn đã có tài khoản?{" "}
               <span
                 onClick={() => {
                   navigate("/auth/login");
                 }}
-                className="text-blue-400 hover:text-blue-400 font-medium cursor-pointer duration-150"
+                className="text-blue-400 hover:text-[#acafb4] font-medium cursor-pointer duration-150"
               >
                 Đăng nhập
               </span>

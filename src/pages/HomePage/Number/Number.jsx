@@ -54,7 +54,7 @@ const Number = () => {
   return (
     <div className="Number">
       <div className="container mx-auto lg:px-12">
-        <div className="grid lg:grid-cols-4 grid-cols-2 gap-11 Content">{renderNumber()}</div>
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-11 Content">{renderNumber()}</div>
       </div>
     </div>
   );

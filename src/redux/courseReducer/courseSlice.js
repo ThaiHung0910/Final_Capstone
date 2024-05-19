@@ -44,8 +44,6 @@ const courseSlice = createSlice({
         state.coursesCategoryList = action.payload;
       })
       .addCase(registerCourseThunk.fulfilled, (state, action) => {
-        message.success("Đăng ký thành công");
-
         if (action.payload) {
           let infoUser = userLocal.get();
           let newData = { ...infoUser, ...action.payload };

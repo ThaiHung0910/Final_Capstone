@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchOutlined } from "@ant-design/icons";
 import ScrollHeader from "../../Scroll/ScrollHeader";
 import { logo } from "../../../assets/img/js/img";
-import UserNavLoginMobile from "./UserNavMobile/UserNavMobile";
+import UserNavMobile from "./UserNavMobile/UserNavMobile";
 import { getCourseCategoryAction } from "../../../redux/courseReducer/courseSlice";
 import { courseService } from "../../../services/courseService";
 
@@ -19,7 +19,7 @@ export default function HeaderMobile() {
   );
 
   let renderUserNavMobile = () => {
-    return <UserNavLoginMobile infoUser={infoUser} coursesCate={coursesCate} />;
+    return <UserNavMobile infoUser={infoUser} coursesCate={coursesCate} />;
   };
 
   let fetchApi = async () => {
@@ -49,21 +49,20 @@ export default function HeaderMobile() {
         scrollDirection === "down" ? "-top-28" : "top-0"
       } py-2 z-30 shadow-md Header`}
     >
-      <div className="container mx-auto grid grid-cols-4 gap-2 items-center  pr-10 pl-5">
+      <div className="container mx-auto flex justify-between space-x-5 items-center">
         <NavLink to={"/"} className="text-3xl font-extrabold">
           <img src={logo[0]} width={100} alt="" />
         </NavLink>
         <form onSubmit={handleSubmitSearchMobile} className="col-span-2 flex">
           <input
             ref={keyInputMobile}
-            className="w-full border border-solid border-slate-300 h-11 rounded-l-lg p-5 text-base focus:outline-none focus:ring bg-gray-100"
+            className="w-full border border-solid border-[#f3f4f6] h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
             type="text"
             placeholder="Tìm kiếm"
           />
           <button
             type="submit"
-            className="border-none flex items-center text-white bg-blue-700 rounded-r-lg"
-            style={{ padding: "0 30px" }}
+            className="BtnGlobal"
           >
             <SearchOutlined className="text-xl mr-1" />
           </button>

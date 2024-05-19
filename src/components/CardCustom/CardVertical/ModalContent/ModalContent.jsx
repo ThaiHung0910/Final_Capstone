@@ -1,14 +1,8 @@
 import React from "react";
 import { Rate } from "antd";
+import { logo } from "../../../../assets/img/js/img";
 
-const ModalContent = ({
-  course,
-  imageNotFound,
-  navigate,
-  avatar,
-  name,
-  logo,
-}) => {
+const ModalContent = ({ course, imageNotFound, navigate, avatar, name }) => {
   let path = `/chitiet/${course.maKhoaHoc}`;
   return (
     <>
@@ -85,41 +79,30 @@ const ModalContent = ({
 
         <div className="space-y-5 py-6">
           <h3 className="text-3xl font-bold">Mô tả</h3>
-          <p>
+          <p className="w-4/5">
             {course?.moTa?.length > 100
-              ? course.moTa.substr(0, 70) + "..."
+              ? course.moTa.substr(0, 100) + "..."
               : "Lập trình hiện đang là xu hướng trên toàn thế giới..."}
           </p>
-        </div>
-
-        <div className="flex items-center justify-center h-12">
-          <button
-            onClick={() => {
-              navigate(path);
-            }}
-            className="w-2/3 BtnGlobal"
-          >
-            Xem chi tiết
-          </button>
         </div>
       </div>
       <div
         className={
-          "w-1/3 space-y-8 xl:h-full md:h-full  duration-700 bg-cover bg-center rounded flex flex-col items-center justify-center"
+          "w-1/3 space-y-8 xl:h-full md:h-full flex flex-col items-center justify-center"
         }
       >
-        <img className="bg-blue-600" height={200} src={logo[0]} alt="" />
-        <p className="text-xl  mx-auto text-center">
-          Bạn cần đăng nhập để đăng ký <br /> khóa học
+        <img height={200} src={logo[0]} alt="" />
+        <p className="text-lg  mx-auto text-center">
+          BOOTCAMP - LẬP TRÌNH FULL STACK TỪ ZERO ĐẾN CÓ VIỆC
         </p>
         <p className="font-bold text-2xl mx-auto">{course.tenKhoaHoc}</p>
         <button
           onClick={() => {
-            navigate("/auth/login");
+            navigate(path);
           }}
           className="BtnGlobal w-full"
         >
-          Đăng nhập
+          Xem chi tiết
         </button>
       </div>
     </>

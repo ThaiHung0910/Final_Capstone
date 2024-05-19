@@ -2,19 +2,19 @@ import {  http } from "./urlConfig";
 
 export const userService = {
   postLogin: (data) => {
-    let uri = "/api/QuanLyNguoiDung/DangNhap";
-    return http.post(uri, data);
+    let url = "/api/QuanLyNguoiDung/DangNhap";
+    return http.post(url, data);
   },
   postRegister: (data) => {
-    let uri = "/api/QuanLyNguoiDung/DangKy";
-    return http.post(uri, { ...data});
+    let url = "/api/QuanLyNguoiDung/DangKy";
+    return http.post(url, { ...data});
   },
   getInfoUser: () => {
-    let uri = '/api/QuanLyNguoiDung/ThongTinNguoiDung'
-    return http.post(uri)
+    let url = '/api/QuanLyNguoiDung/ThongTinNguoiDung'
+    return http.post(url)
   },
   putUpdateInfo: (data) => {
-    let uri = "/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
-    return http.put(uri, data);
+    let url = "/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
+    return http.put(url, data);
   },
 };

@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 const Carousel = () => {
   return (
     <div className="container mx-auto">
-      <div className="lg:grid lg:grid-cols-2 sm:flex  sm:flex-col-reverse items-center lg:p-12 sm:py-12">
+      <div className="lg:grid lg:grid-cols-2 lg:p-12 flex  flex-col-reverse items-center">
         <div className="text-5xl mr-12 font-semibold">
           <div className="space-y-3">
             <h1>Chào mừng</h1>

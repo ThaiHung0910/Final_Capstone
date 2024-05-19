@@ -1,11 +1,9 @@
 // import { courseService } from "../services/courseService";
 
+
 export const isValueInArray = (value, array) => array?.includes(value);
 
-
-
-
-// export const fetchApiMovie = async (nameUri, params , optional) => {
+// export const fetchApi = async (nameUri, params , optional) => {
 //     try {
 //         let result = []
 //         for(let i = 9; i > 0; i--) {

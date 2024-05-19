@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Card } from "antd";
-import { Modal } from "antd";
+import { Card, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
-import { avatar, imageNotFound, logo } from "../../../assets/img/js/img";
+import { avatar, background, imageNotFound } from "../../../assets/img/js/img";
 import ModalContent from "./ModalContent/ModalContent";
 import { registerCourseThunk } from "../../../redux/courseReducer/courseThunk";
 import { ResponsiveLargeScreen } from "../../../HOC/responsive";
+import ConfirmAction from "../../ConfirmAction/ConfirmAction";
 
-const CardVertical = ({ course, number }) => {
+const CardVertical = ({ course, number, isFavorite }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,7 +31,13 @@ const CardVertical = ({ course, number }) => {
   const renderModal = () => {
     return (
       <Modal
-        styles={{ body: { padding: "35px" }, content: { padding: 0 } }}
+        styles={{
+          body: {
+            padding: "35px",
+            background: `url(${background[1]}) no-repeat center / cover`,
+          },
+          content: { padding: 0 },
+        }}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -46,7 +52,6 @@ const CardVertical = ({ course, number }) => {
             navigate={navigate}
             avatar={avatar}
             name={name}
-            logo={logo}
           />
         </div>
       </Modal>
@@ -123,23 +128,30 @@ const CardVertical = ({ course, number }) => {
           </div>
         </div>
 
-        <div className="CardSale">
-          <span>Yêu thích</span>
-        </div>
+        {isFavorite && (
+          <div className="CardSale">
+            <span>Yêu thích</span>
+          </div>
+        )}
       </Card>
-      <button
-        onClick={() => {
+
+      <ConfirmAction
+        title={"Đăng ký khóa học"}
+        description={"Bạn xác nhận đăng ký khóa học này?"}
+        action={() => {
           dispatch(
             registerCourseThunk({
               maKhoaHoc: course.maKhoaHoc,
-              taiKhoan: infoUser.taiKhoan,
+              taiKhoan: infoUser?.taiKhoan,
             })
           );
         }}
-        className="ButtonRegister BtnGlobal"
-      >
-        Đăng ký
-      </button>
+        button={<button className="ButtonRegister BtnGlobal">Đăng ký</button>}
+        infoUser={infoUser}
+        confirmMessage={"Đăng ký thành công"}
+        requiredMessage={"Vui lòng đăng nhập để đăng ký khóa học"}
+      />
+
       <ResponsiveLargeScreen>
         <button onClick={showModal} className="IconInfo">
           <InfoCircleOutlined />

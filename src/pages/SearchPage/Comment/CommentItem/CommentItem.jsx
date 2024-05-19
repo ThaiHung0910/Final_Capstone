@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { LikeOutlined } from "@ant-design/icons";
 import { imageNotFound } from "../../../../assets/img/js/img";
 import {
@@ -7,10 +7,41 @@ import {
   likeCommentAction,
 } from "../../../../redux/commentReducer/commentSlice";
 import { useSelector } from "react-redux";
+import DropdownCustom from "../../../../components/Dropdown/DropdownCustom";
 
 const CommentItem = ({ dataComment, dispatch, infoUser }) => {
-  const [showActions, setShowActions] = useState(null);
   const commentEdit = useSelector((state) => state.commentReducer.commentEdit);
+
+  let items = (id, itemComment) => {
+    let listAction = [
+      {
+        label: (
+          <button
+            onClick={() => {
+              dispatch(editCommentAction(id));
+            }}
+          >
+            Chỉnh sửa
+          </button>
+        ),
+      },
+    ];
+
+    !commentEdit.action &&
+      listAction.push({
+        label: (
+          <button
+            onClick={() => {
+              dispatch(deleteCommentAction(itemComment.id));
+            }}
+          >
+            Xóa
+          </button>
+        ),
+      });
+
+    return listAction;
+  };
 
   return dataComment.map((itemComment) => {
     let { id, name, hinhAnh, statusLike, numberLike, content } = itemComment;
@@ -33,7 +64,7 @@ const CommentItem = ({ dataComment, dispatch, infoUser }) => {
         </div>
         <div className="col-span-8">
           <div className="flex items-center">
-            <div className="inline-block relative xl:px-2 md:px-2 px-2 xl:pt-3 md:pt-3 pt-3 xl:pb-4 md:pb-3 pb-3 mr-2 bg-gray-300 rounded-2xl">
+            <div className="inline-block relative xl:px-2 md:px-2 px-2 xl:pt-3 md:pt-3 pt-3 xl:pb-4 md:pb-3 pb-3 mr-2 bg-[#f6f9fa] rounded-2xl">
               <div className="font-semibold ">{name}</div>
               <div>{content}</div>
               <span className="flex items-center absolute xl:px-1 md:px-1 px-1 rounded-lg xl:-bottom-3 md:-bottom-3 -bottom-2 xl:right-3 md:right-3 right-2 bg-white shadow ">
@@ -49,40 +80,14 @@ const CommentItem = ({ dataComment, dispatch, infoUser }) => {
             </div>
             {isCommentOwner ? (
               <div className="relative">
-                <span
-                  onClick={() => {
-                    setShowActions(showActions === id ? null : id);
-                  }}
-                  className="BtnAction cursor-pointer"
-                >
-                  <i className="fa-solid fa-ellipsis"></i>
-                </span>
-                {showActions === id && (
-                  <ul className="absolute mt-2 py-1 w-32 border border-[#f3f4f6] rounded-md shadow-lg z-10 bg-[#f6f9fa] ">
-                    <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
-                      <button
-                        onClick={() => {
-                          dispatch(editCommentAction(id));
-                          setShowActions(null);
-                        }}
-                      >
-                        Chỉnh sửa
-                      </button>
-                    </li>
-                    {!commentEdit.action && (
-                      <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
-                        <button
-                          onClick={() => {
-                            dispatch(deleteCommentAction(itemComment.id));
-                            setShowActions(null);
-                          }}
-                        >
-                          Xóa
-                        </button>
-                      </li>
-                    )}
-                  </ul>
-                )}
+                <DropdownCustom
+                  title={
+                    <span className="text-black">
+                      <i className="fa-solid fa-ellipsis"></i>
+                    </span>
+                  }
+                  items={items(id, itemComment)}
+                />
               </div>
             ) : (
               ""

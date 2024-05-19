@@ -33,9 +33,7 @@ const LoginPage = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: "100%",
-        backgroundPosition: "center",
+        background: `url(${background[0]}) no-repeat center / 100%`
       }}
       className="relative w-screen h-screen"
     >
@@ -59,39 +57,39 @@ const LoginPage = () => {
               <Lottie animationData={iconLogin} />
             </div>
           </div>
-          {/* // form Input ---------------------- */}
+          
           <div className="xl:w-2/3 md:w-2/3  xl:space-y-5 md:space-y-5 space-y-7 w-3/4">
             <h1 className="xl:text-4xl md:text-3xl text-3xl  xl:mb-10 md:mb-5 mb-4 text-white  font-sans">
               Đăng nhập
             </h1>
-            {/* USER NAME  */}
+            
             <FormInputCustom
               name="taiKhoan"
               label="Tài khoản"
               formikField={formLogin}
             />
 
-            {/* PASSWWORD  */}
+            
             <FormInputCustom
               name="matKhau"
               label="Mật khẩu"
               formikField={formLogin}
               type="password"
             />
-            {/* END PASS  */}
+            
             <button
               type="submit"
-              className=" xl:w-full md:w-full w-full  xl:text-lg md:text-base text-sm  xl:px-4 md:px-2 px-2 xl:py-4 md:py-2 py-1 text-white hover:text-white  bg-blue-700  hover:bg-blue-800  transition rounded-xl"
+              className=" xl:w-full md:w-full w-full BtnGlobal"
             >
               Đăng nhập
             </button>
-            <div className=" text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-gray-400">
+            <div className=" text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-[#acafb4]">
               Bạn chưa có tài khoản?{" "}
               <span
                 onClick={() => {
                   navigate("/auth/register");
                 }}
-                className="text-blue-400 hover:text-blue-300 font-medium cursor-pointer duration-150"
+                className="text-blue-400 hover:text-[#acafb4] font-medium cursor-pointer duration-150"
               >
                 Đăng ký ngay
               </span>

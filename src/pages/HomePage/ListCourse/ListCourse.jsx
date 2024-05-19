@@ -11,9 +11,9 @@ const ListCourse = () => {
     dispatch(getListCourseThunk());
   };
 
-  let renderCourseItem = (start, end) => {
+  let renderCourseItem = (start, end, isFavorite) => {
     return coursesList?.slice(start, end).map((course, index) => {
-      return <CardVertical key={index} course={course} number={[7, 5]} />;
+      return <CardVertical key={index} course={course} number={[7, 5]} isFavorite={isFavorite}/>;
     });
   };
 
@@ -32,11 +32,11 @@ const ListCourse = () => {
       </div>
 
       <h1 className="TitleCourse my-4">
-        <a href="/">Khóa học tham khảo</a>
+        <a href="/">Khóa học yêu thích</a>
       </h1>
 
       <div className="grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-11">
-        {renderCourseItem(5, 9)}
+        {renderCourseItem(5, 9, true)}
       </div>
     </div>
   );

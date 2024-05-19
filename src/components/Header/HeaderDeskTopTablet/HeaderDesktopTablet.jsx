@@ -8,6 +8,7 @@ import UserNavLogOut from "./UserNavLogOut/UserNavLogOut";
 import { SearchOutlined } from "@ant-design/icons";
 import { getCourseCategoryAction } from "../../../redux/courseReducer/courseSlice";
 import { logo } from "../../../assets/img/js/img";
+import DropdownCustom from "../../Dropdown/DropdownCustom";
 
 const HeaderDesktopTablet = () => {
   const scrollDirection = ScrollHeader();
@@ -39,13 +40,14 @@ const HeaderDesktopTablet = () => {
 
   const renderCourseCategory = () => {
     return coursesCate.map((course, index) => {
-      return (
-        <li key={index}>
-          <NavLink to={`/danhmuckhoahoc/${course.maDanhMuc}`}>
+      return {
+        key: index,
+        label: (
+          <NavLink className="pb-2" to={`/danhmuckhoahoc/${course.maDanhMuc}`}>
             {course.tenDanhMuc}
           </NavLink>
-        </li>
-      );
+        ),
+      };
     });
   };
 
@@ -75,10 +77,12 @@ const HeaderDesktopTablet = () => {
 
         <div className="flex">
           <ul className="MenuHeader">
-            <li className="CourseCategory">
-              <i className="fas fa-bars mr-1"></i>
-              <NavLink to="/">Danh mục khóa học</NavLink>
-              <ul className="CourseCategoryList">{renderCourseCategory()}</ul>
+            <li>
+              <DropdownCustom
+                title={"Danh mục khóa học"}
+                items={renderCourseCategory()}
+                isIcon={true}
+              />
             </li>
 
             <li>
@@ -87,7 +91,7 @@ const HeaderDesktopTablet = () => {
 
             <li>
               <button
-                className="text-xl"
+                className="text-xl hover:text-blue-400 duration-200"
                 onClick={() => {
                   setSearchVisible(!searchVisible);
                 }}
@@ -111,11 +115,8 @@ const HeaderDesktopTablet = () => {
             type="text"
             placeholder="Tìm kiếm"
           />
-          <button
-            type="submit"
-            className="flex items-center BtnGlobal"
-          >
-            <SearchOutlined className="text-xl mr-1" />
+          <button type="submit" className="flex items-center BtnGlobal ">
+            <SearchOutlined className="text-xl mr-1 " />
           </button>
         </form>
       )}

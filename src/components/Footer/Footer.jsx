@@ -33,8 +33,8 @@ const Footer = () => {
       <footer className="Footer">
         <div className="container mx-auto lg:px-12   text-white">
           <div className="Subscribe">
-            <div className="grid grid-cols-2">
-              <h4>Đăng ký tư vấn nhận ngay ưu đãi</h4>
+            <div className="sm:grid sm:grid-cols-2 grid-cols-1">
+              <h4 className="sm:mb-0 mb-1">Đăng ký tư vấn nhận ngay ưu đãi</h4>
               <form onSubmit={handleSubmitSend}>
                 <div className="flex">
                   <input

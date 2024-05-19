@@ -15,7 +15,7 @@ const About = () => {
           <div className="mr-4">
             <img src={post.image} alt="" />
           </div>
-          <div className="space-y-3">
+          <div className="sm:space-y-3 space-y-1">
             <h6> {post.name}</h6>
             <div className="Info">
               <span>

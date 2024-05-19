@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCourseDetailAction } from "../../redux/courseReducer/courseSlice";
 import { avatar, imageNotFound } from "../../assets/img/js/img";
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
-import { Rate } from "antd";
+import { Rate, message } from "antd";
 
 const DetailPage = () => {
   const { maKhoaHoc } = useParams();
@@ -63,80 +63,77 @@ const DetailPage = () => {
         path={[
           {
             href: `/chitiet/${maKhoaHoc}`,
-            title: <span className="text-blue-700">Chi tiết</span>,
+            title: <span className="text-blue-400">Chi tiết</span>,
           },
         ]}
       />
 
       <div className="container mx-auto lg:px-12">
-        <h1 className="text-3xl font-bold py-5">Thông tin khóa học</h1>
+        <h1 className="text-3xl font-bold  py-5">Thông tin khóa học</h1>
 
         <div>
-          <div className="lg:flex">
-            <div className="lg:w-2/3 lg:pr-2">
+          <div className="lg:flex space-x-7">
+            <div className="lg:w-2/3 space-y-5">
               <h1 className="text-xl font-bold ">
                 {courseDetail.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
               </h1>
-              <div className="my-4">
-                <ul className="flex">
-                  <li className="mr-7 pr-7 border-r-slate-300  border-r-2">
-                    <div className="flex items-center">
-                      <div className="mr-2">
-                        <img alt="" src={avatar[2]} height={50} width={50} />
-                      </div>
-                      <div>
-                        <label>Giáo viên</label>
-                        <h3 className="font-bold">
-                          {courseDetail.nguoiTao?.hoTen
-                            ? courseDetail.nguoiTao?.hoTen
-                            : "Harry"}
-                        </h3>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="mr-7 pr-7 border-r-slate-300 border-r-2">
-                    <div className="flex flex-col items-center h-full justify-center">
-                      <label>Học viên</label>
-                      <p className="font-bold">{numberStudent}</p>
-                    </div>
-                  </li>
-                  <li className="w-2/5">
-                    <div className="flex flex-col items-center h-full justify-center">
-                      <div className="w-full ml-2">
-                        <h3>Đánh giá</h3>
-                      </div>
-                      <div className="flex w-full ml-2">
-                        <Rate disabled allowHalf defaultValue={5} />
-                        <span className="ml-1">(7 đánh giá)</span>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
 
-              <div className="my-4">
-                <div>
-                  <p>
-                    React.js là thư viện JavaScript phổ biến nhất mà bạn có thể
-                    sử dụng và tìm hiểu ngày nay để xây dựng giao diện người
-                    dùng hiện đại, phản ứng cho web. {courseDetail.moTa}
-                  </p>
-                </div>
+              <ul className="flex">
+                <li className="mr-7 pr-7 border-[#f3f4f6]  border-r-2">
+                  <div className="flex items-center">
+                    <div className="mr-2">
+                      <img alt="" src={avatar[2]} height={50} width={50} />
+                    </div>
+                    <div>
+                      <label>Giáo viên</label>
+                      <h3 className="font-bold">
+                        {courseDetail.nguoiTao?.hoTen
+                          ? courseDetail.nguoiTao?.hoTen
+                          : "Harry"}
+                      </h3>
+                    </div>
+                  </div>
+                </li>
+                <li className="mr-7 pr-7 border-[#f3f4f6] border-r-2">
+                  <div className="flex flex-col items-center h-full justify-center">
+                    <label>Học viên</label>
+                    <p className="font-bold">{numberStudent}</p>
+                  </div>
+                </li>
+                <li className="w-2/5">
+                  <div className="flex flex-col items-center h-full justify-center">
+                    <div className="w-full ml-2">
+                      <h3>Đánh giá</h3>
+                    </div>
+                    <div className="flex w-full ml-2">
+                      <Rate disabled allowHalf defaultValue={5} />
+                      <span className="ml-1">(7 đánh giá)</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
 
-                <div className="py-5 space-y-3">
+              <div className="space-y-5">
+                <p>
+                  React.js là thư viện JavaScript phổ biến nhất mà bạn có thể sử
+                  dụng và tìm hiểu ngày nay để xây dựng giao diện người dùng
+                  hiện đại, phản ứng cho web. {courseDetail.moTa}
+                </p>
+
+                <div className="space-y-5">
                   <h6 className="text-xl font-bold">Những gì bạn sẽ học</h6>
                   <div className="grid grid-cols-2">
                     <div className="pr-2">
                       <ul className="space-y-3">
                         <li>
-                          <i className="fas fa-check text-blue-700"></i>
+                          <i className="fas fa-check text-blue-400"></i>
                           <span className="ml-2">
                             Xây dựng các ứng dụng web mạnh mẽ, nhanh chóng, thân
                             thiện với người dùng và phản ứng nhanh
                           </span>
                         </li>
                         <li>
-                          <i className="fas fa-check text-blue-700"></i>
+                          <i className="fas fa-check text-blue-400"></i>
                           <span className="ml-2">
                             Đăng ký công việc được trả lương cao hoặc làm
                             freelancer trong một trong những lĩnh vực được yêu
@@ -145,14 +142,14 @@ const DetailPage = () => {
                           </span>
                         </li>
                         <li>
-                          <i className="fas fa-check text-blue-700"></i>
+                          <i className="fas fa-check text-blue-400"></i>
                           <span className="ml-2">
                             Cung cấp trải nghiệm người dùng tuyệt vời bằng cách
                             tận dụng sức mạnh của JavaScript một cách dễ dàng
                           </span>
                         </li>
                         <li>
-                          <i className="fas fa-check text-blue-700"></i>
+                          <i className="fas fa-check text-blue-400"></i>
                           <span className="ml-2">
                             Tìm hiểu tất cả về React Hooks và React Components
                           </span>
@@ -162,21 +159,21 @@ const DetailPage = () => {
                     <div className="pl-2">
                       <ul className="space-y-3">
                         <li>
-                          <i className="fas fa-check text-blue-700"></i>
+                          <i className="fas fa-check text-blue-400"></i>
                           <span className="ml-2">
                             Thông thạo chuỗi công cụ hỗ trợ React, bao gồm cú
                             pháp Javascript NPM, Webpack, Babel và ES6 / ES2015
                           </span>
                         </li>
                         <li>
-                          <i className="fas fa-check text-blue-700"></i>
+                          <i className="fas fa-check text-blue-400"></i>
                           <span className="ml-2">
                             Nhận ra sức mạnh của việc xây dựng các thành phần có
                             thể kết hợp
                           </span>
                         </li>
                         <li>
-                          <i className="fas fa-check text-blue-700"></i>
+                          <i className="fas fa-check text-blue-400"></i>
                           <span className="ml-2">
                             Hãy là kỹ sư giải thích cách hoạt động của Redux cho
                             mọi người, bởi vì bạn biết rất rõ các nguyên tắc cơ
@@ -184,7 +181,7 @@ const DetailPage = () => {
                           </span>
                         </li>
                         <li>
-                          <i className="fas fa-check text-blue-700"></i>
+                          <i className="fas fa-check text-blue-400"></i>
                           <span className="ml-2">
                             Nắm vững các khái niệm cơ bản đằng sau việc cấu trúc
                             các ứng dụng Redux
@@ -195,166 +192,163 @@ const DetailPage = () => {
                   </div>
                 </div>
 
-                <div className="py-5 space-y-5">
-                  <h6 className="text-xl font-bold">Nội dung khóa học</h6>
-                  <div>
-                    <div>
-                      <div className="SectionCourse">
-                        <span>Mục 1: Giới thiệu</span>
-                        <button className="BtnGlobal">Xem trước</button>
+                <div className="space-y-5">
+                  <h6 className="text-3xl font-bold uppercase">
+                    Nội dung khóa học
+                  </h6>
+
+                  <div className="space-y-3">
+                    <div className="SectionCourse">
+                      <span>Mục 1: Giới thiệu</span>
+                      <button className="BtnGlobal">Xem trước</button>
+                    </div>
+                    <p className="text-xl font-bold">Bài học</p>
+                    <div className="space-y-3">
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>Các khái niệm về
+                          React Component
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
                       </div>
-                      <p>Bài học</p>
-                      <div className="space-y-3">
-                        <div className="LessonContent mt-1">
-                          <span>
-                            <i className="fas fa-play-circle"></i>Các khái niệm
-                            về React Component
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>Thiết lập môi
-                            trường cho Windows
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>Tạo ứng dụng
-                            React - React-Scripts
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>Ghi chú nhanh
-                            về dấu ngoặc kép cho string interpolation
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>Thiết lập môi
+                          trường cho Windows
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
+                      </div>
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>Tạo ứng dụng
+                          React - React-Scripts
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
+                      </div>
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>Ghi chú nhanh về
+                          dấu ngoặc kép cho string interpolation
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <div>
-                      <div className="SectionCourse">
-                        <span>Mục 2: Kiến thức căn bản</span>
-                        <button className="BtnGlobal">Xem trước</button>
+                  <div className="space-y-3">
+                    <div className="SectionCourse">
+                      <span>Mục 2: Kiến thức căn bản</span>
+                      <button className="BtnGlobal">Xem trước</button>
+                    </div>
+                    <p className="text-xl font-bold">Bài học</p>
+                    <div className="space-y-3">
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>Trang chủ và
+                          thành phần thư mục
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
                       </div>
-                      <p>Bài học</p>
-                      <div className="space-y-3">
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>Trang chủ và
-                            thành phần thư mục
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>Hướng dẫn khóa
-                            học + Liên kết Github
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>Trang chủ
-                            thương mại điện tử + thiết lập SASS
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>
-                            Tệp CSS và SCSS
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>
-                            React 17: Cập nhật các gói + Phiên bản React mới
-                            nhất
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>Hướng dẫn khóa
+                          học + Liên kết Github
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
+                      </div>
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>Trang chủ thương
+                          mại điện tử + thiết lập SASS
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
+                      </div>
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>
+                          Tệp CSS và SCSS
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
+                      </div>
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>
+                          React 17: Cập nhật các gói + Phiên bản React mới nhất
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <div>
-                      <div className="SectionCourse ">
-                        <span>Mục 3: Kiến thức chuyên sâu</span>
-                        <button className="BtnGlobal">Xem trước</button>
+                  <div className="space-y-3">
+                    <div className="SectionCourse ">
+                      <span>Mục 3: Kiến thức chuyên sâu</span>
+                      <button className="BtnGlobal">Xem trước</button>
+                    </div>
+                    <p className="text-xl font-bold">Bài học</p>
+                    <div className="space-y-3">
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>connect() and
+                          mapStateToProps
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
                       </div>
-                      <p>Bài học</p>
-                      <div className="space-y-3">
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>connect() and
-                            mapStateToProps
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent">
-                          <span>
-                            <i className="fas fa-play-circle"></i>
-                            Trạng thái thư mục vào Redux
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
-                        <div className="LessonContent mt-1">
-                          <span>
-                            <i className="fas fa-play-circle"></i>
-                            Thành phần Tổng quan về Bộ sưu tập
-                          </span>
-                          <span>
-                            <i className="fas fa-clock"></i>
-                            {renderLengthVideo()}
-                          </span>
-                        </div>
+                      <div className="Info">
+                        <span>
+                          <i className="fas fa-play-circle"></i>
+                          Trạng thái thư mục vào Redux
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
+                      </div>
+                      <div className="Info mt-1">
+                        <span>
+                          <i className="fas fa-play-circle"></i>
+                          Thành phần Tổng quan về Bộ sưu tập
+                        </span>
+                        <span>
+                          <i className="fas fa-clock"></i>
+                          {renderLengthVideo()}
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="lg:w-1/3 lg:pl-2">
+
+            <div className="lg:w-1/3">
               <div className="SideBarCourseDetail ">
                 <img
                   src={courseDetail.hinhAnh}
@@ -366,7 +360,7 @@ const DetailPage = () => {
                 />
                 <div className="text-right py-7">
                   <p className="font-bold text-2xl">
-                    <i className="fas fa-bolt text-blue-700 mr-2"></i>500.000
+                    <i className="fas fa-bolt text-blue-400 mr-2"></i>500.000
                     <sup>đ</sup>
                   </p>
                 </div>
@@ -374,12 +368,16 @@ const DetailPage = () => {
                 <button
                   className="BtnGlobal"
                   onClick={() => {
-                    dispatch(
-                      registerCourseThunk({
-                        maKhoaHoc: courseDetail.maKhoaHoc,
-                        taiKhoan: infoUser.taiKhoan,
-                      })
-                    );
+                    infoUser
+                      ? dispatch(
+                          registerCourseThunk({
+                            maKhoaHoc: courseDetail.maKhoaHoc,
+                            taiKhoan: infoUser.taiKhoan,
+                          })
+                        )
+                      : message.error(
+                          "Vui lòng đăng nhập để đăng ký khóa học này"
+                        );
                   }}
                 >
                   Đăng ký

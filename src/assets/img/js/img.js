@@ -2,7 +2,8 @@ import avatar1 from "../avatar/avatarUser.png";
 import avatar2 from "../avatar/avatarTutor.png";
 import avatar3 from "../avatar/avatarTutor1.png";
 import imgNotFound from "../imgNotFound.jpg";
-import backgroundLogin from "../background/background.jpg";
+import auth from "../background/auth.jpg";
+import modal from "../background/modal.png";
 import student from "../number/student.png";
 import hourglass from "../number/hourglass.png";
 import teacherIcon from "../number/teacher.png";
@@ -29,7 +30,7 @@ import denmark from "../comment/denmark.jpg";
 
 export const logo = [logoWeb, icon, logoFooter];
 
-export const background = backgroundLogin;
+export const background = [auth, modal];
 
 export const avatar = [avatar1, avatar2, avatar3];
 

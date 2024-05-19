@@ -92,6 +92,7 @@ export default function Comment() {
         onOk={() => setOpen(false)}
         onCancel={() => setOpen(false)}
         width={600}
+        className="CommentModal"
       >
         <form className="xl:space-y-7 md:space-y-5 space-y-4" action="">
           <div className="xl:h-96 md:h-96 h-80 xl:space-y-7 md:space-y-7 space-y-5 overflow-auto">

@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.ant-modal, .ant-card, .ant-breadcrumb {
+.ant-modal, .ant-card, .ant-breadcrumb, .ant-space, .ant-dropdown {
   font-family: "Roboto", sans-serif !important;
 }
 
@@ -19,6 +19,18 @@
 }
 .UpdateModal.ant-modal .ant-modal-content .ant-modal-body .FormUpdate > div {
   width: 100%;
+}
+
+.ant-dropdown .ant-dropdown-menu.ant-dropdown-menu-root.ant-dropdown-menu-vertical {
+  padding: 0;
+}
+.ant-dropdown .ant-dropdown-menu.ant-dropdown-menu-root.ant-dropdown-menu-vertical .ant-dropdown-menu-item.ant-dropdown-menu-item-only-child {
+  padding: 6px 12px;
+  font-size: 16px;
+  color: #000;
+}
+.ant-dropdown .ant-dropdown-menu.ant-dropdown-menu-root.ant-dropdown-menu-vertical .ant-dropdown-menu-item.ant-dropdown-menu-item-only-child:hover {
+  background-color: #f6f9fa;
 }
 
 * {
@@ -276,7 +288,6 @@ body {
   height: 100%;
   object-fit: fill;
   transform: scale(1);
-  max-width: unset !important;
 }
 .CardHorizontal:hover {
   border-color: #60a5fa;
@@ -410,57 +421,30 @@ body {
 .MenuHeader li a:hover {
   color: #60a5fa;
 }
-.MenuHeader .CourseCategory {
-  display: flex;
-  position: relative;
-  align-items: center;
-}
-.MenuHeader .CourseCategory:after {
-  content: "";
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  height: 40px;
-  z-index: 1;
-}
-.MenuHeader .CourseCategory .CourseCategoryList {
-  position: absolute;
-  top: 32px;
-  left: 0;
-  z-index: 999;
-  max-height: 0;
-  overflow: hidden;
-  background-color: #f6f9fa;
-  transition: all 0.5s linear;
-  min-width: 200px;
-  transition: all 0.5s;
-}
-.MenuHeader .CourseCategory .CourseCategoryList li a {
-  color: #000;
-}
-.MenuHeader .CourseCategory .CourseCategoryList li:hover a {
-  color: #c6c7cc;
-}
-.MenuHeader .CourseCategory i {
-  padding-right: 3px;
-  transition: all 0.5s;
-  position: relative;
-  bottom: 1px;
-}
-.MenuHeader .CourseCategory .CourseCategoryList li {
-  padding: 10px;
-}
-.MenuHeader .CourseCategory:hover .CourseCategoryList {
-  max-height: 400px;
-}
 
 @media (max-width: 1024px) {
   .Header .Content {
     padding: 0 15px;
   }
+  .Header .Content .ContentRight button {
+    padding: 10px 25px;
+  }
   .Header .HeaderSearch {
     padding: 0 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .Header .Content {
+    padding: 0 12px;
+  }
+  .Header .Content .ContentRight button {
+    padding: 8px 14px;
+  }
+}
+@media (max-width: 768px) {
+  .Header .BtnGlobal {
+    padding: 10px 20px;
+    border-radius: 0 30px 30px 0;
   }
 }
 .Footer {
@@ -785,6 +769,14 @@ body {
     min-height: 160px;
   }
 }
+@media (max-width: 480px) {
+  .About .Post h6 {
+    font-size: 14px;
+  }
+  .About .Post span {
+    font-size: 12px;
+  }
+}
 .Type .Active {
   color: #60a5fa;
 }
@@ -837,7 +829,6 @@ body {
 .DetailCourse .SectionCourse {
   display: flex;
   align-items: center;
-  margin: 20px 0;
 }
 .DetailCourse .SectionCourse span {
   text-transform: uppercase;
@@ -845,20 +836,20 @@ body {
   font-weight: 400;
   margin-right: 20px;
 }
-.DetailCourse .BtnGlobal {
+.DetailCourse .SectionCourse .BtnGlobal {
   cursor: default;
 }
-.DetailCourse .BtnGlobal:hover {
+.DetailCourse .SectionCourse .BtnGlobal:hover {
   transform: scale(0.97);
 }
-.DetailCourse .LessonContent {
+.DetailCourse .Info {
   display: flex;
-  padding: 10px;
+  padding: 12px 10px;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 1px 1px 2px 1px 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
 }
-.DetailCourse .LessonContent i {
+.DetailCourse .Info i {
   color: #60a5fa;
   margin-right: 10px;
 }
@@ -868,10 +859,10 @@ body {
   justify-content: center;
   margin-bottom: 15px;
   padding: 10px 30px;
-  box-shadow: 1px 1px 10px 4px 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
 }
-.DetailCourse .SideBarCourseDetail .BtnGlobal {
-  cursor: pointer;
+.DetailCourse .SideBarCourseDetail .BtnGlobal:hover {
+  transform: scale(0.97);
 }
 .DetailCourse .SideBarCourseDetail .Content ul li {
   display: flex;
@@ -881,7 +872,7 @@ body {
   border-bottom: 1px solid #f3f4f6;
 }
 .DetailCourse .SideBarCourseDetail .Content ul li p {
-  color: #acafb4;
+  color: #000;
 }
 .DetailCourse .SideBarCourseDetail .Content ul li p span {
   color: #c6c7cc;

@@ -271,3 +271,16 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .About {
+    .Post {
+      h6 {
+        font-size: 14px;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+}

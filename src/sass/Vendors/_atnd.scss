@@ -1,4 +1,4 @@
-.ant-modal, .ant-card, .ant-breadcrumb {
+.ant-modal, .ant-card, .ant-breadcrumb, .ant-space, .ant-dropdown {
   font-family: "Roboto", sans-serif !important; 
 }
 
@@ -32,6 +32,22 @@
         > div {
           width: 100%;
         }
+      }
+    }
+  }
+}
+
+
+
+.ant-dropdown {
+  .ant-dropdown-menu.ant-dropdown-menu-root.ant-dropdown-menu-vertical {
+    padding: 0;
+    .ant-dropdown-menu-item.ant-dropdown-menu-item-only-child {
+      padding: 6px 12px;
+      font-size: 16px;
+      color: $colorBlack;
+      &:hover {
+        background-color: $colorBgPrimary;
       }
     }
   }

@@ -2,27 +2,26 @@
   .SectionCourse {
     display: flex;
     align-items: center;
-    margin: 20px 0;
     span {
       text-transform: uppercase;
       font-size: 22px;
       font-weight: 400;
       margin-right: 20px;
     }
-  }
-  .BtnGlobal {
-    cursor: default;
-    &:hover {
-      transform: scale(0.97);
+    .BtnGlobal {
+      cursor: default;
+      &:hover {
+        transform: scale(0.97);
+      }
     }
   }
 
-  .LessonContent {
+  .Info {
     display: flex;
-    padding: 10px;
+    padding: 12px 10px;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 1px 1px 2px 1px $colorBoxShadow;
+    box-shadow: $colorBoxShadow;
     i {
       color: $colorGlobal;
       margin-right: 10px;
@@ -35,9 +34,11 @@
     justify-content: center;
     margin-bottom: 15px;
     padding: 10px 30px;
-    box-shadow: 1px 1px 10px 4px $colorBoxShadow;
+    box-shadow: $colorBoxShadow;
     .BtnGlobal {
-      cursor: pointer;
+      &:hover {
+        transform: scale(0.97);
+      }
     }
 
     .Content {
@@ -49,7 +50,7 @@
           justify-content: space-between;
           border-bottom: 1px solid $colorBorder;
           p {
-            color: $colorTextSPrimary;
+            color: $colorBlack;
             span {
               color: $colorTextPrimary;
               font-weight: 500;

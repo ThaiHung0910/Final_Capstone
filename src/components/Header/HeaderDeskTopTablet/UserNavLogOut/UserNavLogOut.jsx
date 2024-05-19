@@ -6,7 +6,7 @@ export default function UserNavLogOut() {
   let navigate = useNavigate();
 
   return (
-    <div className="space-x-4 ContentRight">
+    <div className="xl:space-x-4 space-x-1 ContentRight">
       <button
         onClick={() => {
           navigate('/auth/login')
