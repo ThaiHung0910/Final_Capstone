@@ -76,7 +76,7 @@ const About = () => {
   };
 
   return (
-      <div className="container mx-auto lg:p-12 py-12 About">
+      <div className="container mx-auto lg:p-12 py-12 px-3 About">
         <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-3">
           <div className="Post">
             <h3 className="text-xl font-bold mb-3">Bài viết liên quan</h3>

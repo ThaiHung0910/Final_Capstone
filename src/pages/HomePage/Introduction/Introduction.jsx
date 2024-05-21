@@ -2,7 +2,7 @@ import React from "react";
 
 const Introduction = () => {
   return (
-    <div className="container mx-auto lg:px-12">
+    <div className="container mx-auto lg:px-12 py-7 px-3">
       <div className="grid xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-5 text-white Introduction">
         <div className=" lg:row-span-2 ItemLarge">
           <h3>Khóa học</h3>

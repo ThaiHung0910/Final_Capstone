@@ -22,7 +22,7 @@ const ListCourse = () => {
   }, []);
 
   return (
-    <div className="container mx-auto lg:px-12 my-7">
+    <div className="container mx-auto lg:px-12 pb-7 px-3">
       <h1 className="TitleCourse my-4">
         <a href="/">Khóa học phổ biến</a>
       </h1>

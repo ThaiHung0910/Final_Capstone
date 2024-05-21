@@ -31,11 +31,11 @@ const Footer = () => {
   return (
     <div>
       <footer className="Footer">
-        <div className="container mx-auto lg:px-12   text-white">
+        <div className="container mx-auto lg:px-12 px-3  text-white">
           <div className="Subscribe">
-            <div className="sm:grid sm:grid-cols-2 grid-cols-1">
-              <h4 className="sm:mb-0 mb-1">Đăng ký tư vấn nhận ngay ưu đãi</h4>
-              <form onSubmit={handleSubmitSend}>
+            <div className="flex flex-col space-y-3 items-center">
+              <h4 className="uppercase">Đăng ký tư vấn</h4>
+              <form className="lg:w-3/4 md:w-4/5 w-full" onSubmit={handleSubmitSend}>
                 <div className="flex">
                   <input
                     ref={keyInput}
@@ -56,7 +56,7 @@ const Footer = () => {
 
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-3 mt-28">
             <div className="grid grid-cols-1 space-y-5">
-              <img className="Logo" src={logo[2]} alt="" />
+              <img className="Logo" src={logo[1]} alt="" />
 
               <p className="max-w-md leading-relaxed">
                 Khám phá các khóa học lập trình độc đáo trên nền tảng Elearning.

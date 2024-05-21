@@ -75,23 +75,26 @@ const RegisterPage = () => {
   });
   return (
     <div
-      style={{ background: `url(${background[0]}) no-repeat center / 100%` }}
+      style={{
+        background: `url(${background[0]}) center / 150%`,
+      }}
       className="relative w-screen h-screen"
     >
-      
-        <div onClick={() => {
+      <div
+        onClick={() => {
           navigate("/");
-        }} className="absolute  lg:top-5 lg:left-5 top-3 left-3 cursor-pointer lg:w-64 w-36">
-          <img src={logo[0]} alt="" />
-        </div>
-      
+        }}
+        className="absolute  lg:top-5 lg:left-5 top-3 left-3 cursor-pointer lg:w-64 w-36"
+      >
+        <img src={logo[0]} alt="" />
+      </div>
 
       <div className="flex items-center justify-center w-full h-full mt-5 md:mt-0">
         <form
           onSubmit={formRegister.handleSubmit}
-          className="flex justify-center md:w-1/2 w-4/5   bg-[rgba(0,0,0,.9)] z-10"
+          className="flex justify-center lg:w-1/2 sm:w-4/5 w-5/6   bg-black z-10"
         >
-          <div className="xl:w-2/3  md:w-full w-2/3 space-y-2 p-3">
+          <div className="xl:w-3/4 md:w-full sm:w-2/3 w-full md:space-y-2 sm:space-y-5 space-y-6 p-3">
             <h1 className="xl:text-4xl md:text-3xl text-2xl mb-4 text-white  font-sans">
               Đăng ký
             </h1>
@@ -136,13 +139,13 @@ const RegisterPage = () => {
               Đăng ký
             </button>
 
-            <div className=" text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-[#acafb4]">
+            <div className=" text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-[#c6c7cc]">
               Bạn đã có tài khoản?{" "}
               <span
                 onClick={() => {
                   navigate("/auth/login");
                 }}
-                className="text-blue-400 hover:text-[#acafb4] font-medium cursor-pointer duration-150"
+                className="text-blue-400 hover:text-white font-medium cursor-pointer duration-150"
               >
                 Đăng nhập
               </span>

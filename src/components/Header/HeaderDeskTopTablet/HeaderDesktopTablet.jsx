@@ -70,8 +70,8 @@ const HeaderDesktopTablet = () => {
         scrollDirection === "down" ? "-top-28" : "top-0"
       } py-2  z-30 shadow-md text-white Header`}
     >
-      <div className="Content lg:container lg:mx-auto flex justify-between items-center lg:px-12">
-        <NavLink to={"/"} className="text-3xl font-extrabold">
+      <div className="Content container mx-auto flex justify-between items-center lg:px-12 px-3">
+        <NavLink to={"/"}>
           <img src={logo[0]} width={100} alt="" />
         </NavLink>
 
@@ -91,7 +91,7 @@ const HeaderDesktopTablet = () => {
 
             <li>
               <button
-                className="text-xl hover:text-blue-400 duration-200"
+                className="lg:text-xl text-base hover:text-blue-400 duration-200"
                 onClick={() => {
                   setSearchVisible(!searchVisible);
                 }}
@@ -107,7 +107,7 @@ const HeaderDesktopTablet = () => {
       {searchVisible && (
         <form
           onSubmit={handleSubmitSearch}
-          className="HeaderSearch lg:px-12 lg:container lg:mx-auto flex mt-3"
+          className="HeaderSearch lg:px-12 container mx-auto px-3 flex mt-3"
         >
           <input
             ref={keyInput}

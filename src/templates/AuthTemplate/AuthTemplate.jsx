@@ -14,7 +14,7 @@ const AuthTemplate = () => {
   }, []);
 
   return (
-    <div className="d-flex w-screen h-screen">
+    <div className="flex w-screen h-screen">
       <div className="w-full flex justify-center items-center">
         <Outlet />
       </div>

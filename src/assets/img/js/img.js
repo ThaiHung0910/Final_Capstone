@@ -10,7 +10,6 @@ import teacherIcon from "../number/teacher.png";
 import timetable from "../number/timetable.png";
 import logoWeb from "../logo/logo.png";
 import logoFooter from '../logo/logo_footer.png'
-import icon from "../logo/icon.png";
 import teacher1 from "../teacher/teacher1.jpeg";
 import teacher2 from "../teacher/teacher2.jpeg";
 import teacher3 from "../teacher/teacher3.jpeg";
@@ -28,7 +27,7 @@ import denmark from "../comment/denmark.jpg";
 
 
 
-export const logo = [logoWeb, icon, logoFooter];
+export const logo = [logoWeb, logoFooter];
 
 export const background = [auth, modal];
 

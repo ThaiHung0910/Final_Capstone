@@ -70,7 +70,7 @@ const DrawerCustom = ({
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 transition rounded-lg cursor-pointer hover:text-blue-400 duration-200"
         >
-          <HistoryOutlined className="p-2 leading-7 text-xl  text-white text-center  bg-[#acafb4] rounded-full" />{" "}
+          <HistoryOutlined className="p-2 leading-7 text-2xl  text-white text-center  bg-[#acafb4] rounded-full" />{" "}
           <span className=" text-lg">Khóa học của tôi</span>
         </div>
       ) : (
@@ -111,13 +111,13 @@ const DrawerCustom = ({
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 transition rounded-lg cursor-pointer hover:text-blue-400 duration-200"
         >
-          <LogoutOutlined className="p-2 leading-7 text-xl  text-white text-center  bg-[#acafb4] rounded-full" />{" "}
+          <LogoutOutlined className="p-2 leading-7 text-2xl  text-white text-center  bg-[#acafb4] rounded-full" />{" "}
           <span className=" text-lg">Đăng xuất</span>
         </div>
       ) : (
         renderNav(
           "/auth/register",
-          <UsergroupAddOutlined className="p-2 leading-7 text-xl  text-white text-center  bg-[#acafb4] rounded-full " />,
+          <UsergroupAddOutlined className="p-2 leading-7 text-2xl  text-white text-center  bg-[#acafb4] rounded-full " />,
           "Đăng ký"
         )
       )}

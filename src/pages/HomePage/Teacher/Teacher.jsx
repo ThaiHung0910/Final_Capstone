@@ -20,7 +20,7 @@ const Teacher = () => {
 
   return (
     <div className="Teacher">
-      <div className="container mx-auto lg:p-12 py-12">
+      <div className="container mx-auto lg:p-12 py-12 px-3">
         <h3 className="font-bold text-xl mb-5">Giảng viên hàng đầu</h3>
         <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-11">{renderTeacher()}</div>
       </div>

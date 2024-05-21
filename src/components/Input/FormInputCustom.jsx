@@ -85,7 +85,7 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
   return (
     <div className="relative">
       <label
-        className={`absolute top-0 left-0 z-10 text-[#ACAFB4]   transition ${
+        className={`absolute top-0 left-0 z-10 text-[#c6c7cc]   transition ${
           translateLabel
             ? "xl:translate-x-6 md:translate-x-4 translate-x-3 xl:translate-y-3 md:translate-y-2 translate-y-2 xl:text-xl md:text-base text-sm"
             : " xl:translate-x-6 md:translate-x-4 translate-x-3 xl:translate-y-1 md:translate-y-1 translate-y-0 xl:text-xs md:text-xs text-xs"
@@ -97,7 +97,7 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
         <input
           disabled={disable ? true : false}
           type={inputType && type === "password" ? "password" : "text"}
-          className={`relative  xl:w-full md:w-full w-full xl:text-lg md:text-base text-xs  xl:pt-5 md:pt-4 pt-3 xl:pb-1 md:pb-1 pb-1  xl:px-6 md:px-4 px-3  border bg-[#333333] text-white border-none rounded focus:outline-none focus:bg-[#454545] ${
+          className={`relative  xl:w-full md:w-full w-full xl:text-lg md:text-base text-xs  xl:pt-5 md:pt-4 pt-4 xl:pb-1 md:pb-1 pb-2  xl:px-6 md:px-4 px-3  border bg-[#2c3238] text-white border-none rounded focus:outline-none ${
             disable ? "cursor-no-drop" : ""
           }`}
           name={name}
@@ -127,7 +127,7 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
       ) : (
         <select
           name={name}
-          className="relative  xl:w-full md:w-full w-full xl:text-lg md:text-base text-xs  xl:pt-5 md:pt-4 pt-3 xl:pb-1 md:pb-1 pb-1  xl:px-6 md:px-4 px-3  border bg-[#333333] text-white border-none rounded focus:outline-none focus:bg-[#454545]"
+          className="relative  xl:w-full md:w-full w-full xl:text-lg md:text-base text-xs  xl:pt-5 md:pt-4 pt-3 xl:pb-1 md:pb-1 pb-1  xl:px-6 md:px-4 px-3  border bg-[#2c3238] text-white border-none rounded focus:outline-none"
           onChange={handleChange}
           value={value}
         >
@@ -150,7 +150,7 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
 
       {type === "password" ? (
         <span
-          className="absolute xl:right-2 md:right-2 right-1 xl:top-4 md:top-1 top-1 xl:text-2xl md:text-lg  cursor-pointer text-[#8c8c8c] "
+          className="absolute xl:right-2 md:right-2 right-1 xl:top-4 md:top-1 top-1 xl:text-2xl md:text-lg  cursor-pointer text-[#c6c7cc] "
           onClick={() => {
             setInputType(!inputType);
           }}

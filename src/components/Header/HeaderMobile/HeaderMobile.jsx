@@ -49,11 +49,11 @@ export default function HeaderMobile() {
         scrollDirection === "down" ? "-top-28" : "top-0"
       } py-2 z-30 shadow-md Header`}
     >
-      <div className="container mx-auto flex justify-between space-x-5 items-center">
-        <NavLink to={"/"} className="text-3xl font-extrabold">
+      <div className="container mx-auto flex justify-between items-center px-3">
+        <NavLink to={"/"} >
           <img src={logo[0]} width={100} alt="" />
         </NavLink>
-        <form onSubmit={handleSubmitSearchMobile} className="col-span-2 flex">
+        <form onSubmit={handleSubmitSearchMobile} className="HeaderSearch w-3/5 flex">
           <input
             ref={keyInputMobile}
             className="w-full border border-solid border-[#f3f4f6] h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
@@ -67,7 +67,7 @@ export default function HeaderMobile() {
             <SearchOutlined className="text-xl mr-1" />
           </button>
         </form>
-        <div className="mx-auto">{renderUserNavMobile()}</div>
+        <div>{renderUserNavMobile()}</div>
       </div>
     </div>
   );
