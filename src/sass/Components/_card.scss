@@ -126,9 +126,8 @@
     display: inline-block;
     position: absolute;
     top: 170px;
-    padding: 6px 12px;
-    color: $colorWhite;
-    background-color: $colorGlobal;
+    padding: 8px 16px;
+    font-size: 16px;
   }
 
   .IconInfo {
@@ -278,14 +277,6 @@
 }
 
 
-@media (max-width: 768px) {
-  .CardVertical {
-    .ButtonRegister {
-      padding: 10px 16px;
-      font-size: 16px;
-    }
-  }
-}
 
 @media (max-width: 576px) {
   .CardVertical {

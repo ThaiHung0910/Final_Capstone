@@ -1,12 +1,12 @@
 import React from "react";
 
-const ButtonNavigation = ({ currentPage, totalPages, handlePageChange }) => {
-  let buttonsNavigation = [];
-  let element = (element, argument, className, index) => {
+const ButtonPagination = ({ currentPage, totalPages, handlePageChange }) => {
+  let buttonsPagination = [];
+  let element = (element, page, className, index) => {
     return (
       <li key={index}>
         <button
-          onClick={() => handlePageChange(argument)}
+          onClick={() => handlePageChange(page)}
           className={className}
         >
           {element}
@@ -16,15 +16,15 @@ const ButtonNavigation = ({ currentPage, totalPages, handlePageChange }) => {
   };
 
   if (currentPage === totalPages) {
-    buttonsNavigation = [
+    buttonsPagination = [
       element(<i className="fas fa-angle-left"></i>, currentPage - 1, "", -1),
-      ...buttonsNavigation,
+      ...buttonsPagination,
     ];
   }
 
   for (let index = 0; index < totalPages; index++) {
-    buttonsNavigation = [
-      ...buttonsNavigation,
+    buttonsPagination = [
+      ...buttonsPagination,
       element(
         index + 1,
         index + 1,
@@ -35,8 +35,8 @@ const ButtonNavigation = ({ currentPage, totalPages, handlePageChange }) => {
   }
 
   if (currentPage < totalPages) {
-    buttonsNavigation = [
-      ...buttonsNavigation,
+    buttonsPagination = [
+      ...buttonsPagination,
       element(
         <i className="fas fa-angle-right"></i>,
         currentPage + 1,
@@ -46,7 +46,7 @@ const ButtonNavigation = ({ currentPage, totalPages, handlePageChange }) => {
     ];
   }
 
-  return buttonsNavigation;
+  return buttonsPagination;
 };
 
-export default ButtonNavigation;
+export default ButtonPagination;

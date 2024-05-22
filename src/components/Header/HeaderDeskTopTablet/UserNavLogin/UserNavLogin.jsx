@@ -19,10 +19,10 @@ export default function UserNavLogin({ infoUser }) {
         onClick={() => {
           navigate("/user");
         }}
-        className=" flex items-end space-x-3  text-white cursor-pointer"
+        className=" flex items-end space-x-3 text-white cursor-pointer"
       >
         <img
-          className=" h-9 w-9 text-xl  bg-[#f6f9fa] rounded-full"
+          className=" h-9 w-9 text-xl rounded-full"
           src={avatar[0]}
           onError={(e) => {
             e.target.src = imageNotFound;

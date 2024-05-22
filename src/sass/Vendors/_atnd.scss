@@ -24,10 +24,12 @@
 
 .UpdateModal.ant-modal {
   .ant-modal-content {
+    padding: 0;
     .ant-modal-body {
       background: url(https://cdn.dribbble.com/users/1044993/screenshots/3109403/media/bad56b541a367f711456b0a52bc1aa57.gif)
         no-repeat 50% / cover;
 
+      padding: 35px;
       .FormUpdate {
         > div {
           width: 100%;
@@ -48,6 +50,19 @@
       color: $colorBlack;
       &:hover {
         background-color: $colorBgPrimary;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .UpdateModal.ant-modal {
+    height: 100%;
+    width: 85%;
+    .ant-modal-content {
+      .ant-modal-body {
+  
+        padding: 5px;
       }
     }
   }

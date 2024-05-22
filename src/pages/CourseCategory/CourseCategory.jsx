@@ -1,58 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseCategoryListThunk } from "../../redux/courseReducer/courseThunk";
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
 import Background from "../../components/Background/Background";
+import {
+  setCurrentPage,
+  setTotalPages,
+} from "../../redux/paginationReducer/paginationSlice";
 
 const CourseCategory = () => {
   const { maDanhMuc } = useParams();
   const location = useLocation();
   const dispatch = useDispatch();
   const currentPath = location.pathname;
-  let [currentPage, setCurrentPage] = useState(1);
   let { coursesCategoryList } = useSelector((state) => state.courseReducer);
-  const totalPages = Math.ceil(coursesCategoryList.length / 12);
+  const { currentPage, totalPages, itemsPerPage } = useSelector(
+    (state) => state.paginationReducer
+  );
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  let fetchApi = () => {
-    dispatch(getCourseCategoryListThunk(maDanhMuc));
+    dispatch(setCurrentPage(page));
   };
 
   let renderCard = () => {
-    let start = (currentPage - 1) * 12;
-    let end = start + 12;
+    let start = (currentPage - 1) * itemsPerPage;
+    let end = start + itemsPerPage;
     return coursesCategoryList.slice(start, end).map((course, index) => {
-      return (
-        <CardVertical
-          key={index}
-          course={course}
-          number={[7, 5]}
-        />
-      );
+      return <CardVertical key={index} course={course} number={[7, 5]} />;
     });
   };
 
   useEffect(() => {
-    fetchApi();
+    dispatch(getCourseCategoryListThunk(maDanhMuc));
   }, [maDanhMuc]);
+
+  useEffect(() => {
+    dispatch(setTotalPages((Math.ceil(coursesCategoryList.length / itemsPerPage))))
+  }, [coursesCategoryList, itemsPerPage])
 
   return (
     <div>
       <Background
-        path={
-          [
-            { href: '', title: <span >Danh mục khóa học</span> },
-            { href: currentPath, title: <span className="text-blue-700" >{maDanhMuc}</span> },
-          ]
-        }
+        path={[
+          { href: "", title: <span>Danh mục khóa học</span> },
+          {
+            href: currentPath,
+            title: <span className="text-blue-400">{maDanhMuc}</span>,
+          },
+        ]}
       />
 
-      <div className="container mx-auto lg:p-12 py-12">
+      <div className="container mx-auto lg:px-12 py-12 px-3">
         <div className="ListCategory space-y-7">
           <div className="Title">
             <i className="fas fa-desktop"></i>

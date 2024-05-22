@@ -7,10 +7,6 @@ const ListCourse = () => {
   const dispatch = useDispatch();
   const { coursesList } = useSelector((state) => state.courseReducer);
 
-  let fetchApi = () => {
-    dispatch(getListCourseThunk());
-  };
-
   let renderCourseItem = (start, end, isFavorite) => {
     return coursesList?.slice(start, end).map((course, index) => {
       return <CardVertical key={index} course={course} number={[7, 5]} isFavorite={isFavorite}/>;
@@ -18,7 +14,7 @@ const ListCourse = () => {
   };
 
   useEffect(() => {
-    fetchApi();
+    dispatch(getListCourseThunk());
   }, []);
 
   return (

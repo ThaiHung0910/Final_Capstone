@@ -8,6 +8,9 @@ import CardHorizontal from "../../components/CardCustom/CardHorizontal/CardHoriz
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
 import Comment from "./Comment/Comment";
 import { Rate } from "antd";
+import { setCurrentPage, setTotalPages } from "../../redux/paginationReducer/paginationSlice";
+
+
 
 const SearchPage = () => {
   let { tuKhoa } = useParams();
@@ -17,32 +20,30 @@ const SearchPage = () => {
     itemResultSearch = useRef();
   const dispatch = useDispatch();
   const [currentType, setCurrentType] = useState("horizontal");
-  const [currentPage, setCurrentPage] = useState(1);
   const { coursesSearchList } = useSelector((state) => state.courseReducer);
+  const { currentPage, itemsPerPage, totalPages } = useSelector((state) => state.paginationReducer);
 
-  let totalPages = Math.ceil(coursesSearchList.length / 12);
+
+
   let showSearchResult = () => {
     let length = coursesSearchList.length;
-    let pageFirst = (currentPage - 1) * 12 + 1,
+    let pageFirst = (currentPage - 1) * itemsPerPage + 1,
       pageLast =
-        currentPage === totalPages ? length : (currentPage - 1) * 12 + 12;
+        currentPage === totalPages ? length : (currentPage - 1) * itemsPerPage + itemsPerPage;
     return `Hiển thị ${pageFirst} - ${pageLast} trong ${length} kết quả tìm thấy`;
   };
 
-  let fetchApi = () => {
-    dispatch(getCourseSearchListThunk(tuKhoa));
-  };
 
   let renderCoursesListSearch = () => {
     if (coursesSearchList.length) {
-      let start = (currentPage - 1) * 12;
-      let end = start + 12;
+      let start = (currentPage - 1) * itemsPerPage;
+      let end = start + itemsPerPage;
 
       switch (currentType) {
         case "horizontal":
           return (
             <ul className="CourseList my-7">
-              {coursesSearchList?.slice(start, end).map((course, index) => {
+              {coursesSearchList?.slice(start, end)?.map((course, index) => {
                 return (
                   <CardHorizontal
                     key={index}
@@ -57,7 +58,7 @@ const SearchPage = () => {
         default:
           return (
             <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
-              {coursesSearchList?.slice(start, end).map((course, index) => {
+              {coursesSearchList?.slice(start, end)?.map((course, index) => {
                 return (
                   <CardVertical key={index} course={course} number={[7, 5]} />
                 );
@@ -75,7 +76,7 @@ const SearchPage = () => {
   };
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    dispatch(setCurrentPage(page))
     if (itemResultSearch.current) {
       itemResultSearch.current.scrollIntoView({
         behavior: "smooth",
@@ -97,21 +98,25 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    fetchApi();
+    dispatch(getCourseSearchListThunk(tuKhoa));
   }, [tuKhoa]);
+
+  useEffect(() => {
+    dispatch(setTotalPages(Math.ceil(coursesSearchList.length / itemsPerPage)));
+  }, [coursesSearchList, itemsPerPage]);
 
   return (
     <div className="relative ">
       <Background
         path={[
-          { href: url, title: <span className="text-blue-700">Tìm kiếm</span> },
+          { href: url, title: <span className="text-blue-400">Tìm kiếm</span> },
         ]}
       />
 
       <div className="container mx-auto text-lg xl:p-10">
-        <div className="flex xl:justify-between xl:flex-row  flex-col items-center">
+        <div className="flex xl:justify-between xl:flex-row  flex-col">
           <div ref={itemResultSearch} className="xl:w-3/4">
-            <div className="flex justify-between bg-gray-300 my-3 p-3 ">
+            <div className="flex justify-between bg-[#f6f9fa] my-3 p-3 ">
               <div className="flex items-center">
                 <div className="Type flex items-center">
                   <button
@@ -147,11 +152,11 @@ const SearchPage = () => {
               <form onSubmit={handleSubmitSearch} className="flex">
                 <input
                   ref={keyInput}
-                  className="w-full text-black border border-solid border-slate-300 h-11 rounded-l-lg p-5 text-base focus:outline-none  bg-gray-100"
+                  className="w-full text-black border border-solid  h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
                   type="text"
                   placeholder="Tìm kiếm"
                 />
-                <div className="bg-blue-700 flex justify-center  w-1/4 rounded-r-lg">
+                <div className="BtnSearch bg-blue-400 flex justify-center  w-1/4 BtnGlobal">
                   <button
                     type="submit"
                     className="border-none flex items-center text-white  "
@@ -181,7 +186,7 @@ const SearchPage = () => {
             </div>
           </div>
 
-          <div className="Comment">
+          <div className="Comment mx-auto">
             <div
               className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border "
               style={{ width: "300px" }}

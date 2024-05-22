@@ -41,7 +41,7 @@ const ModalContent = ({ course, imageNotFound, navigate, avatar, name }) => {
         </div>
         <div className="mt-3">
           <ul className="flex">
-            <li className="mr-7 pr-7 border-r-slate-300 border-r-2 relative">
+            <li className="mr-7 pr-7  border-r-2 relative">
               <div className="flex items-center">
                 <div className="mr-2">
                   <img
@@ -57,7 +57,7 @@ const ModalContent = ({ course, imageNotFound, navigate, avatar, name }) => {
                 </div>
               </div>
             </li>
-            <li className="mr-7 pr-7 border-r-slate-300 border-r-2">
+            <li className="mr-7 pr-7  border-r-2">
               <div className="flex flex-col items-center h-full justify-center">
                 <label>Học viên</label>
                 <p className="font-bold">27</p>

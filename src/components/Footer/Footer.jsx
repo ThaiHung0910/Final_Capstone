@@ -72,8 +72,8 @@ const Footer = () => {
                 <i className="fa-brands fa-twitter"></i>
               </div>
             </div>
-            <div className="grid grid-cols-3 col-span-2">
-              <div>
+            <div className="grid sm:grid-cols-3 lg:col-span-2 grid-cols-4 sm:gap-0 gap-3">
+              <div className="sm:col-span-1 col-span-2">
                 <div className="grid grid-cols-1">
                   <h3>Liên kết</h3>
                   <ul>
@@ -93,7 +93,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div>
+              <div className="sm:col-span-1 col-span-2">
                 <div className="grid grid-cols-1">
                   <h3>Khóa học</h3>
 
@@ -113,7 +113,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="Contact">
+              <div className="Contact sm:col-span-1 col-span-4">
                 <h3>Liên hệ với chúng tôi</h3>
                 <ul>
                   <li>

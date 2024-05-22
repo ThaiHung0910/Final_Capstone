@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import CardHorizontal from "../../components/CardCustom/CardHorizontal/CardHorizontal";
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import { ResponsiveLargeScreen } from "../../HOC/responsive";
+import { setCurrentPage, setTotalPages } from "../../redux/paginationReducer/paginationSlice";
+
+
+
 
 const UserInfoPage = () => {
   const location = useLocation();
@@ -16,11 +20,12 @@ const UserInfoPage = () => {
   const keyInput = useRef();
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
   const tabState = state?.currentTab || "info";
   const [currentTab, setCurrentTab] = useState(tabState);
   const [searchValue, setSearchValue] = useState("");
   const { infoUser } = useSelector((state) => state.userReducer);
+  const { currentPage, itemsPerPage, totalPages } = useSelector((state) => state.paginationReducer);
+
 
   const { infoUserCourseRegister } = useSelector(
     (state) => state.courseReducer
@@ -37,16 +42,11 @@ const UserInfoPage = () => {
     setIsModalOpen(false);
   };
 
-  let totalPages = Math.ceil(infoUser?.chiTietKhoaHocGhiDanh?.length / 7);
-
-  let fetchApi = () => {
-    dispatch(getInfoUserThunk());
-  };
+  
 
   let renderModal = () => {
     return (
       <Modal
-        styles={{ body: { padding: "35px" }, content: { padding: 0 } }}
         width={540}
         open={isModalOpen}
         onOk={handleOk}
@@ -64,12 +64,12 @@ const UserInfoPage = () => {
   };
 
   let handlePageChange = (page) => {
-    setCurrentPage(page);
+    dispatch( setCurrentPage(page))
   };
 
   let renderCourseRegister = () => {
-    const start = (currentPage - 1) * 7;
-    const end = start + 7;
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
     return infoUser?.chiTietKhoaHocGhiDanh
       ?.slice(start, end)
       ?.map((course, index) => {
@@ -84,12 +84,18 @@ const UserInfoPage = () => {
   };
 
   useEffect(() => {
-    fetchApi();
+    dispatch(getInfoUserThunk());
   }, [infoUserCourseRegister]);
 
   useEffect(() => {
     setCurrentTab(tabState);
   }, [tabState]);
+
+
+  useEffect(() => {
+    dispatch(setTotalPages(Math.ceil(infoUserCourseRegister.length / itemsPerPage)));
+  }, [infoUserCourseRegister, itemsPerPage]);
+
 
   return (
     <div>
@@ -97,12 +103,12 @@ const UserInfoPage = () => {
         path={[
           {
             href: pathname,
-            title: <span className="text-blue-700">Thông tin nguời dùng</span>,
+            title: <span className="text-blue-400">Thông tin nguời dùng</span>,
           },
         ]}
       />
 
-      <div className="container mx-auto lg:p-12 py-12">
+      <div className="container mx-auto lg:px-12 px-3 py-12">
         <div className="User flex">
           <ResponsiveLargeScreen>
             <div className="w-1/3">
@@ -136,7 +142,7 @@ const UserInfoPage = () => {
                   currentTab === "info" ? "Active" : ""
                 } `}
               >
-                <div className="grid grid-cols-2">
+                <div className="grid sm:grid-cols-2 grid-cols-1">
                   <div className="">
                     <p>
                       Email:<span>{infoUser?.email}</span>
@@ -178,17 +184,17 @@ const UserInfoPage = () => {
                   currentTab === "course" ? "Active" : ""
                 }`}
               >
-                <section className="flex justify-between items-center bg-gray-300 mb-3 p-3">
+                <section className="flex justify-between items-center bg-[#f6f9fa] mb-3 p-3">
                   <h6 className="font-bold text-xl">Khóa học của tôi</h6>
                   <div className="flex">
                     <input
                       ref={keyInput}
-                      className="w-full text-black border border-solid border-slate-300 h-11 rounded-l-lg p-5 text-base focus:outline-none  bg-gray-100"
+                      className="w-full text-black border border-solid h-11 rounded-l-lg p-5 text-base focus:outline-none"
                       type="text"
                       placeholder="Tìm kiếm"
                       onChange={handleChangeSearch}
                     />
-                    <div className="bg-blue-700 flex justify-center  w-2/3 rounded-r-lg">
+                    <div className="BtnGlobal BtnSearch flex justify-center">
                       <button
                         type="submit"
                         className="border-none flex items-center text-white  "

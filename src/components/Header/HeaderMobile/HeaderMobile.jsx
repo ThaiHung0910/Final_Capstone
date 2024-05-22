@@ -56,7 +56,7 @@ export default function HeaderMobile() {
         <form onSubmit={handleSubmitSearchMobile} className="HeaderSearch w-3/5 flex">
           <input
             ref={keyInputMobile}
-            className="w-full border border-solid border-[#f3f4f6] h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
+            className="w-full border border-solid h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
             type="text"
             placeholder="Tìm kiếm"
           />

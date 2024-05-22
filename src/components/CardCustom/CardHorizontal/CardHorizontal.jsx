@@ -33,7 +33,6 @@ const CardHorizontal = ({ course, number, type }) => {
         }}
         button={<button className="BtnGlobal">Đăng ký</button>}
         infoUser={infoUser}
-        confirmMessage={"Đăng ký thành công"}
         requiredMessage={"Vui lòng đăng nhập để đăng ký khóa học"}
       />
     ) : (
@@ -45,7 +44,6 @@ const CardHorizontal = ({ course, number, type }) => {
         }}
         button={<button className="BtnGlobal">Hủy đăng ký</button>}
         infoUser={infoUser}
-        confirmMessage={"Hủy đăng ký thành công"}
       />
     );
   };

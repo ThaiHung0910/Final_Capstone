@@ -69,4 +69,14 @@
   }
 }
 
-
+@media (max-width: 768px) {
+  .User {
+    .ContentRight {
+      .Info {
+        .BtnGlobal {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ const Banner = () => {
           <div className="space-y-3">
             <h1>Chào mừng</h1>
             <h1>đến với môi trường </h1>
-            <h1 className="text-blue-500 text-6xl AnimationText">
+            <h1 className="text-blue-400 text-6xl AnimationText">
               E<span className="ml-1 text-5xl">learning</span>
             </h1>
           </div>

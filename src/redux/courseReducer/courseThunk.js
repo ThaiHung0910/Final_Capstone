@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { courseService } from "../../services/courseService";
 import { userService } from "../../services/userService";
+import { message } from "antd";
+
 
 export const getListCourseThunk = createAsyncThunk(
   "courseReducer/getListCourseThunk",
@@ -9,6 +11,7 @@ export const getListCourseThunk = createAsyncThunk(
       const res = await courseService.getListCourse();
       return res.data;
     } catch (err) {
+      message.error(err.response.data)
       return rejectWithValue(err);
     }
   }
@@ -21,6 +24,7 @@ export const getCourseSearchListThunk = createAsyncThunk(
       const res = await courseService.getCourseSearchList(payload);
       return res.data;
     } catch (err) {
+      message.error(err.response.data)
       return err.response.data;
     }
   }
@@ -33,6 +37,7 @@ export const getCourseCategoryListThunk = createAsyncThunk(
       const res = await courseService.getCourseCategoryList(payload);
       return res.data;
     } catch (err) {
+      message.error(err.response.data)
       return rejectWithValue(err);
     }
   }
@@ -42,10 +47,12 @@ export const registerCourseThunk = createAsyncThunk(
   "courseReducer/registerCourseThunk",
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await courseService.registerCourse(payload);
+      await courseService.registerCourse(payload);
       const newRes = await userService.getInfoUser()
+      message.success("Đăng ký thành công")
       return newRes.data;
     } catch (err) {
+      message.error(err.response.data)
       return err.response.data;
     }
   }
@@ -55,10 +62,12 @@ export const cancelCourseThunk = createAsyncThunk(
   "courseReducer/cancelCourseThunk",
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await courseService.cancelCourse(payload);
+      await courseService.cancelCourse(payload);
       const newRes = await userService.getInfoUser()
+      message.success("Hủy khóa học thành công")
       return newRes.data;
     } catch (err) {
+      message.error(err.response.data)
       return err.response.data;
     }
   }
