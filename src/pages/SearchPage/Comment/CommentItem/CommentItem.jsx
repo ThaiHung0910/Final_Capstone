@@ -70,7 +70,7 @@ const CommentItem = ({ dataComment, dispatch, infoUser }) => {
               <span className="flex items-center absolute xl:px-1 md:px-1 px-1 rounded-lg xl:-bottom-3 md:-bottom-3 -bottom-2 xl:right-3 md:right-3 right-2 bg-white shadow ">
                 {numberLike > 0 ? (
                   <>
-                    <LikeOutlined className="text-blue-300" />
+                    <LikeOutlined className="text-blue-400" />
                     <span>{numberLike}</span>
                   </>
                 ) : (

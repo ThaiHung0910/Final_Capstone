@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Background from "../../components/Background/Background";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -6,34 +6,39 @@ import { getListCourseThunk } from "../../redux/courseReducer/courseThunk";
 import { useDispatch } from "react-redux";
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
+import { setCurrentPage, setTotalPages } from "../../redux/paginationReducer/paginationSlice";
+
+
+
 
 const CourseList = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
   const { coursesList } = useSelector((state) => state.courseReducer);
-  const totalPage = Math.ceil(coursesList.length / 12);
+  const { currentPage, itemsPerPage, totalPages } = useSelector((state) => state.paginationReducer);
 
+  
   let handlePageChange = (page) => {
-    setCurrentPage(page);
+    dispatch(setCurrentPage(page))
   };
 
   let renderCoursesList = () => {
-    let start = (currentPage - 1) * 12;
-    let end = start + 12;
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
     return coursesList.slice(start, end).map((course, index) => {
       return <CardVertical key={index} course={course} number={[7, 5]} />;
     });
   };
 
-  let fetchApi = () => {
-    dispatch(getListCourseThunk());
-  };
 
   useEffect(() => {
-    fetchApi();
+    dispatch(getListCourseThunk());
   }, []);
+
+  useEffect(() => {
+    dispatch(setTotalPages(Math.ceil(coursesList.length / itemsPerPage)));
+  }, [coursesList, itemsPerPage]);
 
   return (
     <div>
@@ -41,12 +46,12 @@ const CourseList = () => {
         path={
           [{
             href: currentPath,
-            title: <span className="text-blue-700">Danh sách khóa học</span>
+            title: <span className="text-blue-400">Danh sách khóa học</span>
           }]
         }
       />
 
-      <div className="container mx-auto p-12 space-y-7">
+      <div className="container mx-auto lg:px-12 py-12 px-3  space-y-7">
         <h6 className="text-xl font-bold">Danh sách khóa học</h6>
 
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-11">
@@ -59,7 +64,7 @@ const CourseList = () => {
               <ButtonPagination
                 currentPage={currentPage}
                 handlePageChange={handlePageChange}
-                totalPages={totalPage}
+                totalPages={totalPages}
               />
             ) : (
               ""

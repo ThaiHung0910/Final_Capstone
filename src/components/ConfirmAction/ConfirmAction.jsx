@@ -7,13 +7,11 @@ const ConfirmAction = ({
   action,
   button,
   infoUser,
-  confirmMessage,
   requiredMessage,
 }) => {
   const confirm = (e) => {
     if (infoUser) {
       action();
-      message.success(confirmMessage);
     } else {
       message.error(requiredMessage);
     }

@@ -148,7 +148,6 @@ const CardVertical = ({ course, number, isFavorite }) => {
         }}
         button={<button className="ButtonRegister BtnGlobal">Đăng ký</button>}
         infoUser={infoUser}
-        confirmMessage={"Đăng ký thành công"}
         requiredMessage={"Vui lòng đăng nhập để đăng ký khóa học"}
       />
 

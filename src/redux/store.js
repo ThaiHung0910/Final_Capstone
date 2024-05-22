@@ -3,6 +3,7 @@ import userSlice from './userReducer/userSlice';
 import loadingSlice from './loadingReducer/loadingSlice';
 import courseSlice from './courseReducer/courseSlice';
 import commentSlice from './commentReducer/commentSlice';
+import paginationSlice from './paginationReducer/paginationSlice';
 
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     userReducer: userSlice,
     loadingReducer: loadingSlice,
     courseReducer: courseSlice,
-    commentReducer: commentSlice
+    commentReducer: commentSlice,
+    paginationReducer: paginationSlice
   },
 });

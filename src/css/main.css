@@ -14,8 +14,12 @@
   height: 100%;
 }
 
+.UpdateModal.ant-modal .ant-modal-content {
+  padding: 0;
+}
 .UpdateModal.ant-modal .ant-modal-content .ant-modal-body {
   background: url(https://cdn.dribbble.com/users/1044993/screenshots/3109403/media/bad56b541a367f711456b0a52bc1aa57.gif) no-repeat 50%/cover;
+  padding: 35px;
 }
 .UpdateModal.ant-modal .ant-modal-content .ant-modal-body .FormUpdate > div {
   width: 100%;
@@ -33,6 +37,15 @@
   background-color: #f6f9fa;
 }
 
+@media (max-width: 768px) {
+  .UpdateModal.ant-modal {
+    height: 100%;
+    width: 85%;
+  }
+  .UpdateModal.ant-modal .ant-modal-content .ant-modal-body {
+    padding: 5px;
+  }
+}
 * {
   padding: 0;
   margin: 0;
@@ -228,9 +241,8 @@ body {
   display: inline-block;
   position: absolute;
   top: 170px;
-  padding: 6px 12px;
-  color: #fff;
-  background-color: #60a5fa;
+  padding: 8px 16px;
+  font-size: 16px;
 }
 .CardVertical .IconInfo {
   position: absolute;
@@ -363,12 +375,6 @@ body {
   border-radius: 50%;
 }
 
-@media (max-width: 768px) {
-  .CardVertical .ButtonRegister {
-    padding: 10px 16px;
-    font-size: 16px;
-  }
-}
 @media (max-width: 576px) {
   .CardVertical .CardBodyGlobal {
     padding: 40px 20px;
@@ -471,7 +477,7 @@ body {
   padding-top: 30px;
 }
 .Footer .Subscribe {
-  padding: 50px;
+  padding: 40px;
   max-width: 1000px;
   margin: 0 auto;
   border-radius: 10px;
@@ -792,6 +798,11 @@ body {
   color: #60a5fa;
 }
 
+.BtnSearch.BtnGlobal {
+  border-radius: 0 30px 30px 0;
+  padding: 10px 20px;
+}
+
 .CourseList {
   clear: both;
   padding: 0 !important;
@@ -966,4 +977,10 @@ body {
 }
 .User .ContentRight .TabContent.Active {
   display: block;
+}
+
+@media (max-width: 768px) {
+  .User .ContentRight .Info .BtnGlobal {
+    font-size: 16px;
+  }
 }/*# sourceMappingURL=main.css.map */

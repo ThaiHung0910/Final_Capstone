@@ -78,9 +78,9 @@ const ModalContent = ({ setIsModalOpen, infoUser }) => {
     <div>
       <form
         onSubmit={formUpdate.handleSubmit}
-        className="flex flex-col items-center justify-center FormUpdate"
+        className="flex flex-col items-center justify-center FormUpdate space-y-3"
       >
-        <h6 className="font-bold text-2xl text-white p-7">Chỉnh sửa thông tin cá nhân</h6>
+        <h6 className="font-bold text-2xl text-white">Chỉnh sửa thông tin cá nhân</h6>
         <FormInputCustom
           disable={true}
           name="taiKhoan"

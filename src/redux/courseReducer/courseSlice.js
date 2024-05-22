@@ -6,7 +6,6 @@ import {
   getListCourseThunk,
   registerCourseThunk,
 } from "./courseThunk";
-import { message } from "antd";
 import { userLocal } from "../../services/localService";
 
 const initialState = {
@@ -50,9 +49,6 @@ const courseSlice = createSlice({
           state.infoUserCourseRegister = newData;
           userLocal.set(newData);
         }
-      })
-      .addCase(registerCourseThunk.rejected, (state, action) => {
-        message.error(action.payload);
       })
       .addCase(cancelCourseThunk.fulfilled, (state, action) => {
         if (action.payload) {
