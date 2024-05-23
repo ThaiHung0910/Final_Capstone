@@ -933,6 +933,14 @@ body {
     font-size: 12px;
     padding: 12px 8px;
   }
+  .DetailCourse .SectionCourse span {
+    font-size: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .DetailCourse .SectionCourse span {
+    font-size: 14px;
+  }
 }
 .ListCategory .Title {
   display: inline-block;
