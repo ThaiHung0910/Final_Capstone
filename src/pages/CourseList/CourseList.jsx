@@ -6,21 +6,22 @@ import { getListCourseThunk } from "../../redux/courseReducer/courseThunk";
 import { useDispatch } from "react-redux";
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
-import { setCurrentPage, setTotalPages } from "../../redux/paginationReducer/paginationSlice";
-
-
-
+import {
+  setCurrentPage,
+  setTotalPages,
+} from "../../redux/paginationReducer/paginationSlice";
 
 const CourseList = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   const dispatch = useDispatch();
   const { coursesList } = useSelector((state) => state.courseReducer);
-  const { currentPage, itemsPerPage, totalPages } = useSelector((state) => state.paginationReducer);
+  const { currentPage, itemsPerPage, totalPages } = useSelector(
+    (state) => state.paginationReducer
+  );
 
-  
   let handlePageChange = (page) => {
-    dispatch(setCurrentPage(page))
+    dispatch(setCurrentPage(page));
   };
 
   let renderCoursesList = () => {
@@ -30,7 +31,6 @@ const CourseList = () => {
       return <CardVertical key={index} course={course} number={[7, 5]} />;
     });
   };
-
 
   useEffect(() => {
     dispatch(getListCourseThunk());
@@ -43,12 +43,12 @@ const CourseList = () => {
   return (
     <div>
       <Background
-        path={
-          [{
+        path={[
+          {
             href: currentPath,
-            title: <span className="text-blue-400">Danh sách khóa học</span>
-          }]
-        }
+            title: <span className="text-blue-400">Danh sách khóa học</span>,
+          },
+        ]}
       />
 
       <div className="container mx-auto lg:px-12 py-12 px-3  space-y-7">
@@ -58,19 +58,11 @@ const CourseList = () => {
           {renderCoursesList()}
         </div>
 
-        <nav className="Pagination">
-          <ul className="flex justify-end">
-            {coursesList.length > 1 ? (
-              <ButtonPagination
-                currentPage={currentPage}
-                handlePageChange={handlePageChange}
-                totalPages={totalPages}
-              />
-            ) : (
-              ""
-            )}
-          </ul>
-        </nav>
+        <ButtonPagination
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+          totalPages={totalPages}
+        />
       </div>
     </div>
   );

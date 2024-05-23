@@ -20,37 +20,37 @@
   display: flex;
   flex-wrap: wrap;
 
-  .Error {
-    position: relative;
-    margin: 24px 0;
-    padding: 10px 0;
-    border-top: 5px solid $colorGlobal;
-    border-radius: 0 0 5px 5px;
-    background: $colorBgPrimary;
-    width: 100%;
+  
+}
 
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-    }
+.Error {
+  position: relative;
+  margin: 24px 0;
+  padding: 10px 0;
+  border-top: 5px solid $colorGlobal;
+  width: 100%;
 
-    &:before {
-      top: 0;
-      right: 20px;
-      width: 20px;
-      height: 30px;
-      background: $colorGlobal;
-    }
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+  }
 
-    &:after {
-      top: 10px;
-      right: 20px;
-      width: 0;
-      height: 0;
-      border: 10px solid transparent;
-      border-bottom-color: $colorWhite;
-    }
+  &:before {
+    top: 0;
+    right: 20px;
+    width: 20px;
+    height: 30px;
+    background: $colorGlobal;
+  }
+
+  &:after {
+    top: 10px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: $colorWhite;
   }
 }
 

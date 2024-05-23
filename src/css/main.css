@@ -131,10 +131,18 @@ body {
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
+  transition: all 0.5s;
+}
+.Pagination li button:hover {
+  color: #60a5fa;
+  border-color: #60a5fa;
 }
 .Pagination li button.Active {
   border: 1px solid #60a5fa;
   color: #60a5fa;
+}
+.Pagination li button.Active:hover {
+  cursor: default;
 }
 
 @media (max-width: 1024px) {
@@ -812,27 +820,26 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-.CourseList .Error {
+
+.Error {
   position: relative;
   margin: 24px 0;
   padding: 10px 0;
   border-top: 5px solid #60a5fa;
-  border-radius: 0 0 5px 5px;
-  background: #f6f9fa;
   width: 100%;
 }
-.CourseList .Error:before, .CourseList .Error:after {
+.Error:before, .Error:after {
   content: "";
   position: absolute;
 }
-.CourseList .Error:before {
+.Error:before {
   top: 0;
   right: 20px;
   width: 20px;
   height: 30px;
   background: #60a5fa;
 }
-.CourseList .Error:after {
+.Error:after {
   top: 10px;
   right: 20px;
   width: 0;

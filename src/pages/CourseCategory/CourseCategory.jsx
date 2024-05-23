@@ -37,8 +37,10 @@ const CourseCategory = () => {
   }, [maDanhMuc]);
 
   useEffect(() => {
-    dispatch(setTotalPages((Math.ceil(coursesCategoryList.length / itemsPerPage))))
-  }, [coursesCategoryList, itemsPerPage])
+    dispatch(
+      setTotalPages(Math.ceil(coursesCategoryList.length / itemsPerPage))
+    );
+  }, [coursesCategoryList, itemsPerPage]);
 
   return (
     <div>
@@ -67,19 +69,11 @@ const CourseCategory = () => {
             {renderCard()}
           </div>
 
-          <nav className="Pagination">
-            <ul className="flex justify-end">
-              {totalPages > 1 ? (
-                <ButtonPagination
-                  currentPage={currentPage}
-                  handlePageChange={handlePageChange}
-                  totalPages={totalPages}
-                />
-              ) : (
-                ""
-              )}
-            </ul>
-          </nav>
+          <ButtonPagination
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+            totalPages={totalPages}
+          />
         </div>
       </div>
     </div>

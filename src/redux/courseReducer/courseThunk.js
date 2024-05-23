@@ -25,7 +25,7 @@ export const getCourseSearchListThunk = createAsyncThunk(
       return res.data;
     } catch (err) {
       message.error(err.response.data)
-      return err.response.data;
+      return rejectWithValue(err);
     }
   }
 );
@@ -52,8 +52,8 @@ export const registerCourseThunk = createAsyncThunk(
       message.success("Đăng ký thành công")
       return newRes.data;
     } catch (err) {
-      message.error(err.response.data)
-      return err.response.data;
+      message.error("Đăng ký không thành công")
+      return rejectWithValue(err);
     }
   }
 );
@@ -67,8 +67,8 @@ export const cancelCourseThunk = createAsyncThunk(
       message.success("Hủy khóa học thành công")
       return newRes.data;
     } catch (err) {
-      message.error(err.response.data)
-      return err.response.data;
+      message.error("Hủy khóa học thất bại")
+      return rejectWithValue(err);
     }
   }
 );

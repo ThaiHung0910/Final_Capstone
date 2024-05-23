@@ -8,9 +8,10 @@ import CardHorizontal from "../../components/CardCustom/CardHorizontal/CardHoriz
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
 import Comment from "./Comment/Comment";
 import { Rate } from "antd";
-import { setCurrentPage, setTotalPages } from "../../redux/paginationReducer/paginationSlice";
-
-
+import {
+  setCurrentPage,
+  setTotalPages,
+} from "../../redux/paginationReducer/paginationSlice";
 
 const SearchPage = () => {
   let { tuKhoa } = useParams();
@@ -21,21 +22,25 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const [currentType, setCurrentType] = useState("horizontal");
   const { coursesSearchList } = useSelector((state) => state.courseReducer);
-  const { currentPage, itemsPerPage, totalPages } = useSelector((state) => state.paginationReducer);
+  const { currentPage, itemsPerPage, totalPages } = useSelector(
+    (state) => state.paginationReducer
+  );
 
-
+  const courseListLength = coursesSearchList.length;
 
   let showSearchResult = () => {
-    let length = coursesSearchList.length;
     let pageFirst = (currentPage - 1) * itemsPerPage + 1,
       pageLast =
-        currentPage === totalPages ? length : (currentPage - 1) * itemsPerPage + itemsPerPage;
-    return `Hiển thị ${pageFirst} - ${pageLast} trong ${length} kết quả tìm thấy`;
+        currentPage === totalPages
+          ? courseListLength
+          : (currentPage - 1) * itemsPerPage + itemsPerPage;
+    let courseQuantity = ''
+    pageFirst === pageLast ? courseQuantity = 1 : courseQuantity = `${pageFirst} - ${pageLast}`
+    return `Hiển thị ${courseQuantity} khóa học trong ${courseListLength} kết quả tìm thấy`;
   };
 
-
   let renderCoursesListSearch = () => {
-    if (coursesSearchList.length) {
+    if (courseListLength) {
       let start = (currentPage - 1) * itemsPerPage;
       let end = start + itemsPerPage;
 
@@ -43,7 +48,7 @@ const SearchPage = () => {
         case "horizontal":
           return (
             <ul className="CourseList my-7">
-              {coursesSearchList?.slice(start, end)?.map((course, index) => {
+              {coursesSearchList?.slice(start, end).map((course, index) => {
                 return (
                   <CardHorizontal
                     key={index}
@@ -58,7 +63,7 @@ const SearchPage = () => {
         default:
           return (
             <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
-              {coursesSearchList?.slice(start, end)?.map((course, index) => {
+              {coursesSearchList?.slice(start, end).map((course, index) => {
                 return (
                   <CardVertical key={index} course={course} number={[7, 5]} />
                 );
@@ -76,7 +81,7 @@ const SearchPage = () => {
   };
 
   const handlePageChange = (page) => {
-    dispatch(setCurrentPage(page))
+    dispatch(setCurrentPage(page));
     if (itemResultSearch.current) {
       itemResultSearch.current.scrollIntoView({
         behavior: "smooth",
@@ -102,7 +107,7 @@ const SearchPage = () => {
   }, [tuKhoa]);
 
   useEffect(() => {
-    dispatch(setTotalPages(Math.ceil(coursesSearchList.length / itemsPerPage)));
+    dispatch(setTotalPages(Math.ceil(courseListLength / itemsPerPage)));
   }, [coursesSearchList, itemsPerPage]);
 
   return (
@@ -114,40 +119,45 @@ const SearchPage = () => {
       />
 
       <div className="container mx-auto text-lg xl:p-10">
-        <div className="flex xl:justify-between xl:flex-row  flex-col">
+        <div
+          className={`flex xl:justify-between xl:flex-row  flex-col ${
+            courseListLength ? "items-center" : ""
+          }`}
+        >
           <div ref={itemResultSearch} className="xl:w-3/4">
             <div className="flex justify-between bg-[#f6f9fa] my-3 p-3 ">
-              <div className="flex items-center">
-                <div className="Type flex items-center">
-                  <button
-                    className={`mr-2 ${
-                      currentType === "horizontal" ? "Active" : ""
-                    }`}
-                    onClick={() => {
-                      handleChangeType("horizontal");
-                    }}
-                  >
-                    <i className="fa-solid fa-list"></i>
-                  </button>
-                  <button
-                    className={`${
-                      currentType === "horizontal" ? "" : "Active"
-                    }`}
-                    onClick={() => {
-                      handleChangeType("vertical");
-                    }}
-                  >
-                    <i className="fa-solid fa-table-cells-large"></i>
-                  </button>
+              {courseListLength ? (
+                <div className="flex items-center">
+                  <div className="Type flex items-center">
+                    <button
+                      className={`mr-2 ${
+                        currentType === "horizontal" ? "Active" : ""
+                      }`}
+                      onClick={() => {
+                        handleChangeType("horizontal");
+                      }}
+                    >
+                      <i className="fa-solid fa-list"></i>
+                    </button>
+                    <button
+                      className={`${
+                        currentType === "horizontal" ? "" : "Active"
+                      }`}
+                      onClick={() => {
+                        handleChangeType("vertical");
+                      }}
+                    >
+                      <i className="fa-solid fa-table-cells-large"></i>
+                    </button>
+                  </div>
+
+                  <div className="course-index ml-3">
+                    {courseListLength && <span>{showSearchResult()}</span>}
+                  </div>
                 </div>
-                <div className="course-index ml-3">
-                  {coursesSearchList.length ? (
-                    <span>{showSearchResult()}</span>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </div>
+              ) : (
+                <div></div>
+              )}
 
               <form onSubmit={handleSubmitSearch} className="flex">
                 <input
@@ -156,37 +166,27 @@ const SearchPage = () => {
                   type="text"
                   placeholder="Tìm kiếm"
                 />
-                <div className="BtnSearch bg-blue-400 flex justify-center  w-1/4 BtnGlobal">
-                  <button
-                    type="submit"
-                    className="border-none flex items-center text-white  "
-                  >
-                    <i className="fa fa-search mr-2" />
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  className="BtnSearch BtnGlobal flex w-1/4   items-center text-white  "
+                >
+                  <i className="fa fa-search" />
+                </button>
               </form>
             </div>
 
             <div>
               {renderCoursesListSearch()}
 
-              <nav className="Pagination">
-                <ul className="flex justify-end">
-                  {totalPages > 1 ? (
-                    <ButtonPagination
-                      currentPage={currentPage}
-                      handlePageChange={handlePageChange}
-                      totalPages={totalPages}
-                    />
-                  ) : (
-                    ""
-                  )}
-                </ul>
-              </nav>
+              <ButtonPagination
+                currentPage={currentPage}
+                handlePageChange={handlePageChange}
+                totalPages={totalPages}
+              />
             </div>
           </div>
 
-          <div className="Comment mx-auto">
+          <div className="Comment">
             <div
               className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border "
               style={{ width: "300px" }}

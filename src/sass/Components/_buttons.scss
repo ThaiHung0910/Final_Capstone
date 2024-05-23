@@ -65,6 +65,7 @@
 .Pagination {
   li {
     margin-right: 7px;
+    
     button {
       width: 40px;
       height: 40px;
@@ -73,11 +74,21 @@
       text-align: center;
       line-height: 40px;
       border-radius: 50%;
+      transition: all 0.5s;
+      &:hover {
+        color: $colorGlobal;
+        border-color: $colorGlobal;
+      }
     }
     button.Active {
       border: 1px solid $colorGlobal;
       color: $colorGlobal;
+
+      &:hover {
+       cursor: default;
+      }
     }
+    
   }
 }
 

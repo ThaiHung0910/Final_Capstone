@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import CardHorizontal from "../../components/CardCustom/CardHorizontal/CardHorizontal";
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import { ResponsiveLargeScreen } from "../../HOC/responsive";
-import { setCurrentPage, setTotalPages } from "../../redux/paginationReducer/paginationSlice";
-
-
-
+import {
+  setCurrentPage,
+  setTotalPages,
+} from "../../redux/paginationReducer/paginationSlice";
 
 const UserInfoPage = () => {
   const location = useLocation();
@@ -24,8 +24,9 @@ const UserInfoPage = () => {
   const [currentTab, setCurrentTab] = useState(tabState);
   const [searchValue, setSearchValue] = useState("");
   const { infoUser } = useSelector((state) => state.userReducer);
-  const { currentPage, itemsPerPage, totalPages } = useSelector((state) => state.paginationReducer);
-
+  const { currentPage, itemsPerPage, totalPages } = useSelector(
+    (state) => state.paginationReducer
+  );
 
   const { infoUserCourseRegister } = useSelector(
     (state) => state.courseReducer
@@ -41,8 +42,6 @@ const UserInfoPage = () => {
   let handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  
 
   let renderModal = () => {
     return (
@@ -64,7 +63,7 @@ const UserInfoPage = () => {
   };
 
   let handlePageChange = (page) => {
-    dispatch( setCurrentPage(page))
+    dispatch(setCurrentPage(page));
   };
 
   let renderCourseRegister = () => {
@@ -91,11 +90,11 @@ const UserInfoPage = () => {
     setCurrentTab(tabState);
   }, [tabState]);
 
-
   useEffect(() => {
-    dispatch(setTotalPages(Math.ceil(infoUserCourseRegister.length / itemsPerPage)));
+    dispatch(
+      setTotalPages(Math.ceil(infoUserCourseRegister.length / itemsPerPage))
+    );
   }, [infoUserCourseRegister, itemsPerPage]);
-
 
   return (
     <div>
@@ -206,19 +205,11 @@ const UserInfoPage = () => {
                 </section>
 
                 <div className="grid grid-cols-1">{renderCourseRegister()}</div>
-                <nav className="Pagination">
-                  <ul className="flex justify-end">
-                    {totalPages > 1 ? (
-                      <ButtonPagination
-                        currentPage={currentPage}
-                        handlePageChange={handlePageChange}
-                        totalPages={totalPages}
-                      />
-                    ) : (
-                      ""
-                    )}
-                  </ul>
-                </nav>
+                <ButtonPagination
+                  currentPage={currentPage}
+                  handlePageChange={handlePageChange}
+                  totalPages={totalPages}
+                />
               </div>
             </div>
           </div>
