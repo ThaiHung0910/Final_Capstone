@@ -28,7 +28,7 @@ const CourseList = () => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     return coursesList.slice(start, end).map((course, index) => {
-      return <CardVertical key={index} course={course} number={[7, 5]} />;
+      return <CardVertical key={index} course={course} number={[7, 5]} type={'register'} />;
     });
   };
 

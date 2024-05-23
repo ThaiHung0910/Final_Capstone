@@ -81,7 +81,7 @@ const LoginPage = () => {
             >
               Đăng nhập
             </button>
-            <div className=" text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-[#c6c7cc]">
+            <div className=" sm:text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-[#c6c7cc]">
               Bạn chưa có tài khoản?{" "}
               <span
                 onClick={() => {
