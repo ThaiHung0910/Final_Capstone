@@ -83,11 +83,11 @@ const UserInfoPage = () => {
           switch (layout) {
             case "horizontal":
               return (
-                <CardHorizontal key={index} course={course} number={[7, 5]} />
+                <CardHorizontal key={index} course={course} number={[7, 5]} type={'cancel'} />
               );
             default:
               return (
-                <CardVertical key={index} course={course} number={[7, 5]} />
+                <CardVertical key={index} course={course} number={[7, 5]} type={'cancel'} />
               );
           }
         }

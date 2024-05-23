@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { avatar, background, imageNotFound } from "../../../assets/img/js/img";
 import ModalContent from "./ModalContent/ModalContent";
-import { registerCourseThunk,cancelCourseThunk} from "../../../redux/courseReducer/courseThunk";
+import {
+  registerCourseThunk,
+  cancelCourseThunk,
+} from "../../../redux/courseReducer/courseThunk";
 import { ResponsiveLargeScreen } from "../../../HOC/responsive";
 import ConfirmAction from "../../ConfirmAction/ConfirmAction";
 const CardVertical = ({ course, number, isFavorite, type }) => {
@@ -63,7 +66,19 @@ const CardVertical = ({ course, number, isFavorite, type }) => {
       taiKhoan: infoUser?.taiKhoan,
     };
 
-    return type === "register" ? (
+    return type === "cancel" ? (
+      <ConfirmAction
+        title={"Hủy khóa học"}
+        description={"Bạn xác nhận hủy khóa học này?"}
+        action={() => {
+          dispatch(cancelCourseThunk(params));
+        }}
+        button={
+          <button className="BtnGlobal ButtonVertical">Hủy đăng ký</button>
+        }
+        infoUser={infoUser}
+      />
+    ) : (
       <ConfirmAction
         title={"Đăng ký khóa học"}
         description={"Bạn xác nhận đăng ký khóa học này?"}
@@ -73,16 +88,6 @@ const CardVertical = ({ course, number, isFavorite, type }) => {
         button={<button className="BtnGlobal ButtonVertical">Đăng ký</button>}
         infoUser={infoUser}
         requiredMessage={"Vui lòng đăng nhập để đăng ký khóa học"}
-      />
-    ) : (
-      <ConfirmAction
-        title={"Hủy khóa học"}
-        description={"Bạn xác nhận hủy khóa học này?"}
-        action={() => {
-          dispatch(cancelCourseThunk(params));
-        }}
-        button={<button className="BtnGlobal ButtonVertical">Hủy đăng ký</button>}
-        infoUser={infoUser}
       />
     );
   };

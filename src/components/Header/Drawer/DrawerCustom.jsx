@@ -71,14 +71,14 @@ const DrawerCustom = ({
           className="flex items-center space-x-2 py-3 px-2 mt-2 transition rounded-lg cursor-pointer hover:text-blue-400 duration-200"
         >
           <HistoryOutlined className="p-2 leading-7 text-2xl  text-white text-center  bg-[#acafb4] rounded-full" />{" "}
-          <span className=" text-lg">Khóa học của tôi</span>
+          <span className="sm:text-xl text-base">Khóa học của tôi</span>
         </div>
       ) : (
         <ResponsiveSmallScreen>
           {renderNav(
             "/auth/login",
             <UserOutlined className="p-2 leading-7 text-2xl text-white text-center bg-[#acafb4] rounded-full" />,
-            "Đăng nhập"
+            <span className="sm:text-xl text-base">Đăng nhập</span>
           )}
         </ResponsiveSmallScreen>
       )}
@@ -89,7 +89,7 @@ const DrawerCustom = ({
             <UnorderedListOutlined className="p-2 leading-7 text-2xl text-white text-center bg-[#acafb4] rounded-full" />{" "}
             <Dropdown
               title={
-                <span className="text-xl hover:text-blue-400 text-white  ml-2">
+                <span className="sm:text-xl text-base hover:text-blue-400 text-white relative right-1  ml-2">
                   Danh mục khóa học
                 </span>
               }
@@ -100,7 +100,7 @@ const DrawerCustom = ({
         {renderNav(
           "/khoahoc",
           <DatabaseOutlined className="p-2 leading-7 text-2xl text-white text-center bg-[#acafb4] rounded-full" />,
-          "Danh sách khóa học"
+          <span className="sm:text-xl text-base" >Danh sách khóa học</span>
         )}
       </ResponsiveSmallScreen>
 
@@ -112,13 +112,13 @@ const DrawerCustom = ({
           className="flex items-center space-x-2 py-3 px-2 mt-2 transition rounded-lg cursor-pointer hover:text-blue-400 duration-200"
         >
           <LogoutOutlined className="p-2 leading-7 text-2xl  text-white text-center  bg-[#acafb4] rounded-full" />{" "}
-          <span className=" text-lg">Đăng xuất</span>
+          <span className="sm:text-xl text-base">Đăng xuất</span>
         </div>
       ) : (
         renderNav(
           "/auth/register",
           <UsergroupAddOutlined className="p-2 leading-7 text-2xl  text-white text-center  bg-[#acafb4] rounded-full " />,
-          "Đăng ký"
+          <span className="sm:text-xl text-base">Đăng ký</span>
         )
       )}
     </Drawer>
