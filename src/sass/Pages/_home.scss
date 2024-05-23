@@ -272,6 +272,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .About {
+    .Review {
+      p {
+        min-height: 240px;
+      }
+    }
+  }
+}
+
 @media (max-width: 480px) {
   .About {
     .Post {
@@ -282,5 +292,6 @@
         font-size: 12px;
       }
     }
+    
   }
 }

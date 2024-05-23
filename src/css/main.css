@@ -794,6 +794,11 @@ body {
     min-height: 160px;
   }
 }
+@media (max-width: 768px) {
+  .About .Review p {
+    min-height: 240px;
+  }
+}
 @media (max-width: 480px) {
   .About .Post h6 {
     font-size: 14px;
