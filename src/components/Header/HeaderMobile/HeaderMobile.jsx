@@ -1,4 +1,4 @@
-import React, { useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchOutlined } from "@ant-design/icons";
@@ -7,6 +7,8 @@ import { logo } from "../../../assets/img/js/img";
 import UserNavMobile from "./UserNavMobile/UserNavMobile";
 import { getCourseCategoryAction } from "../../../redux/courseReducer/courseSlice";
 import { courseService } from "../../../services/courseService";
+import { handleSubmitSearch } from "../../../utils";
+import { setCurrentPage } from "../../../redux/paginationReducer/paginationSlice";
 
 export default function HeaderMobile() {
   const navigate = useNavigate();
@@ -32,11 +34,9 @@ export default function HeaderMobile() {
   };
 
   const handleSubmitSearchMobile = (e) => {
-    e.preventDefault();
-    if (keyInputMobile.current.value !== "") {
-      navigate(`/timkiem/${keyInputMobile.current.value}`);
-      keyInputMobile.current.value = "";
-    }
+    handleSubmitSearch(e, keyInputMobile, navigate, () => {
+      dispatch(setCurrentPage(1));
+    });
   };
 
   useEffect(() => {
@@ -50,20 +50,20 @@ export default function HeaderMobile() {
       } py-2 z-30 shadow-md Header`}
     >
       <div className="container mx-auto flex justify-between items-center px-3">
-        <NavLink to={"/"} >
+        <NavLink to={"/"}>
           <img src={logo[0]} width={100} alt="" />
         </NavLink>
-        <form onSubmit={handleSubmitSearchMobile} className="HeaderSearch w-3/5 flex">
+        <form
+          onSubmit={handleSubmitSearchMobile}
+          className="HeaderSearch w-3/5 flex"
+        >
           <input
             ref={keyInputMobile}
             className="w-full border border-solid h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
             type="text"
             placeholder="Tìm kiếm"
           />
-          <button
-            type="submit"
-            className="BtnGlobal"
-          >
+          <button type="submit" className="BtnGlobal">
             <SearchOutlined className="text-xl mr-1" />
           </button>
         </form>

@@ -12,6 +12,7 @@ import {
   setCurrentPage,
   setTotalPages,
 } from "../../redux/paginationReducer/paginationSlice";
+import { handleSubmitSearch } from "../../utils";
 
 const SearchPage = () => {
   let { tuKhoa } = useParams();
@@ -34,8 +35,10 @@ const SearchPage = () => {
         currentPage === totalPages
           ? courseListLength
           : (currentPage - 1) * itemsPerPage + itemsPerPage;
-    let courseQuantity = ''
-    pageFirst === pageLast ? courseQuantity = 1 : courseQuantity = `${pageFirst} - ${pageLast}`
+    let courseQuantity = "";
+    pageFirst === pageLast
+      ? (courseQuantity = 1)
+      : (courseQuantity = `${pageFirst} - ${pageLast}`);
     return `Hiển thị ${courseQuantity} khóa học trong ${courseListLength} kết quả tìm thấy`;
   };
 
@@ -90,12 +93,10 @@ const SearchPage = () => {
     }
   };
 
-  const handleSubmitSearch = (e) => {
-    e.preventDefault();
-    if (keyInput.current.value !== "") {
-      navigate(`/timkiem/${keyInput.current.value}`);
-      keyInput.current.value = "";
-    }
+  const handleSubmit = (e) => {
+    handleSubmitSearch(e, keyInput, navigate, () => {
+      dispatch(setCurrentPage(1));
+    });
   };
 
   let handleChangeType = (type) => {
@@ -118,10 +119,10 @@ const SearchPage = () => {
         ]}
       />
 
-      <div className="container mx-auto text-lg xl:p-10">
+      <div className="container mx-auto text-lg xl:px-10 py-10 px-3">
         <div
           className={`flex xl:justify-between xl:flex-row  flex-col ${
-            courseListLength ? "items-center" : ""
+            courseListLength ? "items-center" : ''
           }`}
         >
           <div ref={itemResultSearch} className="xl:w-3/4">
@@ -151,15 +152,15 @@ const SearchPage = () => {
                     </button>
                   </div>
 
-                  <div className="course-index ml-3">
-                    {courseListLength && <span>{showSearchResult()}</span>}
+                  <div className="course-index lg:ml-3 ml-2">
+                    {courseListLength && <span className="text-black lg:text-lg text-xs">{showSearchResult()}</span>}
                   </div>
                 </div>
               ) : (
                 <div></div>
               )}
 
-              <form onSubmit={handleSubmitSearch} className="flex">
+              <form onSubmit={handleSubmit} className="flex">
                 <input
                   ref={keyInput}
                   className="w-full text-black border border-solid  h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
@@ -168,7 +169,7 @@ const SearchPage = () => {
                 />
                 <button
                   type="submit"
-                  className="BtnSearch BtnGlobal flex w-1/4   items-center text-white  "
+                  className="BtnSearch BtnGlobal flex w-1/4 justify-center  items-center text-white  "
                 >
                   <i className="fa fa-search" />
                 </button>
@@ -186,7 +187,7 @@ const SearchPage = () => {
             </div>
           </div>
 
-          <div className="Comment">
+          <div className='Comment flex justify-center md:block md:justify-start'>
             <div
               className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border "
               style={{ width: "300px" }}

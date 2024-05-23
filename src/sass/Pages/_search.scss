@@ -62,3 +62,10 @@
     margin: auto;
   }
 }
+
+
+@media (max-width: '768px') {
+  .BtnSearch.BtnGlobal {
+    padding: 10px 6px;
+  }
+}
