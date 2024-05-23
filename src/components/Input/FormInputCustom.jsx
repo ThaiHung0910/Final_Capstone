@@ -25,7 +25,7 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
     setFocusedInput(false);
   };
 
-  // Xử lý khi có lỗi trả về từ API
+  
   if (!formikField.values.isLogin) {
     if (errorFromApi) {
       errors[name] = errorFromApi;
@@ -55,7 +55,7 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
   }, [value, errorMessage]);
 
   useEffect(() => {
-    // Lấy dữ liệu từ localStorage khi component được render lần đầu tiên
+    
     if (!localStorageLoaded) {
       const storedData = duplicateLocal.get() || {};
       if (storedData) {
@@ -65,7 +65,7 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
     }
   }, []);
 
-  // Cập nhật dữ liệu vào localStorage
+  
   useEffect(() => {
     const storedData = duplicateLocal.get() || {};
     const updateLocalStorage = () => {
@@ -76,7 +76,7 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
       duplicateLocal.set(newData);
     };
 
-    // Gọi hàm updateLocalStorage khi có sự thay đổi trong duplicateErrors
+    
     if (localStorageLoaded) {
       updateLocalStorage();
     }

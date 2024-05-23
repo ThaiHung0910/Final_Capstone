@@ -7,12 +7,18 @@ import ModalContent from "./ModalContent/ModalContent";
 import { getInfoUserThunk } from "../../redux/userReducer/userThunk";
 import { useDispatch, useSelector } from "react-redux";
 import CardHorizontal from "../../components/CardCustom/CardHorizontal/CardHorizontal";
+import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
-import { ResponsiveLargeScreen } from "../../HOC/responsive";
+import {
+  ResponsiveLargeScreen,
+  ResponsiveMiddleScreen,
+  ResponsiveSmallScreen,
+} from "../../HOC/responsive";
 import {
   setCurrentPage,
   setTotalPages,
 } from "../../redux/paginationReducer/paginationSlice";
+
 
 const UserInfoPage = () => {
   const location = useLocation();
@@ -66,14 +72,24 @@ const UserInfoPage = () => {
     dispatch(setCurrentPage(page));
   };
 
-  let renderCourseRegister = () => {
+  let renderCourseRegister = (layout) => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
+
     return infoUser?.chiTietKhoaHocGhiDanh
       ?.slice(start, end)
       ?.map((course, index) => {
         if (course?.tenKhoaHoc.includes(searchValue)) {
-          return <CardHorizontal key={index} course={course} number={[7, 5]} />;
+          switch (layout) {
+            case "horizontal":
+              return (
+                <CardHorizontal key={index} course={course} number={[7, 5]} />
+              );
+            default:
+              return (
+                <CardVertical key={index} course={course} number={[7, 5]} />
+              );
+          }
         }
       });
   };
@@ -184,7 +200,7 @@ const UserInfoPage = () => {
                 }`}
               >
                 <section className="flex justify-between items-center bg-[#f6f9fa] mb-3 p-3">
-                  <h6 className="font-bold text-xl">Khóa học của tôi</h6>
+                  <h6 className="font-bold sm:text-xl w-1/2 ">Khóa học của tôi</h6>
                   <div className="flex">
                     <input
                       ref={keyInput}
@@ -204,7 +220,14 @@ const UserInfoPage = () => {
                   </div>
                 </section>
 
-                <div className="grid grid-cols-1">{renderCourseRegister()}</div>
+                <div className="grid grid-cols-1">
+                  <ResponsiveMiddleScreen>
+                    {renderCourseRegister("horizontal")}
+                  </ResponsiveMiddleScreen>
+                  <ResponsiveSmallScreen>
+                    {renderCourseRegister("vertical")}
+                  </ResponsiveSmallScreen>
+                </div>
                 <ButtonPagination
                   currentPage={currentPage}
                   handlePageChange={handlePageChange}

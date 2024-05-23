@@ -108,7 +108,7 @@ const Footer = () => {
                       <span> Full stack</span>
                     </li>
                     <li>
-                      <p> Node Js</p>
+                      <span> Node Js</span>
                     </li>
                   </ul>
                 </div>

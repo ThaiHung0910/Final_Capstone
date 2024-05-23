@@ -36,7 +36,7 @@ const DetailPage = () => {
 
   let renderCourseRelated = () => {
     return coursesList.slice(0, 4).map((course, index) => {
-      return <CardVertical key={index} course={course} number={[7, 5]} />;
+      return <CardVertical key={index} course={course} number={[7, 5]} type={"register"} />;
     });
   };
 
@@ -68,18 +68,18 @@ const DetailPage = () => {
         ]}
       />
 
-      <div className="container mx-auto lg:px-12">
+      <div className="container mx-auto lg:px-12 px-3">
         <h1 className="text-3xl font-bold  py-5">Thông tin khóa học</h1>
 
-        <div>
-          <div className="lg:flex space-x-7">
+        <div className="">
+          <div className="lg:flex grid grid-cols-1 gap-2">
             <div className="lg:w-2/3 space-y-5">
               <h1 className="text-xl font-bold ">
                 {courseDetail.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
               </h1>
 
-              <ul className="flex">
-                <li className="mr-7 pr-7 border-[#f3f4f6]  border-r-2">
+              <ul className="md:flex md:flex-row grid grid-cols-2 gap-4">
+                <li className="md:mr-7 md:pr-7 md:border-[#f3f4f6]  md:border-r-2">
                   <div className="flex items-center">
                     <div className="mr-2">
                       <img alt="" src={avatar[2]} height={50} width={50} />
@@ -94,14 +94,14 @@ const DetailPage = () => {
                     </div>
                   </div>
                 </li>
-                <li className="mr-7 pr-7 border-[#f3f4f6] border-r-2">
+                <li className="md:mr-7 md:pr-7 md:border-[#f3f4f6] md:border-r-2">
                   <div className="flex flex-col items-center h-full justify-center">
-                    <label>Học viên</label>
+                    <label >Học viên</label>
                     <p className="font-bold">{numberStudent}</p>
                   </div>
                 </li>
-                <li className="w-2/5">
-                  <div className="flex flex-col items-center h-full justify-center">
+                <li className="md:w-2/5 col-span-2">
+                  <div className="flex flex-col md:items-center h-full md:justify-center">
                     <div className="w-full ml-2">
                       <h3>Đánh giá</h3>
                     </div>

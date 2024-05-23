@@ -13,9 +13,12 @@ import {
   setTotalPages,
 } from "../../redux/paginationReducer/paginationSlice";
 import { handleSubmitSearch } from "../../utils";
+import { ResponsiveMiddleScreen } from "../../HOC/responsive";
+import { useMediaQuery } from "react-responsive";
 
 const SearchPage = () => {
   let { tuKhoa } = useParams();
+  const isMobile = useMediaQuery({ maxWidth: "640px" });
   let url = `/timkiem/${tuKhoa}`;
   const navigate = useNavigate();
   const keyInput = useRef(),
@@ -47,32 +50,44 @@ const SearchPage = () => {
       let start = (currentPage - 1) * itemsPerPage;
       let end = start + itemsPerPage;
 
-      switch (currentType) {
-        case "horizontal":
-          return (
-            <ul className="CourseList my-7">
-              {coursesSearchList?.slice(start, end).map((course, index) => {
-                return (
-                  <CardHorizontal
-                    key={index}
-                    course={course}
-                    number={[7, 5]}
-                    type={"register"}
-                  />
-                );
-              })}
-            </ul>
-          );
-        default:
-          return (
-            <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
-              {coursesSearchList?.slice(start, end).map((course, index) => {
-                return (
-                  <CardVertical key={index} course={course} number={[7, 5]} />
-                );
-              })}
-            </div>
-          );
+      if (!isMobile) {
+        switch (currentType) {
+          case "horizontal":
+            return (
+              <ul className="CourseList my-7">
+                {coursesSearchList?.slice(start, end).map((course, index) => {
+                  return (
+                    <CardHorizontal
+                      key={index}
+                      course={course}
+                      number={[7, 5]}
+                      type={"register"}
+                    />
+                  );
+                })}
+              </ul>
+            );
+          default:
+            return (
+              <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
+                {coursesSearchList?.slice(start, end).map((course, index) => {
+                  return (
+                    <CardVertical key={index} course={course} number={[7, 5]} type={'register'} />
+                  );
+                })}
+              </div>
+            );
+        }
+      } else {
+        return (
+          <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
+            {coursesSearchList?.slice(start, end).map((course, index) => {
+              return (
+                <CardVertical key={index} course={course} number={[7, 5]} type={'register'} />
+              );
+            })}
+          </div>
+        );
       }
     } else {
       return (
@@ -122,12 +137,12 @@ const SearchPage = () => {
       <div className="container mx-auto text-lg xl:px-10 py-10 px-3">
         <div
           className={`flex xl:justify-between xl:flex-row  flex-col ${
-            courseListLength ? "items-center" : ''
+            courseListLength ? "items-center" : ""
           }`}
         >
-          <div ref={itemResultSearch} className="xl:w-3/4">
+          <div ref={itemResultSearch} className="xl:w-3/4 w-full">
             <div className="flex justify-between bg-[#f6f9fa] my-3 p-3 ">
-              {courseListLength ? (
+              {!isMobile && courseListLength ? (
                 <div className="flex items-center">
                   <div className="Type flex items-center">
                     <button
@@ -153,14 +168,21 @@ const SearchPage = () => {
                   </div>
 
                   <div className="course-index lg:ml-3 ml-2">
-                    {courseListLength && <span className="text-black lg:text-lg text-xs">{showSearchResult()}</span>}
+                    {courseListLength && (
+                      <span className="text-black lg:text-lg text-xs">
+                        {showSearchResult()}
+                      </span>
+                    )}
                   </div>
                 </div>
               ) : (
-                <div></div>
+                !isMobile && <div></div>
               )}
 
-              <form onSubmit={handleSubmit} className="flex">
+              <form
+                onSubmit={handleSubmit}
+                className={`flex ${isMobile && "w-full"}`}
+              >
                 <input
                   ref={keyInput}
                   className="w-full text-black border border-solid  h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
@@ -187,29 +209,31 @@ const SearchPage = () => {
             </div>
           </div>
 
-          <div className='Comment flex justify-center md:block md:justify-start'>
-            <div
-              className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border "
-              style={{ width: "300px" }}
-            >
-              <div className="flex items-center justify-center">
-                <h3 className="px-1 py-3 xl:text-lg">
-                  Học viên Elearning nghĩ gì?
-                </h3>
-              </div>
-              <div className="CommentImage"></div>
-              <div>
-                Đánh giá của học viên !!!
-                <Rate disabled allowHalf defaultValue={5} />
-                <p className="xl:mt-2 md:mt-2 mt-2">
-                  {10 * 10}% học viên hài lòng với khóa học
-                </p>
-                <div className="xl:py-6 md:py-5 py-4">
-                  <Comment />
+          <ResponsiveMiddleScreen>
+            <div className="Comment flex justify-center md:block md:justify-start">
+              <div
+                className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border "
+                style={{ width: "300px" }}
+              >
+                <div className="flex items-center justify-center">
+                  <h3 className="px-1 py-3 xl:text-lg">
+                    Học viên Elearning nghĩ gì?
+                  </h3>
+                </div>
+                <div className="CommentImage"></div>
+                <div>
+                  Đánh giá của học viên !!!
+                  <Rate disabled allowHalf defaultValue={5} />
+                  <p className="xl:mt-2 md:mt-2 mt-2">
+                    {10 * 10}% học viên hài lòng với khóa học
+                  </p>
+                  <div className="xl:py-6 md:py-5 py-4">
+                    <Comment />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ResponsiveMiddleScreen>
         </div>
       </div>
     </div>
