@@ -36,7 +36,7 @@ const DetailPage = () => {
 
   let renderCourseRelated = () => {
     return coursesList.slice(0, 4).map((course, index) => {
-      return <CardVertical key={index} course={course} number={[7, 5]} type={"register"} />;
+      return <CardVertical key={index} course={course} type={"register"} />;
     });
   };
 

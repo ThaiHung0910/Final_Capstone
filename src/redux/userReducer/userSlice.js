@@ -5,7 +5,7 @@ import {
   registerThunk,
   updateThunk,
 } from "./userThunk";
-import { userLocal } from "../../services/localService";
+import { updateUserLocalStorage, userLocal } from "../../services/localService";
 
 const initialState = {
   infoUser: userLocal.get(),
@@ -17,8 +17,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     logOutAction: (state, action) => {
-      state.infoUser = null;
       userLocal.delete();
+      state.infoUser = null;
     },
     resetErrorMessage: (state, action) => {
       state.errorMessage = "";
@@ -40,17 +40,15 @@ const userSlice = createSlice({
         state.errorMessage = messErr;
       })
       .addCase(updateThunk.fulfilled, (state, action) => {
-        if (action.payload) {
-          let newData = { ...state.infoUser, ...action.payload };
+        const newData = updateUserLocalStorage(action.payload);
+        if (newData) {
           state.infoUser = newData;
-          userLocal.set(newData);
         }
       })
       .addCase(getInfoUserThunk.fulfilled, (state, action) => {
-        if (action.payload) {
-          let newData = { ...state.infoUser, ...action.payload };
+        const newData = updateUserLocalStorage(action.payload);
+        if (newData) {
           state.infoUser = newData;
-          userLocal.set(newData);
         }
       });
   },

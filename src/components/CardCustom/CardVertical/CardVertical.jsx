@@ -11,7 +11,7 @@ import {
 } from "../../../redux/courseReducer/courseThunk";
 import { ResponsiveLargeScreen } from "../../../HOC/responsive";
 import ConfirmAction from "../../ConfirmAction/ConfirmAction";
-const CardVertical = ({ course, number, isFavorite, type }) => {
+const CardVertical = ({ course, isFavorite, type }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -153,10 +153,10 @@ const CardVertical = ({ course, number, isFavorite, type }) => {
           </div>
           <div>
             <p>
-              {number[0]}00.000<sup>đ</sup>
+              700.000<sup>đ</sup>
             </p>
             <p>
-              {number[1]}00.000<sup>đ</sup>
+              500.000<sup>đ</sup>
               <i className="fas fa-tag IconTag"></i>
             </p>
           </div>

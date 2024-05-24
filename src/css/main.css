@@ -238,8 +238,8 @@ body {
   height: 0;
 }
 .CardVertical .CardSale:before {
-  left: 1px;
-  bottom: -10px;
+  left: 0px;
+  bottom: -9px;
   border-bottom: 10px solid transparent;
   border-right: 5px solid #e02525;
   -webkit-filter: brightness(0.8);
@@ -869,6 +869,9 @@ body {
   }
   .CourseList .CardFooterGlobal p:nth-of-type(2) {
     font-size: 12px;
+  }
+  .Error {
+    padding: 40px 0;
   }
 }
 .DetailCourse .SectionCourse {

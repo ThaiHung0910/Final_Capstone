@@ -6,7 +6,7 @@ import {
   getListCourseThunk,
   registerCourseThunk,
 } from "./courseThunk";
-import { userLocal } from "../../services/localService";
+import { updateUserLocalStorage } from "../../services/localService";
 
 const initialState = {
   coursesCategory: [],
@@ -14,7 +14,6 @@ const initialState = {
   coursesSearchList: [],
   courseDetail: {},
   coursesCategoryList: [],
-  infoUserCourseRegister: {},
 };
 
 const courseSlice = createSlice({
@@ -43,20 +42,10 @@ const courseSlice = createSlice({
         state.coursesCategoryList = action.payload;
       })
       .addCase(registerCourseThunk.fulfilled, (state, action) => {
-        if (action.payload) {
-          let infoUser = userLocal.get();
-          let newData = { ...infoUser, ...action.payload };
-          state.infoUserCourseRegister = newData;
-          userLocal.set(newData);
-        }
+        updateUserLocalStorage(action.payload);
       })
       .addCase(cancelCourseThunk.fulfilled, (state, action) => {
-        if (action.payload) {
-          let infoUser = userLocal.get();
-          let newData = { ...infoUser, ...action.payload };
-          state.infoUserCourseRegister = newData;
-          userLocal.set(newData);
-        }
+        updateUserLocalStorage(action.payload);
       });
   },
 });

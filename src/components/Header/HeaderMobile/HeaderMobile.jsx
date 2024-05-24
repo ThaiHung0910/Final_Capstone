@@ -8,7 +8,6 @@ import UserNavMobile from "./UserNavMobile/UserNavMobile";
 import { getCourseCategoryAction } from "../../../redux/courseReducer/courseSlice";
 import { courseService } from "../../../services/courseService";
 import { handleSubmitSearch } from "../../../utils";
-import { setCurrentPage } from "../../../redux/paginationReducer/paginationSlice";
 
 export default function HeaderMobile() {
   const navigate = useNavigate();
@@ -34,9 +33,7 @@ export default function HeaderMobile() {
   };
 
   const handleSubmitSearchMobile = (e) => {
-    handleSubmitSearch(e, keyInputMobile, navigate, () => {
-      dispatch(setCurrentPage(1));
-    });
+    handleSubmitSearch(e, keyInputMobile, navigate, () => {});
   };
 
   useEffect(() => {

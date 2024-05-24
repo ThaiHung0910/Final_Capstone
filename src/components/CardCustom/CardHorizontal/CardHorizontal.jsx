@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ResponsiveMiddleScreen } from "../../../HOC/responsive";
 import ConfirmAction from "../../ConfirmAction/ConfirmAction";
 
-const CardHorizontal = ({ course, number, type }) => {
+const CardHorizontal = ({ course, type }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { maKhoaHoc } = course;
@@ -53,13 +53,12 @@ const CardHorizontal = ({ course, number, type }) => {
       <div className="Wrapper relative">
         <img
           src={course?.hinhAnh}
-          onClick={() => navigate(path)}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = imageNotFound;
           }}
           alt=""
-          className="Img cursor-pointer"
+          className="Img"
         />
 
         <div className="Avatar">
@@ -88,10 +87,10 @@ const CardHorizontal = ({ course, number, type }) => {
 
             <div>
               <p>
-                {number[0]}00.000<sup>đ</sup>
+                700.000<sup>đ</sup>
               </p>
               <p>
-                {number[1]}00.000<sup>đ</sup>
+                500.000<sup>đ</sup>
                 <i className="fas fa-tag iconTag"></i>
               </p>
             </div>

@@ -9,7 +9,6 @@ import { SearchOutlined } from "@ant-design/icons";
 import { getCourseCategoryAction } from "../../../redux/courseReducer/courseSlice";
 import { logo } from "../../../assets/img/js/img";
 import DropdownCustom from "../../Dropdown/DropdownCustom";
-import { setCurrentPage } from "../../../redux/paginationReducer/paginationSlice";
 import { handleSubmitSearch } from "../../../utils";
 
 const HeaderDesktopTablet = () => {
@@ -56,7 +55,6 @@ const HeaderDesktopTablet = () => {
   let handleSubmit = (e) => {
     handleSubmitSearch(e, keyInput, navigate, () => {
       setSearchVisible(false)
-      dispatch(setCurrentPage(1))
     })
   }
 

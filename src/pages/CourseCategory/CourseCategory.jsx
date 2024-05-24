@@ -5,10 +5,7 @@ import { getCourseCategoryListThunk } from "../../redux/courseReducer/courseThun
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
 import Background from "../../components/Background/Background";
-import {
-  setCurrentPage,
-  setTotalPages,
-} from "../../redux/paginationReducer/paginationSlice";
+import usePagination from "../../utils/pagination/usePagination";
 
 const CourseCategory = () => {
   const { maDanhMuc } = useParams();
@@ -16,31 +13,17 @@ const CourseCategory = () => {
   const dispatch = useDispatch();
   const currentPath = location.pathname;
   let { coursesCategoryList } = useSelector((state) => state.courseReducer);
-  const { currentPage, totalPages, itemsPerPage } = useSelector(
-    (state) => state.paginationReducer
-  );
 
-  const handlePageChange = (page) => {
-    dispatch(setCurrentPage(page));
-  };
-
-  let renderCard = () => {
-    let start = (currentPage - 1) * itemsPerPage;
-    let end = start + itemsPerPage;
-    return coursesCategoryList.slice(start, end).map((course, index) => {
-      return <CardVertical key={index} course={course} number={[7, 5]} type={'register'} />;
-    });
-  };
+  const {
+    currentPage,
+    totalPages,
+    handlePageChange,
+    paginatedItems: paginatedCourses,
+  } = usePagination(coursesCategoryList, 12);
 
   useEffect(() => {
     dispatch(getCourseCategoryListThunk(maDanhMuc));
   }, [maDanhMuc]);
-
-  useEffect(() => {
-    dispatch(
-      setTotalPages(Math.ceil(coursesCategoryList.length / itemsPerPage))
-    );
-  }, [coursesCategoryList, itemsPerPage]);
 
   return (
     <div>
@@ -66,7 +49,13 @@ const CourseCategory = () => {
           </div>
 
           <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-11">
-            {renderCard()}
+            {paginatedCourses.map((course, index) => (
+              <CardVertical
+                key={index}
+                course={course}
+                type={"register"}
+              />
+            ))}
           </div>
 
           <ButtonPagination

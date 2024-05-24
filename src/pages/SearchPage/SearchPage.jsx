@@ -8,13 +8,10 @@ import CardHorizontal from "../../components/CardCustom/CardHorizontal/CardHoriz
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
 import Comment from "./Comment/Comment";
 import { Rate } from "antd";
-import {
-  setCurrentPage,
-  setTotalPages,
-} from "../../redux/paginationReducer/paginationSlice";
 import { handleSubmitSearch } from "../../utils";
 import { ResponsiveMiddleScreen } from "../../HOC/responsive";
 import { useMediaQuery } from "react-responsive";
+import usePagination from "../../utils/pagination/usePagination";
 
 const SearchPage = () => {
   let { tuKhoa } = useParams();
@@ -26,9 +23,13 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const [currentType, setCurrentType] = useState("horizontal");
   const { coursesSearchList } = useSelector((state) => state.courseReducer);
-  const { currentPage, itemsPerPage, totalPages } = useSelector(
-    (state) => state.paginationReducer
-  );
+  let itemsPerPage = 12;
+  const {
+    currentPage,
+    totalPages,
+    handlePageChange,
+    paginatedItems: paginatedCourses,
+  } = usePagination(coursesSearchList, itemsPerPage);
 
   const courseListLength = coursesSearchList.length;
 
@@ -47,45 +48,35 @@ const SearchPage = () => {
 
   let renderCoursesListSearch = () => {
     if (courseListLength) {
-      let start = (currentPage - 1) * itemsPerPage;
-      let end = start + itemsPerPage;
-
       if (!isMobile) {
         switch (currentType) {
           case "horizontal":
             return (
               <ul className="CourseList my-7">
-                {coursesSearchList?.slice(start, end).map((course, index) => {
-                  return (
-                    <CardHorizontal
-                      key={index}
-                      course={course}
-                      number={[7, 5]}
-                      type={"register"}
-                    />
-                  );
-                })}
+                {paginatedCourses.map((course, index) => (
+                  <CardHorizontal
+                    key={index}
+                    course={course}
+                    type={"register"}
+                  />
+                ))}
               </ul>
             );
           default:
             return (
               <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
-                {coursesSearchList?.slice(start, end).map((course, index) => {
-                  return (
-                    <CardVertical key={index} course={course} number={[7, 5]} type={'register'} />
-                  );
-                })}
+                {paginatedCourses.map((course, index) => (
+                  <CardVertical key={index} course={course} type={"register"} />
+                ))}
               </div>
             );
         }
       } else {
         return (
           <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
-            {coursesSearchList?.slice(start, end).map((course, index) => {
-              return (
-                <CardVertical key={index} course={course} number={[7, 5]} type={'register'} />
-              );
-            })}
+            {paginatedCourses.map((course, index) => (
+              <CardVertical key={index} course={course} type={"register"} />
+            ))}
           </div>
         );
       }
@@ -98,9 +89,9 @@ const SearchPage = () => {
     }
   };
 
-  const handlePageChange = (page) => {
-    dispatch(setCurrentPage(page));
+  let handlePage = (page) => {
     if (itemResultSearch.current) {
+      handlePageChange(page);
       itemResultSearch.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -110,7 +101,7 @@ const SearchPage = () => {
 
   const handleSubmit = (e) => {
     handleSubmitSearch(e, keyInput, navigate, () => {
-      dispatch(setCurrentPage(1));
+      handlePageChange(1);
     });
   };
 
@@ -122,10 +113,6 @@ const SearchPage = () => {
     dispatch(getCourseSearchListThunk(tuKhoa));
   }, [tuKhoa]);
 
-  useEffect(() => {
-    dispatch(setTotalPages(Math.ceil(courseListLength / itemsPerPage)));
-  }, [coursesSearchList, itemsPerPage]);
-
   return (
     <div className="relative ">
       <Background
@@ -136,12 +123,12 @@ const SearchPage = () => {
 
       <div className="container mx-auto text-lg xl:px-10 py-10 px-3">
         <div
-          className={`flex xl:justify-between xl:flex-row  flex-col ${
+          className={`flex xl:justify-between xl:flex-row flex-col ${
             courseListLength ? "items-center" : ""
           }`}
         >
           <div ref={itemResultSearch} className="xl:w-3/4 w-full">
-            <div className="flex justify-between bg-[#f6f9fa] my-3 p-3 ">
+            <div className="sm:flex sm:justify-between sm:gap-0 bg-[#f6f9fa] my-3 p-3 items-center grid grid-cols-2 gap-2">
               {!isMobile && courseListLength ? (
                 <div className="flex items-center">
                   <div className="Type flex items-center">
@@ -175,13 +162,19 @@ const SearchPage = () => {
                     )}
                   </div>
                 </div>
+              ) : isMobile && courseListLength ? (
+                <div className="col-span-2 sm:text-base text-sm">
+                  <span>{showSearchResult()}</span>
+                </div>
               ) : (
-                !isMobile && <div></div>
+                <div></div>
               )}
 
               <form
                 onSubmit={handleSubmit}
-                className={`flex ${isMobile && "w-full"}`}
+                className={`flex ${!courseListLength ? "w-full" : ""} ${
+                  isMobile ? "col-start-2" : ""
+                }`}
               >
                 <input
                   ref={keyInput}
@@ -203,14 +196,14 @@ const SearchPage = () => {
 
               <ButtonPagination
                 currentPage={currentPage}
-                handlePageChange={handlePageChange}
+                handlePageChange={handlePage}
                 totalPages={totalPages}
               />
             </div>
           </div>
 
           <ResponsiveMiddleScreen>
-            <div className="Comment flex justify-center md:block md:justify-start">
+            <div className={`Comment ${!courseListLength ? "mx-auto" : ''}`}>
               <div
                 className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border "
                 style={{ width: "300px" }}

@@ -14,11 +14,7 @@ import {
   ResponsiveMiddleScreen,
   ResponsiveSmallScreen,
 } from "../../HOC/responsive";
-import {
-  setCurrentPage,
-  setTotalPages,
-} from "../../redux/paginationReducer/paginationSlice";
-
+import usePagination from "../../utils/pagination/usePagination";
 
 const UserInfoPage = () => {
   const location = useLocation();
@@ -30,13 +26,20 @@ const UserInfoPage = () => {
   const [currentTab, setCurrentTab] = useState(tabState);
   const [searchValue, setSearchValue] = useState("");
   const { infoUser } = useSelector((state) => state.userReducer);
-  const { currentPage, itemsPerPage, totalPages } = useSelector(
-    (state) => state.paginationReducer
+
+  let itemsPerPage = 12;
+  let courseRegister = infoUser?.chiTietKhoaHocGhiDanh || [];
+
+  const filteredCourses = courseRegister.filter((course) =>
+    course?.tenKhoaHoc.includes(searchValue)
   );
 
-  const { infoUserCourseRegister } = useSelector(
-    (state) => state.courseReducer
-  );
+  const {
+    currentPage,
+    totalPages,
+    handlePageChange,
+    paginatedItems: paginatedCourses,
+  } = usePagination(filteredCourses, itemsPerPage);
 
   let showModal = () => {
     setIsModalOpen(true);
@@ -68,49 +71,44 @@ const UserInfoPage = () => {
     setCurrentTab(tab);
   };
 
-  let handlePageChange = (page) => {
-    dispatch(setCurrentPage(page));
-  };
-
   let renderCourseRegister = (layout) => {
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-
-    return infoUser?.chiTietKhoaHocGhiDanh
-      ?.slice(start, end)
-      ?.map((course, index) => {
-        if (course?.tenKhoaHoc.includes(searchValue)) {
-          switch (layout) {
-            case "horizontal":
-              return (
-                <CardHorizontal key={index} course={course} number={[7, 5]} type={'cancel'} />
-              );
-            default:
-              return (
-                <CardVertical key={index} course={course} number={[7, 5]} type={'cancel'} />
-              );
-          }
+    return paginatedCourses.map((course, index) => {
+      if (course?.tenKhoaHoc.includes(searchValue)) {
+        switch (layout) {
+          case "horizontal":
+            return (
+              <CardHorizontal
+                key={index}
+                course={course}
+                type={"cancel"}
+              />
+            );
+          default:
+            return (
+              <CardVertical
+                key={index}
+                course={course}
+                type={"cancel"}
+              />
+            );
         }
-      });
+      }
+    });
   };
 
   let handleChangeSearch = (e) => {
-    setSearchValue(e.target.value);
+    let value = e.target.value
+    setSearchValue(value);
+    handlePageChange(1)
   };
 
   useEffect(() => {
     dispatch(getInfoUserThunk());
-  }, [infoUserCourseRegister]);
+  }, [infoUser?.chiTietKhoaHocGhiDanh]);
 
   useEffect(() => {
     setCurrentTab(tabState);
   }, [tabState]);
-
-  useEffect(() => {
-    dispatch(
-      setTotalPages(Math.ceil(infoUserCourseRegister.length / itemsPerPage))
-    );
-  }, [infoUserCourseRegister, itemsPerPage]);
 
   return (
     <div>
@@ -200,7 +198,9 @@ const UserInfoPage = () => {
                 }`}
               >
                 <section className="flex justify-between items-center bg-[#f6f9fa] mb-3 p-3">
-                  <h6 className="font-bold sm:text-xl w-1/2 ">Khóa học của tôi</h6>
+                  <h6 className="font-bold sm:text-xl w-1/2 ">
+                    Khóa học của tôi
+                  </h6>
                   <div className="flex">
                     <input
                       ref={keyInput}

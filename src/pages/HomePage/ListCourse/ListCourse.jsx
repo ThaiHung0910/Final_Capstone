@@ -9,7 +9,7 @@ const ListCourse = () => {
 
   let renderCourseItem = (start, end, isFavorite) => {
     return coursesList?.slice(start, end).map((course, index) => {
-      return <CardVertical key={index} course={course} number={[7, 5]} isFavorite={isFavorite} type={'register'}/>;
+      return <CardVertical key={index} course={course} isFavorite={isFavorite} type={'register'}/>;
     });
   };
 

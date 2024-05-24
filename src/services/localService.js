@@ -31,3 +31,15 @@ export const duplicateLocal = {
     }
   },
 }
+
+
+export const updateUserLocalStorage = (payload) => {
+  if (payload) {
+    let infoUser = userLocal.get();
+    let newData = { ...infoUser, ...payload };
+    userLocal.set(newData);
+    return newData
+  } else {
+    return null
+  }
+};

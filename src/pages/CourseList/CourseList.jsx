@@ -6,39 +6,30 @@ import { getListCourseThunk } from "../../redux/courseReducer/courseThunk";
 import { useDispatch } from "react-redux";
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import CardVertical from "../../components/CardCustom/CardVertical/CardVertical";
-import {
-  setCurrentPage,
-  setTotalPages,
-} from "../../redux/paginationReducer/paginationSlice";
+import usePagination from "../../utils/pagination/usePagination";
+
 
 const CourseList = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   const dispatch = useDispatch();
   const { coursesList } = useSelector((state) => state.courseReducer);
-  const { currentPage, itemsPerPage, totalPages } = useSelector(
-    (state) => state.paginationReducer
-  );
 
-  let handlePageChange = (page) => {
-    dispatch(setCurrentPage(page));
-  };
 
-  let renderCoursesList = () => {
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    return coursesList.slice(start, end).map((course, index) => {
-      return <CardVertical key={index} course={course} number={[7, 5]} type={'register'} />;
-    });
-  };
+  const {
+    currentPage,
+    totalPages,
+    handlePageChange,
+    paginatedItems: paginatedCourses,
+  } = usePagination(coursesList, 12); 
+
+
 
   useEffect(() => {
     dispatch(getListCourseThunk());
   }, []);
 
-  useEffect(() => {
-    dispatch(setTotalPages(Math.ceil(coursesList.length / itemsPerPage)));
-  }, [coursesList, itemsPerPage]);
+
 
   return (
     <div>
@@ -55,7 +46,9 @@ const CourseList = () => {
         <h6 className="text-xl font-bold">Danh sách khóa học</h6>
 
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-11">
-          {renderCoursesList()}
+          {paginatedCourses.map((course, index) => (
+            <CardVertical key={index} course={course} />
+          ))}
         </div>
 
         <ButtonPagination

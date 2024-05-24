@@ -113,8 +113,8 @@
     }
 
     &:before {
-      left: 1px;
-      bottom: -10px;
+      left: 0px;
+      bottom: -9px;
       border-bottom: 10px solid transparent;
       border-right: 5px solid $colorRed;
       -webkit-filter: brightness(0.8);
@@ -275,8 +275,6 @@
     }
   }
 }
-
-
 
 @media (max-width: 576px) {
   .CardVertical {
