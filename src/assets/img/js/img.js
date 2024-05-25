@@ -131,5 +131,4 @@ export const reviews = [
 
 export const avatarComment = [lotr, denmark, harrypotter];
 
-export const maVach =
-  "https://vcdn1-sohoa.vnecdn.net/2011/02/23/1000500011_Google-6.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=SLbVBCklHcHl8hI2xSCXYA";
+

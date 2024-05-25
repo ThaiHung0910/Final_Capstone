@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <Loading />
       <Routes>
-        {/* Home template */}
+        
         <Route path="" element={<HomeTemplate />}>
           <Route index element={<HomePage />} />
           <Route path="timkiem/:tuKhoa" element={<SearchPage />} />
@@ -40,7 +40,7 @@ function App() {
           />
         </Route>
 
-        {/* Auth template */}
+        
         <Route path="auth" element={<AuthTemplate />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
