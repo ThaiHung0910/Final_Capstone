@@ -51,8 +51,6 @@ export default function Comment() {
     };
 
     dispatch(submitCommentAction(newComment));
-
-    console.log(submitCommentAction);
     setContentComment("");
   };
 

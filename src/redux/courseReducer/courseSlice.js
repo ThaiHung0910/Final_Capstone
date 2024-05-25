@@ -14,6 +14,7 @@ const initialState = {
   coursesSearchList: [],
   courseDetail: {},
   coursesCategoryList: [],
+  userCoursesRegister: {},
 };
 
 const courseSlice = createSlice({
@@ -42,10 +43,16 @@ const courseSlice = createSlice({
         state.coursesCategoryList = action.payload;
       })
       .addCase(registerCourseThunk.fulfilled, (state, action) => {
-        updateUserLocalStorage(action.payload);
+        const newData = updateUserLocalStorage(action.payload);
+        if (newData) {
+          state.userCoursesRegister = newData;
+        }
       })
       .addCase(cancelCourseThunk.fulfilled, (state, action) => {
-        updateUserLocalStorage(action.payload);
+        const newData = updateUserLocalStorage(action.payload);
+        if (newData) {
+          state.userCoursesRegister = newData;
+        }
       });
   },
 });

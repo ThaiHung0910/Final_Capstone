@@ -74,7 +74,7 @@ const CardVertical = ({ course, isFavorite, type }) => {
           dispatch(cancelCourseThunk(params));
         }}
         button={
-          <button className="BtnGlobal ButtonVertical">Hủy đăng ký</button>
+          <button className="BtnGlobal BtnVertical">Hủy đăng ký</button>
         }
         infoUser={infoUser}
       />
@@ -85,7 +85,7 @@ const CardVertical = ({ course, isFavorite, type }) => {
         action={() => {
           dispatch(registerCourseThunk(params));
         }}
-        button={<button className="BtnGlobal ButtonVertical">Đăng ký</button>}
+        button={<button className="BtnGlobal BtnVertical">Đăng ký</button>}
         infoUser={infoUser}
         requiredMessage={"Vui lòng đăng nhập để đăng ký khóa học"}
       />

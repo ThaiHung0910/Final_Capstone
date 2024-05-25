@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { message } from "antd";
 import { turnOnLoading, turnOffLoading } from "../loadingReducer/loadingSlice";
-import { userLocal } from "../../services/localService";
 import { userService } from "../../services/userService";
 
 export const loginThunk = createAsyncThunk(
@@ -10,11 +9,8 @@ export const loginThunk = createAsyncThunk(
     try {
       dispatch(turnOnLoading());
       const data = await userService.postLogin(payload.value);
-      console.log(data);
       let infoUser = data.data;
 
-      userLocal.set(infoUser);
-      
       payload.navigateCus();
       message.success("Đăng nhập thành công");
 
@@ -22,7 +18,7 @@ export const loginThunk = createAsyncThunk(
       return infoUser;
     } catch (error) {
       dispatch(turnOffLoading());
-      message.error("Tài khoản hoặc mật khẩu không đúng");
+      message.error(error.response.data || "Tài khoản hoặc mật khẩu không đúng");
       return rejectWithValue(error);
     }
   }
@@ -39,7 +35,7 @@ export const registerThunk = createAsyncThunk(
 
       return infoUser;
     } catch (err) {
-      message.error("Đăng ký thất bại");
+      message.error(err.response.data || "Đăng ký thất bại");
       return rejectWithValue(err);
     }
   }
@@ -59,7 +55,7 @@ export const updateThunk = createAsyncThunk(
       });
       return updateInfo.data;
     } catch (err) {
-      message.error("Cập nhật thất bại");
+      message.error(err.response.data || "Cập nhật thất bại");
       return rejectWithValue(err);
     }
   }

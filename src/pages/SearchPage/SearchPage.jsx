@@ -121,14 +121,18 @@ const SearchPage = () => {
         ]}
       />
 
-      <div className="container mx-auto text-lg xl:px-10 py-10 px-3">
+      <div className="container mx-auto text-lg xl:px-12 py-12 px-3">
         <div
-          className={`flex xl:justify-between xl:flex-row flex-col ${
+          className={`flex xl:justify-between xl:flex-row xl:space-x-1 flex-col  ${
             courseListLength ? "items-center" : ""
           }`}
         >
           <div ref={itemResultSearch} className="xl:w-3/4 w-full">
-            <div className="sm:flex sm:justify-between sm:gap-0 bg-[#f6f9fa] my-3 p-3 items-center grid grid-cols-2 gap-2">
+            <div
+              className={`sm:flex sm:justify-between sm:gap-0 bg-[#f6f9fa] my-3 p-3 items-center ${
+                isMobile ? "grid grid-cols-2 gap-2" : ""
+              }`}
+            >
               {!isMobile && courseListLength ? (
                 <div className="flex items-center">
                   <div className="Type flex items-center">
@@ -172,9 +176,7 @@ const SearchPage = () => {
 
               <form
                 onSubmit={handleSubmit}
-                className={`flex ${!courseListLength ? "w-full" : ""} ${
-                  isMobile ? "col-start-2" : ""
-                }`}
+                className={`flex ${isMobile ? "col-start-2" : ""}`}
               >
                 <input
                   ref={keyInput}
@@ -203,7 +205,7 @@ const SearchPage = () => {
           </div>
 
           <ResponsiveMiddleScreen>
-            <div className={`Comment ${!courseListLength ? "mx-auto" : ''}`}>
+            <div className={`Comment ${!courseListLength ? "mx-auto" : ""}`}>
               <div
                 className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border "
                 style={{ width: "300px" }}

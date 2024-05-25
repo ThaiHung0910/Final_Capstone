@@ -242,10 +242,9 @@ body {
   bottom: -9px;
   border-bottom: 10px solid transparent;
   border-right: 5px solid #e02525;
-  -webkit-filter: brightness(0.8);
   filter: brightness(0.8);
 }
-.CardVertical .ButtonVertical {
+.CardVertical .BtnVertical {
   display: inline-block;
   position: absolute;
   top: 170px;
@@ -383,11 +382,25 @@ body {
   border-radius: 50%;
 }
 
+@media (max-width: 992px) {
+  .CardFooterGlobal {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 8px;
+  }
+  .CardFooterGlobal > div:nth-of-type(2) {
+    text-align: right;
+  }
+  .CardFooterGlobal > div:nth-of-type(3) {
+    grid-column-start: 2;
+    text-align: right;
+  }
+}
 @media (max-width: 576px) {
   .CardVertical .CardBodyGlobal {
     padding: 40px 20px;
   }
-  .CardVertical .ButtonVertical {
+  .CardVertical .BtnVertical {
     font-size: 20px;
   }
 }
@@ -1024,6 +1037,15 @@ body {
   display: block;
 }
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .User .ContentRight .TabContent .CardHorizontal .CardFooterGlobal > div:nth-of-type(3) {
+    display: flex;
+  }
+  .User .ContentRight .TabContent .CardHorizontal .CardFooterGlobal > div:nth-of-type(3) .BtnGlobal {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
 @media (max-width: 768px) {
   .User .ContentRight .Info .BtnGlobal {
     font-size: 16px;

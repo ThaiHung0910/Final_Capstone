@@ -6,7 +6,6 @@ import {
   registerCourseThunk,
 } from "../../../redux/courseReducer/courseThunk";
 import { useDispatch, useSelector } from "react-redux";
-import { ResponsiveMiddleScreen } from "../../../HOC/responsive";
 import ConfirmAction from "../../ConfirmAction/ConfirmAction";
 
 const CardHorizontal = ({ course, type }) => {
@@ -97,14 +96,12 @@ const CardHorizontal = ({ course, type }) => {
 
             <div>
               {renderButton()}
-              <ResponsiveMiddleScreen>
-                <button
-                  onClick={() => navigate(path)}
-                  className="BtnGlobal ml-2"
-                >
-                  Xem chi tiết
-                </button>
-              </ResponsiveMiddleScreen>
+              <button
+                onClick={() => navigate(path)}
+                className="BtnGlobal ml-2"
+              >
+                Xem chi tiết
+              </button>
             </div>
           </div>
         </div>

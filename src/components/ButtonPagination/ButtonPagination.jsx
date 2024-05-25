@@ -3,8 +3,8 @@ import { useMediaQuery } from "react-responsive";
 
 
 const ButtonPagination = ({ currentPage, totalPages, handlePageChange }) => {
-  const isMobile = useMediaQuery({maxWidth: '768px'})
-  const maxVisibleButtons = !isMobile ? 7 : 5;
+  const isSmallScreen = useMediaQuery({maxWidth: '768px'})
+  const maxVisibleButtons = !isSmallScreen ? 7 : 5;
   const halfVisibleButtons = Math.floor(maxVisibleButtons / 2);
 
   const createButton = (element, page, className, key) => (

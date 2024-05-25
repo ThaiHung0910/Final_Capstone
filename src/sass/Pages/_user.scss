@@ -69,6 +69,26 @@
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .User {
+    .ContentRight {
+      .TabContent {
+        .CardHorizontal {
+          .CardFooterGlobal {
+            > div:nth-of-type(3) {
+              display: flex;
+              .BtnGlobal {
+                padding: 10px;
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .User {
     .ContentRight {

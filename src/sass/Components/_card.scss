@@ -117,12 +117,11 @@
       bottom: -9px;
       border-bottom: 10px solid transparent;
       border-right: 5px solid $colorRed;
-      -webkit-filter: brightness(0.8);
       filter: brightness(0.8);
     }
   }
 
-  .ButtonVertical {
+  .BtnVertical {
     display: inline-block;
     position: absolute;
     top: 170px;
@@ -276,13 +275,30 @@
   }
 }
 
+@media (max-width: 992px) {
+  .CardFooterGlobal {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 8px;
+
+    > div:nth-of-type(2) {
+      text-align: right;
+    }
+
+    > div:nth-of-type(3) {
+      grid-column-start: 2;
+      text-align: right;
+    }
+  }
+}
+
 @media (max-width: 576px) {
   .CardVertical {
     .CardBodyGlobal {
       padding: 40px 20px;
     }
 
-    .ButtonVertical {
+    .BtnVertical {
       font-size: 20px;
     }
   }

@@ -1,20 +1,14 @@
 import { useFormik } from "formik";
 import React, { useEffect} from "react";
-import * as yup from "yup";
 import FormInputCustom from "../../../components/Input/FormInputCustom";
 import { useDispatch } from "react-redux";
 import { updateThunk } from "../../../redux/userReducer/userThunk";
+import { updateValidationSchema } from "../../../utils/validation/validation";
+
 
 const ModalContent = ({ setIsModalOpen, infoUser }) => {
   const dispatch = useDispatch();
-  const message = [
-    "Vui lòng điền thông tin",
-    "Tối thiểu bốn ký tự",
-    "Mật khẩu phải ít nhất 4 ký tự gồm chữ, số, in hoa và kí tự đặc biệt",
-    "Email chưa đúng định dạng",
-    "Vui lòng nhập đúng số điện thoại",
-    "Chỉ nhập chữ",
-  ];
+
 
   let formUpdate = useFormik({
     initialValues: {
@@ -31,31 +25,7 @@ const ModalContent = ({ setIsModalOpen, infoUser }) => {
       setIsModalOpen(false);
     },
 
-    validationSchema: yup.object().shape({
-      matKhau: yup
-        .string()
-        .matches(
-          /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,}$/,
-          message[2]
-        )
-        .required(message[0]),
-      email: yup
-        .string()
-        .matches(/^[a-zA-Z0-9._%+-]+@gmail\.com$/, message[3])
-        .required(message[0]),
-      soDT: yup
-        .string()
-        .matches(/^(?:\+?84|0)(\d{9,10})$/, message[4])
-        .required(message[0]),
-      hoTen: yup
-        .string()
-        .min(4, message[1])
-        .matches(
-          /^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/,
-          message[5]
-        )
-        .required(message[0]),
-    }),
+    validationSchema: updateValidationSchema
   });
 
   useEffect(() => {

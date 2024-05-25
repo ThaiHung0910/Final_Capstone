@@ -26,6 +26,7 @@ const UserInfoPage = () => {
   const [currentTab, setCurrentTab] = useState(tabState);
   const [searchValue, setSearchValue] = useState("");
   const { infoUser } = useSelector((state) => state.userReducer);
+  const { userCoursesRegister } = useSelector((state) => state.courseReducer);
 
   let itemsPerPage = 12;
   let courseRegister = infoUser?.chiTietKhoaHocGhiDanh || [];
@@ -72,39 +73,36 @@ const UserInfoPage = () => {
   };
 
   let renderCourseRegister = (layout) => {
-    return paginatedCourses.map((course, index) => {
-      if (course?.tenKhoaHoc.includes(searchValue)) {
+    if (courseRegister.length === 0) {
+      return <p className="Error">Bạn chưa đăng ký khóa học nào</p>;
+    } else if (filteredCourses.length === 0 && searchValue.length > 0) {
+      return (
+        <p className="Error">
+          Không tìm thấy khóa học nào phù hợp với từ khóa của bạn.
+        </p>
+      );
+    } else {
+      return paginatedCourses.map((course, index) => {
         switch (layout) {
           case "horizontal":
             return (
-              <CardHorizontal
-                key={index}
-                course={course}
-                type={"cancel"}
-              />
+              <CardHorizontal key={index} course={course} type={"cancel"} />
             );
           default:
-            return (
-              <CardVertical
-                key={index}
-                course={course}
-                type={"cancel"}
-              />
-            );
+            return <CardVertical key={index} course={course} type={"cancel"} />;
         }
-      }
-    });
+      });
+    }
   };
 
   let handleChangeSearch = (e) => {
-    let value = e.target.value
-    setSearchValue(value);
-    handlePageChange(1)
+    setSearchValue(e.target.value);
+    handlePageChange(1);
   };
 
   useEffect(() => {
     dispatch(getInfoUserThunk());
-  }, [infoUser?.chiTietKhoaHocGhiDanh]);
+  }, [userCoursesRegister]);
 
   useEffect(() => {
     setCurrentTab(tabState);
@@ -156,7 +154,7 @@ const UserInfoPage = () => {
                 } `}
               >
                 <div className="grid sm:grid-cols-2 grid-cols-1">
-                  <div className="">
+                  <div>
                     <p>
                       Email:<span>{infoUser?.email}</span>
                     </p>
@@ -193,7 +191,7 @@ const UserInfoPage = () => {
               </div>
 
               <div
-                className={`Course TabContent ${
+                className={`TabContent ${
                   currentTab === "course" ? "Active" : ""
                 }`}
               >
