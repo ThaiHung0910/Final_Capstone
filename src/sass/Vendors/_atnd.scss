@@ -1,7 +1,11 @@
-.ant-modal, .ant-card, .ant-breadcrumb, .ant-space, .ant-dropdown {
-  font-family: "Roboto", sans-serif !important; 
+.ant-modal,
+.ant-card,
+.ant-breadcrumb,
+.ant-space,
+.ant-dropdown,
+.ant-popconfirm {
+  font-family: "Roboto", sans-serif !important;
 }
-
 
 .CardGlobal.ant-card {
   .ant-card-body {
@@ -9,10 +13,7 @@
   }
 }
 
-
-
 .Background {
-
   .ant-breadcrumb ol {
     font-size: 20px;
   }
@@ -39,8 +40,6 @@
   }
 }
 
-
-
 .ant-dropdown {
   .ant-dropdown-menu.ant-dropdown-menu-root.ant-dropdown-menu-vertical {
     padding: 0;
@@ -55,13 +54,38 @@
   }
 }
 
+.ant-popconfirm {
+  .ant-popover-content {
+    .ant-popconfirm-message {
+      .ant-popconfirm-title,
+      .ant-popconfirm-description {
+        color: black;
+      }
+    }
+    .ant-btn-primary {
+      &:not(:disabled):not(.ant-btn-disabled) {
+        &:hover {
+          background-color: $colorGlobal;
+        }
+      }
+    }
+    .ant-btn-default {
+      &:not(:disabled):not(.ant-btn-disabled) {
+        &:hover {
+          color: $colorGlobal;
+          border-color: $colorGlobal;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .UpdateModal.ant-modal {
     height: 100%;
     width: 85%;
     .ant-modal-content {
       .ant-modal-body {
-  
         padding: 5px;
       }
     }

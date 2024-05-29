@@ -73,8 +73,8 @@ const CardHorizontal = ({ course, type }) => {
         <div className="space-y-3 py-2">
           <h2 className="font-bold">{course?.tenKhoaHoc}</h2>
           <p>
-            {course?.moTa.split(" ").length > 20
-              ? course?.moTa.split(" ").slice(0, 20).join(" ") + "..."
+            {course?.moTa.split(" ").length > 10
+              ? course?.moTa.split(" ").slice(0, 10).join(" ") + "..."
               : course?.moTa}
           </p>
 

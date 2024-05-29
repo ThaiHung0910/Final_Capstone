@@ -48,6 +48,15 @@ const SearchPage = () => {
 
   let renderCoursesListSearch = () => {
     if (courseListLength) {
+      let renderCardVertical = () => {
+        return (
+          <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
+            {paginatedCourses.map((course, index) => (
+              <CardVertical key={index} course={course} type={"register"} />
+            ))}
+          </div>
+        );
+      };
       if (!isMobile) {
         switch (currentType) {
           case "horizontal":
@@ -63,22 +72,10 @@ const SearchPage = () => {
               </ul>
             );
           default:
-            return (
-              <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
-                {paginatedCourses.map((course, index) => (
-                  <CardVertical key={index} course={course} type={"register"} />
-                ))}
-              </div>
-            );
+            return renderCardVertical();
         }
       } else {
-        return (
-          <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 my-7">
-            {paginatedCourses.map((course, index) => (
-              <CardVertical key={index} course={course} type={"register"} />
-            ))}
-          </div>
-        );
+        return renderCardVertical();
       }
     } else {
       return (

@@ -52,9 +52,9 @@
   }
 
   .CardBodyGlobal {
-    flex: 1 1 auto;
     min-height: 1px;
     padding: 30px 20px;
+    color: $colorBlack;
     h1 {
       font-size: 20px;
       font-weight: 600;
@@ -290,7 +290,13 @@
       text-align: right;
     }
   }
+  .CardHorizontal {
+    .Wrapper {
+      height: 240px;
+    }
+  }
 }
+
 
 @media (max-width: 576px) {
   .CardVertical {

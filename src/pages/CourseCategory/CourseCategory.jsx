@@ -19,10 +19,12 @@ const CourseCategory = () => {
     totalPages,
     handlePageChange,
     paginatedItems: paginatedCourses,
+    setCurrentPage
   } = usePagination(coursesCategoryList, 12);
 
   useEffect(() => {
     dispatch(getCourseCategoryListThunk(maDanhMuc));
+    setCurrentPage(1)
   }, [maDanhMuc]);
 
   return (

@@ -1,5 +1,10 @@
 @charset "UTF-8";
-.ant-modal, .ant-card, .ant-breadcrumb, .ant-space, .ant-dropdown {
+.ant-modal,
+.ant-card,
+.ant-breadcrumb,
+.ant-space,
+.ant-dropdown,
+.ant-popconfirm {
   font-family: "Roboto", sans-serif !important;
 }
 
@@ -35,6 +40,18 @@
 }
 .ant-dropdown .ant-dropdown-menu.ant-dropdown-menu-root.ant-dropdown-menu-vertical .ant-dropdown-menu-item.ant-dropdown-menu-item-only-child:hover {
   background-color: #f6f9fa;
+}
+
+.ant-popconfirm .ant-popover-content .ant-popconfirm-message .ant-popconfirm-title,
+.ant-popconfirm .ant-popover-content .ant-popconfirm-message .ant-popconfirm-description {
+  color: black;
+}
+.ant-popconfirm .ant-popover-content .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+  background-color: #60a5fa;
+}
+.ant-popconfirm .ant-popover-content .ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+  color: #60a5fa;
+  border-color: #60a5fa;
 }
 
 @media (max-width: 768px) {
@@ -190,9 +207,9 @@ body {
   transition: all 0.5s;
 }
 .CardVertical .CardBodyGlobal {
-  flex: 1 1 auto;
   min-height: 1px;
   padding: 30px 20px;
+  color: #000;
 }
 .CardVertical .CardBodyGlobal h1 {
   font-size: 20px;
@@ -394,6 +411,9 @@ body {
   .CardFooterGlobal > div:nth-of-type(3) {
     grid-column-start: 2;
     text-align: right;
+  }
+  .CardHorizontal .Wrapper {
+    height: 240px;
   }
 }
 @media (max-width: 576px) {
