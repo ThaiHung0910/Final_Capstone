@@ -25,7 +25,6 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
     setFocusedInput(false);
   };
 
-  
   if (!formikField.values.isLogin) {
     if (errorFromApi) {
       errors[name] = errorFromApi;
@@ -53,19 +52,8 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
       dispatch(resetErrorMessage());
     }
   }, [value, errorMessage]);
+ 
 
-  useEffect(() => {
-    
-    if (!localStorageLoaded) {
-      const storedData = duplicateLocal.get() || {};
-      if (storedData) {
-        setDuplicateErrors({ ...storedData });
-      }
-      setLocalStorageLoaded(true);
-    }
-  }, []);
-
-  
   useEffect(() => {
     const storedData = duplicateLocal.get() || {};
     const updateLocalStorage = () => {
@@ -75,9 +63,12 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
       };
       duplicateLocal.set(newData);
     };
-
-    
-    if (localStorageLoaded) {
+    if (!localStorageLoaded) {
+      if (storedData) {
+        setDuplicateErrors({ ...storedData });
+      }
+      setLocalStorageLoaded(true);
+    } else {
       updateLocalStorage();
     }
   }, [duplicateErrors]);
