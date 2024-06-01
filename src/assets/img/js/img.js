@@ -1,7 +1,7 @@
 import avatar1 from "../avatar/avatarUser.png";
 import avatar2 from "../avatar/avatarTutor.png";
 import avatar3 from "../avatar/avatarTutor1.png";
-import imgNotFound from "../imgNotFound.jpg";
+import imageDefault from "../imageDefault.jpg";
 import auth from "../background/auth.jpg";
 import modal from "../background/modal.png";
 import student from "../number/student.png";
@@ -33,7 +33,7 @@ export const background = [auth, modal];
 
 export const avatar = [avatar1, avatar2, avatar3];
 
-export const imageNotFound = imgNotFound;
+export const imageNotFound = imageDefault;
 
 export const numbers = [
   {

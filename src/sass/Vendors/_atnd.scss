@@ -54,6 +54,16 @@
   }
 }
 
+.Content {
+  nav.ant-breadcrumb {
+    ol {
+      li.ant-breadcrumb-separator {
+        color: $colorWhite;
+      }
+    }
+  }
+}
+
 .ant-popconfirm {
   .ant-popover-content {
     .ant-popconfirm-message {

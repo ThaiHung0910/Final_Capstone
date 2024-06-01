@@ -13,7 +13,7 @@ const Background = ({ path }) => {
               {
                 href: "/",
                 title: (
-                  <i className="fa-solid fa-house"></i>
+                  <i className="fa-solid fa-house text-white"></i>
                 ),
               },
               ...path

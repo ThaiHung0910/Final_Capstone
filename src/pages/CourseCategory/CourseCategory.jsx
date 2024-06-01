@@ -31,7 +31,7 @@ const CourseCategory = () => {
     <div>
       <Background
         path={[
-          { href: "", title: <span>Danh mục khóa học</span> },
+          { href: "", title: <span className="text-white">Danh mục khóa học</span> },
           {
             href: currentPath,
             title: <span className="text-blue-400">{maDanhMuc}</span>,

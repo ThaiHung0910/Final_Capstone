@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchOutlined } from "@ant-design/icons";
@@ -14,6 +14,7 @@ export default function HeaderMobile() {
   const dispatch = useDispatch();
   let keyInputMobile = useRef(null);
   const scrollDirection = ScrollHeader();
+  const [searchVisible, setSearchVisible] = useState(false);
   const { infoUser } = useSelector((state) => state.userReducer);
   const coursesCate = useSelector(
     (state) => state.courseReducer.coursesCategory
@@ -33,7 +34,9 @@ export default function HeaderMobile() {
   };
 
   const handleSubmitSearchMobile = (e) => {
-    handleSubmitSearch(e, keyInputMobile, navigate, () => {});
+    handleSubmitSearch(e, keyInputMobile, navigate, () => {
+      setSearchVisible(false);
+    });
   };
 
   useEffect(() => {
@@ -50,22 +53,34 @@ export default function HeaderMobile() {
         <NavLink to={"/"}>
           <img src={logo[0]} width={100} alt="" />
         </NavLink>
+
+        <button
+          type="submit"
+          onClick={() => {
+            setSearchVisible(!searchVisible);
+          }}
+        >
+          <SearchOutlined className="text-xl text-white" />
+        </button>
+        <div>{renderUserNavMobile()}</div>
+      </div>
+
+      {searchVisible && (
         <form
           onSubmit={handleSubmitSearchMobile}
-          className="HeaderSearch w-3/5 flex"
+          className="HeaderSearch lg:px-12 container mx-auto px-3 flex mt-3"
         >
           <input
             ref={keyInputMobile}
-            className="w-full border border-solid h-11 rounded-l-lg p-5 text-base focus:outline-none bg-[#f6f9fa]"
+            className="w-full text-black h-11 rounded-l-lg p-5 text-base focus:outline-none"
             type="text"
             placeholder="Tìm kiếm"
           />
-          <button type="submit" className="BtnGlobal">
-            <SearchOutlined className="text-xl mr-1" />
+          <button type="submit" className="flex items-center BtnGlobal ">
+            <SearchOutlined className="text-xl mr-1 " />
           </button>
         </form>
-        <div>{renderUserNavMobile()}</div>
-      </div>
+      )}
     </div>
   );
 }

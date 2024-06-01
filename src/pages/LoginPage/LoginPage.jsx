@@ -52,7 +52,7 @@ const LoginPage = () => {
           className="xl:flex md:flex flex items-center justify-center xl:w-2/3 md:w-2/3 w-3/4  xl:pr-16 md:pr-10 xl:pb-20 md:pb-12 pb-10  xl:pt-12 md:pt-7 pt-10 bg-black z-10"
         >
           <div className="xl:w-1/3 md:w-1/3 xl:flex xl:justify-center xl:items-center  md:flex md:justify-center md:items-center hidden">
-            <div className="xl:scale-50 md:scale-75 scale-50">
+            <div className="md:scale-75 scale-50">
               <Lottie animationData={iconLogin} />
             </div>
           </div>
